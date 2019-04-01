@@ -181,3 +181,37 @@ where city.Id in (select id from
 show autocommit;
 set autocommit off;
 begin transaction;
+------------------tp4-1 PS augmentation de population----------
+create or replace procedure augmentPopulation(pourcentage in number)
+is 
+begin
+    update country
+    set population = population*(1+pourcentage/100);
+    commit;
+end;
+/
+exec augmentPopulation(10);
+------------------tp4-2 PS calcul superdicie mondiale-----------
+create or replace procedure calculSurperficie
+  (nomContinent in varCHAR2, temp in out number)
+is
+    begin
+        select sum(surfacearea)
+        into temp
+        from country
+        where continent = nomContinent;
+    end;
+/
+
+DECLARE
+    amount NUMBER;
+BEGIN
+    calculSurperficie('Asia', amount);
+    dbms_output.put_line(amount);
+END;
+/
+------------------tp4-2 View calcul superdicie mondiale-----------
+create or replace view calculSurperficieView(somme) as 
+  select sum(surfacearea) somme
+        from country;
+
