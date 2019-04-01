@@ -1,0 +1,7 @@
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\bin\Debug\ConsoleApp5.exe.config
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\bin\Debug\ConsoleApp5.exe
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\bin\Debug\ConsoleApp5.pdb
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\obj\Debug\ConsoleApp5.csprojAssemblyReference.cache
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\obj\Debug\ConsoleApp5.csproj.CoreCompileInputs.cache
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\obj\Debug\ConsoleApp5.exe
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp5\obj\Debug\ConsoleApp5.pdb
