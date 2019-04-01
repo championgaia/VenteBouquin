@@ -45,6 +45,17 @@ CREATE TABLE Promotion(
     CONSTRAINT cle_P_Promotion PRIMARY KEY (IdPromotion)
 )engine=innoDB;
 -------------------------------------------------------------------------------
+--------------------------Create table Description-------------------------
+-------------------------------------------------------------------------------
+DROP TABLE IF EXISTS Description;
+
+CREATE TABLE Description(
+    IdDescription INT AUTO_INCREMENT,
+    CodeISBN VARCHAR(50) NOT NULL,
+    Detail TEXT NULL,
+    CONSTRAINT cle_P_Description PRIMARY KEY (IdDescription)
+)engine=innoDB;
+-------------------------------------------------------------------------------
 --------------------------Create table Personne-------------------------
 -------------------------------------------------------------------------------
 DROP TABLE IF EXISTS Personne;
@@ -83,12 +94,15 @@ CREATE TABLE Livre(
     NomLivre VARCHAR(50) NOT NULL,
     Auteur VARCHAR(50) NOT NULL,
     Editeur VARCHAR(50) NOT NULL,
+    CoverImage VARCHAR(250) NULL,
     Prix DECIMAL(10,2) NOT NULL,
-    Description VARCHAR(21844) NULL,
+    FkDescription INT NULL,
     FkLivreCategory INT NOT NULL,
     CONSTRAINT cle_P_Livre PRIMARY KEY (IdLivre),
-    CONSTRAINT Cle_F_Livre_Adresse FOREIGN KEY (FkLivreCategory) REFERENCES LivreCategory(IdCategory)
+    CONSTRAINT Cle_F_Livre_Adresse FOREIGN KEY (FkLivreCategory) REFERENCES LivreCategory(IdCategory),
+    CONSTRAINT cle_F_Livre_Description FOREIGN KEY (FkDescription) REFERENCES Description(IdDescription)
 )engine=innoDB;
+
 -------------------------------------------------------------------------------
 --------------------------Create table Commande-------------------------
 -------------------------------------------------------------------------------
@@ -149,6 +163,42 @@ INSERT INTO Promotion (PourcentagePromo, DateDebut, DateFin) VALUES
     (50, "2019/05/01", "2019/06/01"),(60, "2019/06/01", "2019/07/01"),
     (70, "2019/07/01", "2019/08/01"),(80, "2019/08/01", "2019/09/01");
 -------------------------------------------------------------------------------
+--------------------------Insert donnes table Desciption-------------------------
+-------------------------------------------------------------------------------
+INSERT INTO Description (CodeISBN, Detail) VALUES
+    ('9782075094504', 'Découvrez ou redécouvrez le premier volume de l histoire de Harry, décliné en quatre précieuses
+     éditions collector cartonnées, aux couleurs des célèbres maisons de la plus grande école de magie 
+     de tous les temps. Avec de passionnants bonus illustrés inédits pour tout savoir sur votre maison :
+      sa salle commune, ses étudiants célèbres, ses directeurs notables, un quiz sur Poudlard et bien d 
+      autres surprises.'),
+    ('9782075117548', 'Une rentrée fracassante en voiture volante, une étrange malédiction qui s abat sur les élèves, 
+    cette deuxième année à l école des sorciers ne s annonce pas de tout repos! Entre les cours de 
+    potion magique, les matches de Quidditch et les combats de mauvais sorts, Harry et ses amis Ron 
+    et Hermione trouveront-ils le temps de percer le mystère de la Chambre des Secrets?'),
+    ('9782075089302', 'Sirius Black, le dangereux criminel qui s est échappé de la forteresse d Azkaban, recherche 
+    Harry Potter. C est donc sous bonne garde que l apprenti sorcier fait sa troisième rentrée. 
+    Au programme : des cours de divination, la fabrication d une potion de Ratatinage, le dressage 
+    des hippogriffes... Mais Harry est-il vraiment à l abri du danger qui le menace ?'),
+    ('9782070585205', 'Harry Potter a quatorze ans et entre en quatrième année à Poudlard. Une grande nouvelle attend
+     Harry, Ron et Hermione à leur arrivée : la tenue d un tournoi de magie exceptionnel entre les 
+     plus célèbres écoles de sorcellerie. Déjà les délégations étrangères font leur entrée. Harry se 
+     réjouit... Trop vite. Il va se trouver plongé au cœur des événements les plus dramatiques qu il 
+     ait jamais eu à affronter.'),
+    ('9782070585212', 'À quinze ans, Harry entre en cinquième année à Poudlard, mais il n a jamais été si anxieux. 
+    L adolescence, la perspective des examens et ces étranges cauchemars... Car Celui-Dont-On-Ne-Doit-Pas-Prononcer-Le-Nom
+     est de retour. Le ministère de la Magie semble ne pas prendre cette menace au sérieux, contrairement 
+     à Dumbledore. La résistance s organise alors autour de Harry qui va devoir compter sur le courage et
+      la fidélité de ses amis de toujours...'),
+    ('9782070585229', 'Dans un monde de plus en plus inquiétant, Harry se prépare à retrouver Ron et Hermione. Bientôt, 
+    ce sera la rentrée à Poudlard, avec les autres étudiants de sixième année. Mais pourquoi Dumbledore 
+    vient-il en personne chercher Harry chez les Dursley ? Dans quels extraordinaires voyages au cœur de 
+    la mémoire va-t-il l entraîner ?'),
+    ('9782070585236', 'Cette année, Harry a dix-sept ans et ne retourne pas à Poudlard. Avec Ron et Hermione, il se consacre 
+    à la dernière mission confiée par Dumbledore. Mais le Seigneur des Ténèbres règne en maître. Traqués, 
+    les trois fidèles amis sont contraints à la clandestinité. D épreuves en révélations, le courage, les 
+    choix et les sacrifices de Harry seront déterminants dans la lutte contre les forces du Mal.');
+
+-------------------------------------------------------------------------------
 --------------------------Insert donnes table Personne-------------------------
 -------------------------------------------------------------------------------
 INSERT INTO Personne (Nom, Prenom, DateNaissance, FkAdresse) VALUES 
@@ -159,51 +209,14 @@ INSERT INTO Personne (Nom, Prenom, DateNaissance, FkAdresse) VALUES
 -------------------------------------------------------------------------------
 --------------------------Insert donnes table Livre-------------------------
 -------------------------------------------------------------------------------
-INSERT INTO Livre(CodeISBN, NomLivre, Auteur, Editeur, Prix, Description, FkLivreCategory) VALUES
-    ('9782075094504', 'Harry Potter à l école des sorciers', 'J. K. Rowling', 'Poufsouffle', 10, 
-    'Découvrez ou redécouvrez le premier volume de l histoire de Harry, décliné en quatre précieuses
-     éditions collector cartonnées, aux couleurs des célèbres maisons de la plus grande école de magie 
-     de tous les temps. Avec de passionnants bonus illustrés inédits pour tout savoir sur votre maison :
-      sa salle commune, ses étudiants célèbres, ses directeurs notables, un quiz sur Poudlard et bien d 
-      autres surprises.', 16),
-    ('9782075117548', 'Harry Potter et la Chambre des Secrets', 'J. K. Rowling', 'Gryffondor', 11,
-    'Une rentrée fracassante en voiture volante, une étrange malédiction qui s abat sur les élèves, 
-    cette deuxième année à l école des sorciers ne s annonce pas de tout repos! Entre les cours de 
-    potion magique, les matches de Quidditch et les combats de mauvais sorts, Harry et ses amis Ron 
-    et Hermione trouveront-ils le temps de percer le mystère de la Chambre des Secrets?' 
-    , 16),
-    ('9782075089302', 'Harry Potter et le prisonnier d Azkaban', 'J. K. Rowling', 'Gryffondor', 12,
-    'Sirius Black, le dangereux criminel qui s est échappé de la forteresse d Azkaban, recherche 
-    Harry Potter. C est donc sous bonne garde que l apprenti sorcier fait sa troisième rentrée. 
-    Au programme : des cours de divination, la fabrication d une potion de Ratatinage, le dressage 
-    des hippogriffes... Mais Harry est-il vraiment à l abri du danger qui le menace ?'
-    , 16),
-    ('9782070585205', 'Harry Potter et la Coupe de Feu', 'J. K. Rowling', 'Gryffondor', 13,
-    'Harry Potter a quatorze ans et entre en quatrième année à Poudlard. Une grande nouvelle attend
-     Harry, Ron et Hermione à leur arrivée : la tenue d un tournoi de magie exceptionnel entre les 
-     plus célèbres écoles de sorcellerie. Déjà les délégations étrangères font leur entrée. Harry se 
-     réjouit... Trop vite. Il va se trouver plongé au cœur des événements les plus dramatiques qu il 
-     ait jamais eu à affronter.'
-    , 16),
-    ('9782070585212', 'Harry Potter et l Ordre du Phénix', 'J. K. Rowling', 'Gryffondor', 14,
-    'À quinze ans, Harry entre en cinquième année à Poudlard, mais il n a jamais été si anxieux. 
-    L adolescence, la perspective des examens et ces étranges cauchemars... Car Celui-Dont-On-Ne-Doit-Pas-Prononcer-Le-Nom
-     est de retour. Le ministère de la Magie semble ne pas prendre cette menace au sérieux, contrairement 
-     à Dumbledore. La résistance s organise alors autour de Harry qui va devoir compter sur le courage et
-      la fidélité de ses amis de toujours...'
-    , 16),
-    ('9782070585229', 'Harry Potter et le Prince de Sang-Mêlé', 'J. K. Rowling', 'Gryffondor', 15,
-    'Dans un monde de plus en plus inquiétant, Harry se prépare à retrouver Ron et Hermione. Bientôt, 
-    ce sera la rentrée à Poudlard, avec les autres étudiants de sixième année. Mais pourquoi Dumbledore 
-    vient-il en personne chercher Harry chez les Dursley ? Dans quels extraordinaires voyages au cœur de 
-    la mémoire va-t-il l entraîner ?'
-    , 16),
-    ('9782070585236', 'Harry Potter et les Reliques de la Mort', 'J. K. Rowling', 'Gryffondor', 16,
-    'Cette année, Harry a dix-sept ans et ne retourne pas à Poudlard. Avec Ron et Hermione, il se consacre 
-    à la dernière mission confiée par Dumbledore. Mais le Seigneur des Ténèbres règne en maître. Traqués, 
-    les trois fidèles amis sont contraints à la clandestinité. D épreuves en révélations, le courage, les 
-    choix et les sacrifices de Harry seront déterminants dans la lutte contre les forces du Mal.'
-    , 16);
+INSERT INTO Livre(CodeISBN, NomLivre, Auteur, Editeur, Prix, FkDescription, FkLivreCategory) VALUES
+    ('9782075094504', 'Harry Potter à l école des sorciers', 'J. K. Rowling', 'Poufsouffle', 10, 1, 16),
+    ('9782075117548', 'Harry Potter et la Chambre des Secrets', 'J. K. Rowling', 'Gryffondor', 11, 2, 16),
+    ('9782075089302', 'Harry Potter et le prisonnier d Azkaban', 'J. K. Rowling', 'Gryffondor', 12, 3, 16),
+    ('9782070585205', 'Harry Potter et la Coupe de Feu', 'J. K. Rowling', 'Gryffondor', 13, 4, 16),
+    ('9782070585212', 'Harry Potter et l Ordre du Phénix', 'J. K. Rowling', 'Gryffondor', 14, 5, 16),
+    ('9782070585229', 'Harry Potter et le Prince de Sang-Mêlé', 'J. K. Rowling', 'Gryffondor', 15, 6, 16),
+    ('9782070585236', 'Harry Potter et les Reliques de la Mort', 'J. K. Rowling', 'Gryffondor', 16, 7, 16);
 
 
 
