@@ -214,4 +214,46 @@ END;
 create or replace view calculSurperficieView(somme) as 
   select sum(surfacearea) somme
         from country;
-
+------------------tp4-2 PS calcul superdicie mondiale avec curseur-----------
+create or replace procedure 
+  calculSurperficieCurseur2(sommeS in out number)
+as
+cursor curs1 is 
+              select distinct surfacearea
+              from country;
+begin
+      for item in curs1 loop
+        sommeS := sommeS + item.surfacearea;
+      end loop;
+end;
+/
+set serveroutput on;
+DECLARE
+    amount NUMBER;
+BEGIN
+    amount :=0;
+    calculSurperficieCurseur2(amount);
+    dbms_output.put_line(amount);
+END;
+/
+------------------tp4-2 PS calcul superdicie mondiale avec curseur-----------
+create or replace procedure calculSurperficieCurseurWhile
+as
+surface number;
+sommeS number;
+cursor curs1 is 
+             select distinct surfacearea
+             from country;
+    begin
+    sommeS := 0;
+      open curs1;
+        fetch curs1 into surface;
+        while curs1%FOUND loop
+            sommeS := sommeS + surface;
+            fetch curs1 into surface;
+        end loop;
+      close curs1;
+      dbms_output.put_line(sommeS);
+    end;
+/
+exec calculSurperficieCurseurWhile;
