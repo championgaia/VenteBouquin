@@ -196,7 +196,20 @@ INSERT INTO Description (CodeISBN, Detail) VALUES
     ('9782070585236', 'Cette année, Harry a dix-sept ans et ne retourne pas à Poudlard. Avec Ron et Hermione, il se consacre 
     à la dernière mission confiée par Dumbledore. Mais le Seigneur des Ténèbres règne en maître. Traqués, 
     les trois fidèles amis sont contraints à la clandestinité. D épreuves en révélations, le courage, les 
-    choix et les sacrifices de Harry seront déterminants dans la lutte contre les forces du Mal.');
+    choix et les sacrifices de Harry seront déterminants dans la lutte contre les forces du Mal.'),
+    ('9782070612888','Dans les vertes prairies de la Comté, les Hobbits, ou Semi-hommes, vivaient en paix… Jusqu au jour fatal où l un
+    d entre eux, au cours de ses voyages, entra en possession de l Anneau Unique aux immenses pouvoirs. Pour le reconquérir, Sauron, 
+    le seigneur ténébreux, va déchaîner toutes les forces du Mal. Frodon, le Porteur de l Anneau, Gandalf, le magicien, et leurs 
+    intrépides compagnons réussiront-ils à écarter la menace qui pèse sur la Terre du Milieu ?'),
+    ('9782070612895','Dispersée dans les terres de l Ouest, la Communauté de l Anneau affronte les périls de la guerre, tandis
+    que Frodon, accompagné du fidèle Samsagace, poursuit une quête presque désespérée : détruire l Anneau Unique en le jetant 
+    dans les crevasses d Oradruir, la Montagne du destin. Mais aux frontières du royaume de Mordor, une mystérieuse créature 
+    les épie… pour les perdre ou pour les sauver?'),
+    ('9782070612901','Le royaume de Gondor s arme contre Sauron, le seigneur des ténèbres, qui veut asservir tous les peuples
+    libres, hommes et elfes, nains et hobbits. Mais la vaillance des soldats de Minas Tirith ne peut rien désormais contre la 
+    puissance maléfique de Mordor. Un fragile espoir, toutefois, demeure : le Porteur de l Anneau, jour après jour, s approche
+    de la montagne où brûle le feu du destin, seul capable de détruire l Anneau Unique et de provoquer la chute de Sauron…')
+    ;
 
 -------------------------------------------------------------------------------
 --------------------------Insert donnes table Personne-------------------------
@@ -216,7 +229,11 @@ INSERT INTO Livre(CodeISBN, NomLivre, Auteur, Editeur, Prix, FkDescription, FkLi
     ('9782070585205', 'Harry Potter et la Coupe de Feu', 'J. K. Rowling', 'Gryffondor', 13, 4, 16),
     ('9782070585212', 'Harry Potter et l Ordre du Phénix', 'J. K. Rowling', 'Gryffondor', 14, 5, 16),
     ('9782070585229', 'Harry Potter et le Prince de Sang-Mêlé', 'J. K. Rowling', 'Gryffondor', 15, 6, 16),
-    ('9782070585236', 'Harry Potter et les Reliques de la Mort', 'J. K. Rowling', 'Gryffondor', 16, 7, 16);
+    ('9782070585236', 'Harry Potter et les Reliques de la Mort', 'J. K. Rowling', 'Gryffondor', 16, 7, 16),
+    ('9782070612888', 'Le Seigneur des Anneaux Tome 1 - La Communauté de lAnneau', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 8, 12),
+    ('9782070612895', 'Le Seigneur des Anneaux Tome 2 - Les Deux Tours', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 9, 12),
+    ('9782070612901', 'Le Seigneur des Anneaux Tome 3 - Le Retour du Roi', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 10, 12)
+    ;
 
 
 
