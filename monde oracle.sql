@@ -237,15 +237,15 @@ BEGIN
 END;
 /
 ------------------tp4-2 PS calcul superdicie mondiale avec curseur-----------
-create or replace procedure calculSurperficieCurseurWhile
+create or replace procedure calculSurperficieCurseurWhile(sommeS in out number)
 as
 surface number;
-sommeS number;
 cursor curs1 is 
              select distinct surfacearea
              from country;
     begin
     sommeS := 0;
+    surface :=0;
       open curs1;
         fetch curs1 into surface;
         while curs1%FOUND loop
@@ -253,7 +253,26 @@ cursor curs1 is
             fetch curs1 into surface;
         end loop;
       close curs1;
+      commit;
       dbms_output.put_line(sommeS);
     end;
 /
-exec calculSurperficieCurseurWhile;
+DECLARE
+    amount NUMBER;
+BEGIN
+    amount :=0;
+    calculSurperficieCurseurWhile(amount);
+    dbms_output.put_line(amount);
+END;
+/
+-------------------tp4-3 trigger 1 milliard d'habitant-----------
+create or replace trigger country_triggeur_insert 
+before insert
+on country for each row
+enable
+    begin
+        if new.population > 1000000000 then 
+            new.population := 1000000000;
+        end if;  
+    end;
+    /

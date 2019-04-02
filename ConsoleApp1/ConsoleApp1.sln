@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6", "ConsoleApp6\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enum", "enum\enum.csproj", "{A0063632-D699-4B9E-B68C-34BAF084A072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tableau", "Tableau\Tableau.csproj", "{108152FC-46B5-4D28-8841-C9A6C92E1ED9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A0063632-D699-4B9E-B68C-34BAF084A072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0063632-D699-4B9E-B68C-34BAF084A072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0063632-D699-4B9E-B68C-34BAF084A072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{108152FC-46B5-4D28-8841-C9A6C92E1ED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108152FC-46B5-4D28-8841-C9A6C92E1ED9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108152FC-46B5-4D28-8841-C9A6C92E1ED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108152FC-46B5-4D28-8841-C9A6C92E1ED9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
