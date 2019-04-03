@@ -1,0 +1,2 @@
+C:\wamp64\www\vhn\DesignPattern\DP01_03_FabriqueMethod\obj\Debug\DP01_03_FabriqueMethod.csprojAssemblyReference.cache
+C:\wamp64\www\vhn\DesignPattern\DP01_03_FabriqueMethod\obj\Debug\DP01_03_FabriqueMethod.csproj.CoreCompileInputs.cache

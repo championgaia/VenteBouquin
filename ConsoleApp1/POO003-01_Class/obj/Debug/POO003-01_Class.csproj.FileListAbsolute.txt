@@ -1,0 +1,7 @@
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\bin\Debug\POO003-01_Class.exe.config
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\bin\Debug\POO003-01_Class.exe
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\bin\Debug\POO003-01_Class.pdb
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\obj\Debug\POO003-01_Class.csprojAssemblyReference.cache
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\obj\Debug\POO003-01_Class.csproj.CoreCompileInputs.cache
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\obj\Debug\POO003-01_Class.exe
+C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\POO003-01_Class\obj\Debug\POO003-01_Class.pdb

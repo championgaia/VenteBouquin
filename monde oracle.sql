@@ -270,9 +270,84 @@ create or replace trigger country_triggeur_insert
 before insert
 on country for each row
 enable
+when (new.population > 1000000000)
+declare
+    BEGIN
+      :new.population := 1000000000;
+    end;
+/
+-------------------tp4-3 trigger 1 milliard d'habitant-----------
+create or replace trigger country_triggeur_insert 
+before insert
+on country for each row
+enable
+declare
     begin
-        if new.population > 1000000000 then 
-            new.population := 1000000000;
-        end if;  
+      if (:new.population > 1000000000) then
+        :new.population := 1000000000;
+      end if;
     end;
     /
+-------------------tp4-4 trigger update une pays-----------
+create or replace trigger country_trigger_update
+before update
+on country for each row
+enable
+declare
+begin
+    if (:new.population > 1000000000) then
+        :new.population := 1000000000;
+    end if;
+    if (:new.population > 1.1* :old.population)
+       or (:new.population < 0.9*:old.population) then
+        :new.population := :old.population;
+    end if;
+end;
+/
+-------------------tp4-5 PS calcul a partir nom continent-----------
+------------------------totalPopulation-----------------------------
+create or replace procedure totalPopulationPS
+  (nomContinent in varchar2, 
+    totalPopulation in out number)
+as
+    regionNom varchar2;
+    cursor curs3  is 
+                  select distinct region
+                  from country
+                  where continent = nomContinent;
+    begin
+      totalPopulation := 0;
+      regionNom := '';
+        open curs3;
+        fetch curs3 into regionNom;
+        while curs3%FOUND loop
+            begin
+              totalPopulationRegion(regionNom, totalPopulation);
+            end;
+            fetch curs3 into regionNom;
+        end loop;
+        close curs3;
+        dbms_output.put_line(totalPopulation);
+    end;
+/
+----------------------totalPopulationRegion--------------------------
+create or replace procedure totalPopulationRegion
+  (regionNom in varchar2, 
+    totalPopulation in out number)
+  as
+  onePopulation number;
+  cursor curs2  is 
+                select distinct population
+                from country
+                where region = regionNom;  
+    begin
+      onePopulation :=0;
+        open curs2;
+        fetch curs2 into onePopulation;
+        while curs2%FOUND loop
+            totalPopulation := totalPopulation + onePopulation;
+            fetch curs2 into onePopulation;
+        end loop;
+        close curs2;
+    end;  
+/

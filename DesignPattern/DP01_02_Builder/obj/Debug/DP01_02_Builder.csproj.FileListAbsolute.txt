@@ -1,0 +1,7 @@
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\bin\Debug\DP01_02_Builder.exe.config
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\bin\Debug\DP01_02_Builder.exe
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\bin\Debug\DP01_02_Builder.pdb
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\obj\Debug\DP01_02_Builder.csprojAssemblyReference.cache
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\obj\Debug\DP01_02_Builder.csproj.CoreCompileInputs.cache
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\obj\Debug\DP01_02_Builder.exe
+C:\wamp64\www\vhn\DesignPattern\DP01_02_Builder\obj\Debug\DP01_02_Builder.pdb

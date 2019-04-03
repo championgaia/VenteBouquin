@@ -1,0 +1,7 @@
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\bin\Debug\DP01_04_Prototype.exe.config
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\bin\Debug\DP01_04_Prototype.exe
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\bin\Debug\DP01_04_Prototype.pdb
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\obj\Debug\DP01_04_Prototype.csprojAssemblyReference.cache
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\obj\Debug\DP01_04_Prototype.csproj.CoreCompileInputs.cache
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\obj\Debug\DP01_04_Prototype.exe
+C:\wamp64\www\vhn\DesignPattern\DP01_04_Prototype\obj\Debug\DP01_04_Prototype.pdb

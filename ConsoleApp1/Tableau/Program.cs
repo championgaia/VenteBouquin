@@ -28,7 +28,6 @@ namespace Tableau
             {
                 Console.WriteLine(item);
             }
-
             int[,] table3 = { { 1, 2, 3, 4, 5, 6 }, { 10, 20, 30, 40, 50, 60 } };
             for (int i = 0; i < table3.GetLength(0); i++)
             {
@@ -36,7 +35,6 @@ namespace Tableau
                 {
                     Console.WriteLine("i={0} j={1}", i, j);
                 }
-
             }
             Console.Read();
         }
