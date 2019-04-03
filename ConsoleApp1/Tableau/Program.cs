@@ -35,7 +35,6 @@ namespace Tableau
                 {
                     Console.WriteLine("i={0} j={1}", i, j);
                 }
-
             }
             Console.Read();
         }

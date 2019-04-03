@@ -270,9 +270,75 @@ create or replace trigger country_triggeur_insert
 before insert
 on country for each row
 enable
+when (new.population > 1000000000)
+declare
+    BEGIN
+      :new.population := 1000000000;
+    end;
+/
+-------------------tp4-3 trigger 1 milliard d'habitant-----------
+create or replace trigger country_triggeur_insert 
+before insert
+on country for each row
+enable
+declare
     begin
-        if new.population > 1000000000 then 
-            new.population := 1000000000;
-        end if;  
+      if (:new.population > 1000000000) then
+        :new.population := 1000000000;
+      end if;
     end;
     /
+-------------------tp4-4 trigger update une pays-----------
+create or replace trigger country_trigger_update
+before update
+on country for each row
+enable
+declare
+begin
+    if (:new.population > 1000000000) then
+        :new.population := 1000000000;
+    end if;
+    if (:new.population > 1.1* :old.population)
+       or (:new.population < 0.9*:old.population) then
+        :new.population := :old.population;
+    end if;
+end;
+/
+-------------------tp4-5 PS calcul a partir nom continent-----------
+------------------------totalPopulation-----------------------------
+create or replace procedure totalPopulation(nomContinent in varchar2)
+    declare regionNom varchar(50);
+    curs1 cursor is 
+                  select region
+                  from country
+                  where continent = nomContinent
+                  group by region;
+    begin
+        open curs1;
+        fetch curs1 into regionNom;
+        while (curs1%FOUND) do
+            exec totalPopulationRegion(regionNom);
+            fetch curs1 into regionNom;
+        end while;
+        close curs1;
+    end;
+----------------------totalPopulationRegion--------------------------
+create or replace procedure totalPopulationRegion(regionNom in varchar2)
+  totalPopulation number;
+  onePopulation number;
+  cursor curs2  is 
+                select population
+                from country
+                where region = regionNom;  
+    begin
+    totalPopulation := 0;
+    onePopulation :=0;
+        open curs2;
+        fetch curs2 into onePopulation;
+        while (curs2%FOUND) loop
+            totalPopulation := totalPopulation + onePopulation;
+            fetch curs2 into onePopulation;
+        end loop;
+        close curs2;
+    end;  
+/

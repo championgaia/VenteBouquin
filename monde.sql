@@ -484,7 +484,7 @@ create procedure totalPopulationRegion(regionNom varchar(50))
         fetch curs2 into onePopulation;
         while (not fincurs2) do
             set totalPopulation = totalPopulation + onePopulation;
-            fetch curs2 into totalPopulation;
+            fetch curs2 into onePopulation;
         end while;
         close curs2;
         select regionNom,totalPopulation;
