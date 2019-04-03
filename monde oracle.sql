@@ -306,36 +306,45 @@ end;
 /
 -------------------tp4-5 PS calcul a partir nom continent-----------
 ------------------------totalPopulation-----------------------------
-create or replace procedure totalPopulation(nomContinent in varchar2)
-    declare regionNom varchar(50);
-    curs1 cursor is 
-                  select region
+create or replace procedure totalPopulationPS
+  (nomContinent in varchar2, 
+    totalPopulation in out number)
+as
+    regionNom varchar2;
+    cursor curs3  is 
+                  select distinct region
                   from country
-                  where continent = nomContinent
-                  group by region;
+                  where continent = nomContinent;
     begin
-        open curs1;
-        fetch curs1 into regionNom;
-        while (curs1%FOUND) do
-            exec totalPopulationRegion(regionNom);
-            fetch curs1 into regionNom;
-        end while;
-        close curs1;
+      totalPopulation := 0;
+      regionNom := '';
+        open curs3;
+        fetch curs3 into regionNom;
+        while curs3%FOUND loop
+            begin
+              totalPopulationRegion(regionNom, totalPopulation);
+            end;
+            fetch curs3 into regionNom;
+        end loop;
+        close curs3;
+        dbms_output.put_line(totalPopulation);
     end;
+/
 ----------------------totalPopulationRegion--------------------------
-create or replace procedure totalPopulationRegion(regionNom in varchar2)
-  totalPopulation number;
+create or replace procedure totalPopulationRegion
+  (regionNom in varchar2, 
+    totalPopulation in out number)
+  as
   onePopulation number;
   cursor curs2  is 
-                select population
+                select distinct population
                 from country
                 where region = regionNom;  
     begin
-    totalPopulation := 0;
-    onePopulation :=0;
+      onePopulation :=0;
         open curs2;
         fetch curs2 into onePopulation;
-        while (curs2%FOUND) loop
+        while curs2%FOUND loop
             totalPopulation := totalPopulation + onePopulation;
             fetch curs2 into onePopulation;
         end loop;
