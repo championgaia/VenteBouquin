@@ -209,6 +209,10 @@ INSERT INTO Description (CodeISBN, Detail) VALUES
     libres, hommes et elfes, nains et hobbits. Mais la vaillance des soldats de Minas Tirith ne peut rien désormais contre la 
     puissance maléfique de Mordor. Un fragile espoir, toutefois, demeure : le Porteur de l Anneau, jour après jour, s approche
     de la montagne où brûle le feu du destin, seul capable de détruire l Anneau Unique et de provoquer la chute de Sauron…')
+    ('9782070645138','Edmond Dantès, un jeune marin, doit épouser la belle Mercédès. Accusé à tort de complot contre le roi, 
+    il est enfermé dans la terrible prison du château d If. Quatorze ans plus tard, il parvient à s évader avec la complicité 
+    de l abbé Faria qui lui lègue une immense fortune. Devenu le comte de Monte-Cristo, Edmond n a plus qu une obsession : 
+    tisser les fils d une implacable vengeance.')
     ;
 
 -------------------------------------------------------------------------------
