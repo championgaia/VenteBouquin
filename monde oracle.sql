@@ -305,35 +305,41 @@ begin
 end;
 /
 -------------------tp4-5 PS calcul a partir nom continent-----------
-------------------------totalPopulation-----------------------------
-create or replace procedure totalPopulationPS
-  (nomContinent in varchar2, 
+------------------------getTotalPopulationPS-----------------------------
+create or replace procedure getTotalPopulationPS
+  (nomContinent in varchar2,
     totalPopulation in out number)
 as
-    regionNom varchar2;
-    cursor curs3  is 
-                  select distinct region
-                  from country
-                  where continent = nomContinent;
+regionNom varchar2(255);
+cursor curs3  is 
+              select distinct region
+              from country
+              where continent = nomContinent;
     begin
-      totalPopulation := 0;
-      regionNom := '';
+      regionNom := 'Eastern Asia';
         open curs3;
         fetch curs3 into regionNom;
         while curs3%FOUND loop
-            begin
-              totalPopulationRegion(regionNom, totalPopulation);
-            end;
+            getTotalPopulationRegion(regionNom, totalPopulation);
             fetch curs3 into regionNom;
         end loop;
         close curs3;
-        dbms_output.put_line(totalPopulation);
+        commit;
+        --dbms_output.put_line(totalPopulation);
     end;
 /
-----------------------totalPopulationRegion--------------------------
-create or replace procedure totalPopulationRegion
-  (regionNom in varchar2, 
-    totalPopulation in out number)
+DECLARE
+    amount NUMBER;
+BEGIN
+    amount :=0;
+    getTotalPopulationPS('Asia',amount);
+    dbms_output.put_line(amount);
+END;
+/
+----------------------getTotalPopulationRegion--------------------------
+create or replace procedure getTotalPopulationRegion
+  (regionNom in varchar2,
+    totalPopulationRegion in out number)
   as
   onePopulation number;
   cursor curs2  is 
@@ -345,9 +351,18 @@ create or replace procedure totalPopulationRegion
         open curs2;
         fetch curs2 into onePopulation;
         while curs2%FOUND loop
-            totalPopulation := totalPopulation + onePopulation;
+            totalPopulationRegion := totalPopulationRegion + onePopulation;
             fetch curs2 into onePopulation;
         end loop;
         close curs2;
+        --commit;
     end;  
+/
+DECLARE
+    amount NUMBER;
+BEGIN
+    amount :=0;
+    getTotalPopulationRegion('Western Europe', amount);
+    dbms_output.put_line(amount);
+END;
 /
