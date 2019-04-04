@@ -232,7 +232,8 @@ INSERT INTO Livre(CodeISBN, NomLivre, Auteur, Editeur, Prix, FkDescription, FkLi
     ('9782070585236', 'Harry Potter et les Reliques de la Mort', 'J. K. Rowling', 'Gryffondor', 16, 7, 16),
     ('9782070612888', 'Le Seigneur des Anneaux Tome 1 - La Communauté de lAnneau', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 8, 12),
     ('9782070612895', 'Le Seigneur des Anneaux Tome 2 - Les Deux Tours', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 9, 12),
-    ('9782070612901', 'Le Seigneur des Anneaux Tome 3 - Le Retour du Roi', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 10, 12)
+    ('9782070612901', 'Le Seigneur des Anneaux Tome 3 - Le Retour du Roi', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 10, 12),
+    ('9782070645138','Le comte de Monte-Cristo', 'Alexandre Dumas', 'Gallimard Jeunesse', 7.9, 11, 20)
     ;
 
 
