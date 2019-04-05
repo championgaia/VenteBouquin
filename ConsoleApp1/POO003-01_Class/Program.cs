@@ -45,6 +45,10 @@ namespace POO003_01_Class
             voiture1.Accelerer(10);
             Console.WriteLine(voiture1);
             #endregion
+            #region Cascade
+            Voiture myCar = new Cascade();
+            myCar.Rouler();
+            #endregion
             #region Moto
             Moto myMoto = new Moto
             {
@@ -59,9 +63,15 @@ namespace POO003_01_Class
                 Console.WriteLine(item);
             }
             #endregion
+            #region StringBuilder
+            List<string> myListChain = new List<string>()
+                { "Sahar", "Kim", "Jacques", "Clement", "Laurent", "ALi" };
+            Console.WriteLine(new Chain().GetChain(myListChain));
+            #endregion
             Console.Read();
         }
     }
+    #region MyClass
     public class MyClass
     {
         public string Nom { get; set; }
@@ -94,13 +104,15 @@ namespace POO003_01_Class
         }
         #endregion
     }
+    #endregion
+    #region Voiture
     public class Voiture
     {
         public string NumeroImmatriculation { get; set; }
         public string Couleur { get; set; }
         public string Marque { get; set; }
         public int Vitesse { get; set; }
-        
+
         #region constructeur par déffault
         public Voiture()
         {
@@ -123,9 +135,9 @@ namespace POO003_01_Class
         }
         #endregion
         #region Rouler
-        public void Rouler()
+        public virtual void Rouler()
         {
-            Console.WriteLine("Ca roule");
+            Console.WriteLine("La voiture roule");
         }
         #endregion
         #region Freiner
@@ -140,14 +152,20 @@ namespace POO003_01_Class
         {
             Vitesse += par;
         }
+        public void Accelerer(string par)
+        {
+            Vitesse += 10;
+        }
         #endregion
         #region ToString
         public override string ToString()
         {
-            return string.Format("Voiture {0} \n de marque de marque {1} avec la couleur {2} \n a rouler avec la vitesse de {3}", NumeroImmatriculation, Marque, Couleur, Vitesse ); 
+            return string.Format("Voiture {0} \n de marque de marque {1} avec la couleur {2} \n a rouler avec la vitesse de {3}", NumeroImmatriculation, Marque, Couleur, Vitesse);
         }
         #endregion
     }
+    #endregion
+    #region Cascade
     public sealed class Cascade : Voiture
     {
         public string Puissance { get; set; }
@@ -163,7 +181,15 @@ namespace POO003_01_Class
             Puissance = puissance;
         }
         #endregion
+        #region Surcharge Marcher
+        public new void Rouler()
+        {
+            Console.WriteLine("la cascade roule");
+        }
+        #endregion
     }
+    #endregion
+    #region Moto
     public class Moto
     {
         private int _place;
@@ -174,16 +200,37 @@ namespace POO003_01_Class
         }
         private string Caption { get; set; }
     }
+    #endregion
+    #region Voitures
     public class Voitures
     {
         public List<Voiture> ListeVoiture { get; set; }
+        #region Constructeur
         public Voitures()
         {
 
         }
         public Voitures(Voiture v1, Voiture v2)
         {
-            ListeVoiture = new List<Voiture>() { v1, v2};
+            ListeVoiture = new List<Voiture>() { v1, v2 };
         }
+        #endregion
     }
+    #endregion
+    #region Chain
+    public class Chain
+    {
+        #region StringBuilder
+        public string GetChain(List<string> myListChain)
+        {
+            StringBuilder monChaine = new StringBuilder();
+            foreach (var item in myListChain)
+            {
+                monChaine.Append(item);
+            }
+            return monChaine.ToString();
+        }
+        #endregion
+    }
+    #endregion
 }
