@@ -19,6 +19,7 @@ namespace VenteBouquin_DATA.Class_DATA
     }
     internal class LivreDatas
     {
+        private VenteBouquinContext context = new VenteBouquinContext();
         public List<LivreData> ListeLivre { get; set; }
         #region Constructeur par deffault
         public LivreDatas()
@@ -26,12 +27,69 @@ namespace VenteBouquin_DATA.Class_DATA
 
         }
         #endregion
-        #region Constructeur
-        public LivreDatas(int codeISBN)
+        #region Constructeur par code ISBN
+        public LivreDatas(string codeISBN)
         {
             ListeLivre = new List<LivreData>();
             //besoin contexte
+            var listeLivreCodeISBN = context.Livres
+                .Include("Description")
+                .Select(c => c)
+                .Distinct()
+                .Where(c => c.CodeISBN == codeISBN)
+                .ToList();
+            foreach (var item in listeLivreCodeISBN)
+            {
+                ListeLivre.Add(new LivreData {
+                    CodeISBN = item.CodeISBN,
+                    NomLivre = item.NomLivre,
+                    Auteur = item.Auteur,
+                    Editeur = item.Editeur,
+                    CoverImage = item.CoverImage,
+                    Prix = (double)item.Prix,
+                    Description = new DescriptionData {
+                        CodeDescription = item.Description.IdDescription,
+                        CodeISBN = item.Description.CodeISBN,
+                        Detail =  item.Description.Detail },
+                    LaCategory = new LivreCategoryDatas(item.FkLivreCategory).ListeCategory.FirstOrDefault()
+                });
+            }
+
         }
         #endregion
+        #region Constructeur par codeCategory
+        public LivreDatas(int codeCategory)
+        {
+            ListeLivre = new List<LivreData>();
+            //besoin contexte
+            var listeLivreAvecCodeCategory = context.Livres
+                .Include("LivreCategory")
+                .Include("Description")
+                .Select(c => c)
+                .Distinct()
+                .Where(c => c.FkLivreCategory == codeCategory)
+                .ToList();
+            foreach (var item in listeLivreAvecCodeCategory)
+            {
+                ListeLivre.Add(new LivreData
+                {
+                    CodeISBN = item.CodeISBN,
+                    NomLivre = item.NomLivre,
+                    Auteur = item.Auteur,
+                    Editeur = item.Editeur,
+                    CoverImage = item.CoverImage,
+                    Prix = (double)item.Prix,
+                    Description = new DescriptionData
+                    {
+                        CodeDescription = item.Description.IdDescription,
+                        CodeISBN = item.Description.CodeISBN,
+                        Detail = item.Description.Detail
+                    },
+                    LaCategory = new LivreCategoryDatas(item.FkLivreCategory).ListeCategory.FirstOrDefault()
+                });
+            }
+        }
+        #endregion
+
     }
 }

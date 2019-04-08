@@ -1,0 +1,66 @@
+﻿@model VenteBouquin_UIL.Models.VenteBouquinModel.LivreModel
+
+@{
+    ViewBag.Title = "DetailLivre";
+}
+
+<h2>DetailLivre</h2>
+
+<div>
+    <h4>LivreModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeISBNM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeISBNM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NomLivreM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomLivreM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuteurM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuteurM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditeurM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditeurM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CoverImageM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CoverImageM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrixM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrixM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

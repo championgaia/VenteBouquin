@@ -1,0 +1,63 @@
+﻿@model IEnumerable<VenteBouquin_UIL.Models.VenteBouquinModel.LivreModel>
+
+@{
+    ViewBag.Title = "GetLivre";
+}
+
+<h2>GetLivre</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeISBNM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomLivreM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuteurM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EditeurM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CoverImageM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrixM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeISBNM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomLivreM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuteurM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EditeurM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CoverImageM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrixM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

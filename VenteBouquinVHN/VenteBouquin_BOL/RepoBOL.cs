@@ -10,13 +10,14 @@ namespace VenteBouquin_BOL
 {
     public class RepoBOL
     {
-        private LivreCategoryBOLs livreCategories = new LivreCategoryBOLs();
+        private LivreCategoryBOLs livreCategories;
+        private LivreBOLs livres;
         #region GetLivreCategoryDTOs
         public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoBol(int codeCategory)
         {
             List<LivreCategoryDTO> livreCategoryDTOs = new List<LivreCategoryDTO>();
-            LivreCategoryBOLs livreCategoryBOLs = new LivreCategoryBOLs(codeCategory);
-            foreach (var item in livreCategoryBOLs.ListeCategory)
+            livreCategories = new LivreCategoryBOLs(codeCategory);
+            foreach (var item in livreCategories.ListeCategory)
             {
                 livreCategoryDTOs.Add(new LivreCategoryDTO
                 {
@@ -25,6 +26,67 @@ namespace VenteBouquin_BOL
                 });
             }
             return livreCategoryDTOs;
+        }
+        #endregion
+        #region GetLivreParCategoryDTORepoBol
+        public List<LivreDTO> GetLivreParCategoryDTORepoBol(int codeCategory)
+        {
+            var listeLivreDTO = new List<LivreDTO>();
+            livres = new LivreBOLs(codeCategory);
+            foreach (var item in livres.ListeLivre)
+            {
+                listeLivreDTO.Add(new LivreDTO
+                {
+                    CodeISBNDto = item.CodeISBN,
+                    NomLivreDto = item.NomLivre,
+                    AuteurDto = item.Auteur,
+                    EditeurDto = item.Editeur,
+                    CoverImageDto = item.CoverImage,
+                    PrixDto = item.Prix,
+                    DescriptionDto = new DescriptionDTO
+                    {
+                        CodeDescriptionDto = item.Description.CodeDescription,
+                        CodeISBNDto = item.Description.CodeISBN,
+                        DetailDto = item.Description.Detail
+                    },
+                    LaCategoryDto = new LivreCategoryDTO
+                    {
+                        CodeCategoryDto = item.LaCategory.CodeCategory,
+                        NomCategoryDto = item.LaCategory.NomCategory
+                    }
+                });
+            }
+            return listeLivreDTO;
+        }
+        #endregion
+        #region GetLivreParCodeISBNDTORepoBol
+        public List<LivreDTO> GetLivreParCodeISBNDTORepoBol(string codeISBN)
+        {
+            var listeLivreDTO = new List<LivreDTO>();
+            livres = new LivreBOLs(codeISBN);
+            foreach (var item in livres.ListeLivre)
+            {
+                listeLivreDTO.Add(new LivreDTO
+                {
+                    CodeISBNDto = item.CodeISBN,
+                    NomLivreDto = item.NomLivre,
+                    AuteurDto = item.Auteur,
+                    EditeurDto = item.Editeur,
+                    PrixDto = item.Prix,
+                    DescriptionDto = new DescriptionDTO
+                    {
+                        CodeDescriptionDto = item.Description.CodeDescription,
+                        CodeISBNDto = item.Description.CodeISBN,
+                        DetailDto = item.Description.Detail
+                    },
+                    LaCategoryDto = new LivreCategoryDTO
+                    {
+                        CodeCategoryDto = item.LaCategory.CodeCategory,
+                        NomCategoryDto = item.LaCategory.NomCategory
+                    }
+                });
+            }
+            return listeLivreDTO;
         }
         #endregion
     }

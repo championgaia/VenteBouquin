@@ -11,9 +11,9 @@ namespace VenteBouquin_DATA
     public class RepoData
     {
         private LivreCategoryDatas livreCategories = new LivreCategoryDatas();
-        private LivreDatas livres = new LivreDatas();
-        private PayeurDatas payeurs = new PayeurDatas();
-        #region GetLivreCategoryDTOs
+        private LivreDatas livres;
+        private PayeurDatas payeurs;
+        #region GetLivreCategoryDTOsRepoData
         public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoData(int codeCategory)
         {
             List<LivreCategoryDTO> livreCategoryDTOs = new List<LivreCategoryDTO>();
@@ -27,6 +27,66 @@ namespace VenteBouquin_DATA
                 });
             }
             return livreCategoryDTOs;
+        }
+        #endregion
+        #region GetLivreParCategoryDTORepoData
+        public List<LivreDTO> GetLivreParCategoryDTORepoData(int codeCategory)
+        {
+            var listeLivreDTO = new List<LivreDTO>();
+            livres = new LivreDatas(codeCategory);
+            foreach (var item in livres.ListeLivre)
+            {
+                listeLivreDTO.Add(new LivreDTO {
+                    CodeISBNDto = item.CodeISBN,
+                    NomLivreDto = item.NomLivre,
+                    AuteurDto = item.Auteur,
+                    EditeurDto = item.Editeur,
+                    CoverImageDto = item.CoverImage,
+                    PrixDto = item.Prix,
+                    DescriptionDto = new DescriptionDTO
+                    {
+                        CodeDescriptionDto = item.Description.CodeDescription,
+                        CodeISBNDto = item.Description.CodeISBN,
+                        DetailDto = item.Description.Detail
+                    },
+                    LaCategoryDto = new LivreCategoryDTO
+                    {
+                        CodeCategoryDto = item.LaCategory.CodeCategory,
+                        NomCategoryDto = item.LaCategory.NomCategory
+                    }
+                });
+            }
+            return listeLivreDTO;
+        }
+        #endregion
+        #region GetLivreParCodeISBNDTORepoData
+        public List<LivreDTO> GetLivreParCodeISBNDTORepoData(string codeISBN)
+        {
+            var listeLivreDTO = new List<LivreDTO>();
+            livres = new LivreDatas(codeISBN);
+            foreach (var item in livres.ListeLivre)
+            {
+                listeLivreDTO.Add(new LivreDTO
+                {
+                    CodeISBNDto = item.CodeISBN,
+                    NomLivreDto = item.NomLivre,
+                    AuteurDto = item.Auteur,
+                    EditeurDto = item.Editeur,
+                    PrixDto = item.Prix,
+                    DescriptionDto = new DescriptionDTO
+                    {
+                        CodeDescriptionDto = item.Description.CodeDescription,
+                        CodeISBNDto = item.Description.CodeISBN,
+                        DetailDto = item.Description.Detail
+                    },
+                    LaCategoryDto = new LivreCategoryDTO
+                    {
+                        CodeCategoryDto = item.LaCategory.CodeCategory,
+                        NomCategoryDto = item.LaCategory.NomCategory
+                    }
+                });
+            }
+            return listeLivreDTO;
         }
         #endregion
     }
