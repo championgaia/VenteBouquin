@@ -19,6 +19,7 @@ namespace VenteBouquin_DATA.Class_DATA
     }
     internal class LivreCategoryDatas
     {
+        private VenteBouquinContext context = new VenteBouquinContext();
         public List<LivreCategoryData> ListeCategory { get; set; }
         #region Constructeur par deffault
         public LivreCategoryDatas()
@@ -31,6 +32,19 @@ namespace VenteBouquin_DATA.Class_DATA
         {
             ListeCategory = new List<LivreCategoryData>();
             //besoin contexte
+            var liste = context.LivreCategories
+                        .Select(c => c)
+                        .Distinct()
+                        .Where(c=> c.IdCategory == codeCategory || codeCategory == 0)
+                        .OrderBy(c => c.NomCategory)
+                        .ToList();
+            foreach (var item in liste)
+            {
+                ListeCategory.Add(new LivreCategoryData {
+                    CodeCategory = item.IdCategory,
+                    NomCategory = item.NomCategory
+                });
+            }
         }
         #endregion
     }

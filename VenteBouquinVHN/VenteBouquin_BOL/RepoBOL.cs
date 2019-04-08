@@ -3,22 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VenteBouquin_DATA.Class_DATA;
+using VenteBouquin_BOL.Class_BOL;
 using VenteBouquin_DTO.class_dto;
 
-namespace VenteBouquin_DATA
+namespace VenteBouquin_BOL
 {
-    public class RepoData
+    public class RepoBOL
     {
-        private LivreCategoryDatas livreCategories = new LivreCategoryDatas();
-        private LivreDatas livres = new LivreDatas();
-        private PayeurDatas payeurs = new PayeurDatas();
+        private LivreCategoryBOLs livreCategories = new LivreCategoryBOLs();
         #region GetLivreCategoryDTOs
-        public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoData(int codeCategory)
+        public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoBol(int codeCategory)
         {
             List<LivreCategoryDTO> livreCategoryDTOs = new List<LivreCategoryDTO>();
-            LivreCategoryDatas livreCategoryDatas = new LivreCategoryDatas(codeCategory);
-            foreach (var item in livreCategoryDatas.ListeCategory)
+            LivreCategoryBOLs livreCategoryBOLs = new LivreCategoryBOLs(codeCategory);
+            foreach (var item in livreCategoryBOLs.ListeCategory)
             {
                 livreCategoryDTOs.Add(new LivreCategoryDTO
                 {

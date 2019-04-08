@@ -10,11 +10,5 @@ namespace VenteBouquin_DTO.class_dto
     {
         public int CodeCategoryDto { get; set; }
         public string NomCategoryDto { get; set; }
-        #region constructeur par défault
-        public LivreCategoryData()
-        {
-
-        }
-        #endregion
     }
 }

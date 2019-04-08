@@ -15,11 +15,6 @@ namespace VenteBouquin_DTO.class_dto
         public string NomVilleDto { get; set; }
         public string CodePostaleDto { get; set; }
         public string NomPaysDto { get; set; }
-        #region constructeur par déffaut
-        public AdresseData()
-        {
 
-        }
-        #endregion
     }
 }

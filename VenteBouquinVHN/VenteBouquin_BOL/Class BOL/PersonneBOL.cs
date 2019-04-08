@@ -12,7 +12,7 @@ namespace VenteBouquin_BOL.Class_BOL
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public DateTime DateNaissance { get; set; }
-        public List<AdresseData> ListeAdresse { get; set; }
+        public List<AdresseBOL> ListeAdresse { get; set; }
     }
     internal class PersonneBOLs
     {
