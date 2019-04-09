@@ -10,6 +10,7 @@ namespace VenteBouquin_UIL.Controllers
 {
     public class VenteBouquinController : Controller
     {
+        #region Livre
         // GET: VenteBouquin
         public ActionResult Index()
         {
@@ -28,5 +29,8 @@ namespace VenteBouquin_UIL.Controllers
             LivreViewModel livre = new LivreViewModel(codeISBN);
             return View(livre);
         }
+        #endregion
+        
+
     }
 }

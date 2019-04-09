@@ -89,5 +89,29 @@ namespace VenteBouquin_DATA
             return listeLivreDTO;
         }
         #endregion
+        #region GetPayeurDTORepoData
+        public List<PayeurDTO> GetPayeurDTORepoData(string codePayeur)
+        {
+            List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
+            payeurs = new PayeurDatas(codePayeur);
+            foreach (var item in payeurs.ListePayeur)
+            {
+                monListePayeurDto.Add(new PayeurDTO()
+                {
+                    CodePayeurDto = item.CodePayeur,
+                    CodeUtilisateurDto = item.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = item.Personne.CodePersonne,
+                        NomDto = item.Personne.Nom,
+                        PrenomDto = item.Personne.Prenom,
+                        DateNaissanceDto = item.Personne.DateNaissance
+                    }
+                });
+            }
+            //manque liste d'adresse
+            return null;
+        }
+        #endregion
     }
 }

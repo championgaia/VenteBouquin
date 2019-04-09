@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="VenteBouquinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="VenteBouquinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Adresse">
           <Key>
             <PropertyRef Name="IdAdresse" />
@@ -92,6 +92,7 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="FkPersonne" Type="int" Nullable="false" />
+          <Property Name="CodeUtilisateur" Type="nvarchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <Association Name="Cle_F_Commande_Utilisateur">
           <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
@@ -232,8 +233,7 @@
             <End Role="Utilisateur" EntitySet="Utilisateur" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="VenteBouquinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -340,6 +340,7 @@
           <Property Name="FkPersonne" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Commandes" Relationship="Self.Cle_F_Commande_Utilisateur" FromRole="Utilisateur" ToRole="Commande" />
           <NavigationProperty Name="Personne" Relationship="Self.Cle_F_Utilisateur_Personne" FromRole="Utilisateur" ToRole="Personne" />
+          <Property Name="CodeUtilisateur" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="Cle_F_Personne_Adresse">
           <End Role="Adresse" Type="Self.Adresse" Multiplicity="1" />
@@ -575,6 +576,7 @@
           <EntitySetMapping Name="Utilisateurs">
             <EntityTypeMapping TypeName="VenteBouquinModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="CodeUtilisateur" ColumnName="CodeUtilisateur" />
                 <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />

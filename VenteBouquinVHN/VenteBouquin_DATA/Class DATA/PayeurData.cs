@@ -8,24 +8,45 @@ namespace VenteBouquin_DATA.Class_DATA
 {
     internal class PayeurData
     {
-        public int CodePayeur { get; set; }
-        public string CodeUtilisateur { get; set; }
+        public int CodePayeur { get; set; } //idPayeur
+        public string CodeUtilisateur { get; set; } //string utilisateur dans la bdd local
         public PersonneData Personne { get; set; }
     }
     internal class PayeurDatas
     {
         public List<PayeurData> ListePayeur { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region Constructeur par deffault
         public PayeurDatas()
         {
 
         }
         #endregion
-        #region Constructeur
-        public PayeurDatas(int codeUtilisateur)
+        #region Constructeur par codePayeur
+        public PayeurDatas(string codePayeur)
         {
             ListePayeur = new List<PayeurData>();
             //besoin contexte
+            var monListeU = context.Utilisateurs
+                .Include("Personne")
+                .Select(c => c).Distinct()
+                .Where(c => c.CodeUtilisateur == codePayeur || codePayeur == "0")
+                .ToList();
+            foreach (var item in monListeU)
+            {
+                ListePayeur.Add(new PayeurData {
+                    CodePayeur = item.IdUtilisateur,
+                    CodeUtilisateur = item.CodeUtilisateur,
+                    Personne = new PersonneData
+                    {
+                        CodePersonne = item.Personne.IdPersonne,
+                        Nom = item.Personne.Nom,
+                        Prenom = item.Personne.Prenom,
+                        DateNaissance = item.Personne.DateNaissance
+                    }
+                });
+            }
+            //manque liste d'adresse
         }
         #endregion
     }

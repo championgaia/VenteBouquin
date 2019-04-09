@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntranetController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VenteBouquinController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,12 +178,16 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VenteBouquinModel\AdresseModel.cs" />
     <Compile Include="Models\VenteBouquinModel\DescriptionModel.cs" />
+    <Compile Include="Models\VenteBouquinModel\PayeurModel.cs" />
+    <Compile Include="Models\VenteBouquinModel\PersonneModel.cs" />
     <Compile Include="Views\VenteBouquin\ListeLivreViewModel.cs" />
     <Compile Include="Models\VenteBouquinModel\LivreCategoryModel.cs" />
     <Compile Include="Models\VenteBouquinModel\LivreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\Intranet\ListePayeurViewModel.cs" />
     <Compile Include="Views\VenteBouquin\LivreCategoryViewModel.cs" />
     <Compile Include="Views\VenteBouquin\LivreViewModel.cs" />
   </ItemGroup>
@@ -242,12 +247,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\VenteBouquin\Index ref.cshtml" />
+    <Content Include="Views\VenteBouquin\razor ref\Index ref.cshtml" />
     <Content Include="Views\VenteBouquin\Index.cshtml" />
-    <Content Include="Views\VenteBouquin\GetLivre ref.cshtml" />
+    <Content Include="Views\VenteBouquin\razor ref\GetLivre ref.cshtml" />
     <Content Include="Views\VenteBouquin\GetLivreParCategory.cshtml" />
-    <Content Include="Views\VenteBouquin\DetailLivre ref.cshtml" />
+    <Content Include="Views\VenteBouquin\razor ref\DetailLivre ref.cshtml" />
     <Content Include="Views\VenteBouquin\DetailLivre.cshtml" />
+    <Content Include="Views\Intranet\GetPayeur ref.cshtml" />
+    <Content Include="Views\Intranet\GetPayeur.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
