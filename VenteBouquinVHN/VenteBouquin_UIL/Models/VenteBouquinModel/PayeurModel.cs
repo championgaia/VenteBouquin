@@ -11,6 +11,18 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         public int CodePayeurM { get; set; }
         public string CodeUtilisateurM { get; set; }
         public PersonneModel PersonneM { get; set; }
+        #region Constructeur par deffault
+        public PayeurModel()
+        {
+
+        }
+        #endregion
+        #region Constructeur par codeUtilisateur
+        public PayeurModel(string codeUtilisateur)
+        {
+            CodeUtilisateurM = codeUtilisateur;
+        }
+        #endregion
     }
     public class PayeurModels
     {
@@ -23,7 +35,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         }
         #endregion
         #region Constructeur par codePayeur
-        public PayeurModels(string codePayeur)
+        public PayeurModels(int codePayeur)
         {
             ListePayeur = new List<PayeurModel>();
             //besoin repodata

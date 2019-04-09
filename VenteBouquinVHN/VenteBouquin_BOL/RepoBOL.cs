@@ -91,7 +91,7 @@ namespace VenteBouquin_BOL
         }
         #endregion
         #region GetPayeurDTORepoBol
-        public List<PayeurDTO> GetPayeurDTORepoBol(string codePayeur)
+        public List<PayeurDTO> GetPayeurDTORepoBol(int codePayeur)
         {
             List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
             payeurs = new PayeurBOLs(codePayeur);

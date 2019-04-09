@@ -182,6 +182,7 @@
     <Compile Include="Models\VenteBouquinModel\DescriptionModel.cs" />
     <Compile Include="Models\VenteBouquinModel\PayeurModel.cs" />
     <Compile Include="Models\VenteBouquinModel\PersonneModel.cs" />
+    <Compile Include="Views\Intranet\PayeurViewModel.cs" />
     <Compile Include="Views\VenteBouquin\ListeLivreViewModel.cs" />
     <Compile Include="Models\VenteBouquinModel\LivreCategoryModel.cs" />
     <Compile Include="Models\VenteBouquinModel\LivreModel.cs" />
@@ -253,8 +254,13 @@
     <Content Include="Views\VenteBouquin\GetLivreParCategory.cshtml" />
     <Content Include="Views\VenteBouquin\razor ref\DetailLivre ref.cshtml" />
     <Content Include="Views\VenteBouquin\DetailLivre.cshtml" />
-    <Content Include="Views\Intranet\GetPayeur ref.cshtml" />
+    <Content Include="Views\VenteBouquin\razor ref\GetPayeur ref.cshtml" />
     <Content Include="Views\Intranet\GetPayeur.cshtml" />
+    <Content Include="Views\VenteBouquin\razor ref\DetailPayeur ref .cshtml" />
+    <Content Include="Views\Intranet\DetailPayeur.cshtml" />
+    <Content Include="Views\VenteBouquin\razor ref\CreatePayeur ref.cshtml" />
+    <Content Include="Views\Intranet\CreatePayeur.cshtml" />
+    <Content Include="Views\Intranet\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

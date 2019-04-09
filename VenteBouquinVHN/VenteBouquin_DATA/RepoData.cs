@@ -90,7 +90,7 @@ namespace VenteBouquin_DATA
         }
         #endregion
         #region GetPayeurDTORepoData
-        public List<PayeurDTO> GetPayeurDTORepoData(string codePayeur)
+        public List<PayeurDTO> GetPayeurDTORepoData(int codePayeur)
         {
             List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
             payeurs = new PayeurDatas(codePayeur);

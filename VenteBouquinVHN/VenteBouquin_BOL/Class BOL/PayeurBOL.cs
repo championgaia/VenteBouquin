@@ -24,7 +24,7 @@ namespace VenteBouquin_BOL.Class_BOL
         }
         #endregion
         #region Constructeur par codePayeur
-        public PayeurBOLs(string codePayeur)
+        public PayeurBOLs(int codePayeur)
         {
             ListePayeur = new List<PayeurBOL>();
             //besoin repodata

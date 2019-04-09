@@ -1,0 +1,34 @@
+﻿@model VenteBouquin_UIL.Models.VenteBouquinModel.PayeurModel
+
+@{
+    ViewBag.Title = "DetailPayeur";
+}
+
+<h2>DetailPayeur</h2>
+
+<div>
+    <h4>PayeurModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodePayeurM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodePayeurM)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeUtilisateurM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeUtilisateurM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

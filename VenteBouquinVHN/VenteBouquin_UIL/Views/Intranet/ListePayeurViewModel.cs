@@ -16,7 +16,7 @@ namespace VenteBouquin_UIL.Views.Intranet
         }
         #endregion
         #region constructeur par codePayeur
-        public ListePayeurViewModel(string codePayeur)
+        public ListePayeurViewModel(int codePayeur)
         {
             ListePayeurVM = new PayeurModels(codePayeur).ListePayeur;
         }

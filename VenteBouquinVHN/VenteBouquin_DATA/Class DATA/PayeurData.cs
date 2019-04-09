@@ -23,14 +23,14 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
         #region Constructeur par codePayeur
-        public PayeurDatas(string codePayeur)
+        public PayeurDatas(int codePayeur)
         {
             ListePayeur = new List<PayeurData>();
             //besoin contexte
             var monListeU = context.Utilisateurs
                 .Include("Personne")
                 .Select(c => c).Distinct()
-                .Where(c => c.CodeUtilisateur == codePayeur || codePayeur == "0")
+                .Where(c => c.IdUtilisateur == codePayeur || codePayeur == 0)
                 .ToList();
             foreach (var item in monListeU)
             {
