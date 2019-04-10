@@ -27,5 +27,11 @@ namespace VenteBouquin_UIL.Views.Intranet
             PayeurVM = new PayeurModel(codeUtilisateur);
         }
         #endregion
+        #region CreatePayeur
+        public void CreatePayeurViewModel(PayeurViewModel payeurVM)
+        {
+            payeurVM.PayeurVM.CreatePayeurModel(payeurVM.PayeurVM);
+        }
+        #endregion
     }
 }

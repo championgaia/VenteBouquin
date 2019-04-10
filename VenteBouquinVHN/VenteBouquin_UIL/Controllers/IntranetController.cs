@@ -39,8 +39,9 @@ namespace VenteBouquin_UIL.Controllers
             return View(payeur);
         }
         [HttpPost]
-        public ActionResult CreatePayeur(PayeurViewModel payeur)
+        public ActionResult CreatePayeur(PayeurViewModel payeurVM)
         {
+            payeurVM.CreatePayeurViewModel(payeurVM);
             return RedirectToAction("GetPayeur", new {codePayeur = 0 });
         }
         #endregion

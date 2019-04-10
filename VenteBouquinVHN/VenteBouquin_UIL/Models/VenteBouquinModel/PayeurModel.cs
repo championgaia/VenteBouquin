@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using VenteBouquin_BOL;
+using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_UIL.Models.VenteBouquinModel
 {
@@ -11,6 +12,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         public int CodePayeurM { get; set; }
         public string CodeUtilisateurM { get; set; }
         public PersonneModel PersonneM { get; set; }
+        private RepoBOL repo = new RepoBOL();
         #region Constructeur par deffault
         public PayeurModel()
         {
@@ -21,6 +23,25 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         public PayeurModel(string codeUtilisateur)
         {
             CodeUtilisateurM = codeUtilisateur;
+        }
+        #endregion
+        #region CreatePayeurModel
+
+        public void CreatePayeurModel(PayeurModel payeurM)
+        {
+            var payeurDto = new PayeurDTO()
+            {
+                CodePayeurDto = payeurM.CodePayeurM,
+                CodeUtilisateurDto = payeurM.CodeUtilisateurM,
+                PersonneDto = new PersonneDTO()
+                {
+                    CodePersonneDto = payeurM.PersonneM.CodePersonneM,
+                    NomDto = payeurM.PersonneM.NomM,
+                    PrenomDto = payeurM.PersonneM.PrenomM,
+                    DateNaissanceDto = payeurM.PersonneM.DateNaissanceM
+                }
+            };
+            repo.CreatePayeurRepoBol(payeurDto);
         }
         #endregion
     }

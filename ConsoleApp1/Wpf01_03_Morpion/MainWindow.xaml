@@ -1,0 +1,83 @@
+﻿<Window x:Class="Wpf01_03_Morpion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf01_03_Morpion"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <System:String x:Key="myStr">vide</System:String>
+    </Window.Resources>
+    <DockPanel Margin="10" 
+               ButtonBase.Click="DockPanel_Click" 
+               PreviewMouseLeftButtonDown="DockPanel_PreviewMouseLeftButtonDown"
+               >
+        <StackPanel Orientation="Horizontal" 
+                    DockPanel.Dock="top"
+                    TextBlock.FontSize="20"
+                    >
+            <TextBlock>Joueur</TextBlock>
+            <TextBlock x:Name="Joueur"></TextBlock>
+        </StackPanel>
+    
+    <Grid x:Name="Grille" Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="100*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <!--table X-->
+        <!--<Button x:Name="Btn1" Click="Btn_click">Btn1</Button>
+        <Button Click="Btn_click" Grid.Column="1" Grid.Row="0">Btn2</Button>
+        <Button Click="Btn_click" Grid.Column="2" Grid.Row="0">Btn3</Button>
+        <Button Click="Btn_click" Grid.Column="0" Grid.Row="1">Btn4</Button>
+        <Button Click="Btn_click" Grid.Column="1" Grid.Row="1">Btn5</Button>
+        <Button Click="Btn_click" Grid.Column="2" Grid.Row="1">Btn6</Button>
+        <Button Click="Btn_click" Grid.Column="0" Grid.Row="2">Btn7</Button>
+        <Button Click="Btn_click" Grid.Column="1" Grid.Row="2">Btn8</Button>
+        <Button Click="Btn_click" Grid.Column="2" Grid.Row="2">Btn9</Button>-->
+        <!--<TextBlock FontSize="100" HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="0"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="0"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="1"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="2"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="1"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="2"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="1"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="2"
+                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
+        --><!--table 0--><!--
+        <TextBlock FontSize="100" HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="0"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="0"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="1"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="2"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="1"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="2"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="1"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
+        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="2"
+                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>-->
+    </Grid>
+    </DockPanel>
+</Window>

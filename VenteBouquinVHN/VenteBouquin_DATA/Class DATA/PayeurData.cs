@@ -11,6 +11,14 @@ namespace VenteBouquin_DATA.Class_DATA
         public int CodePayeur { get; set; } //idPayeur
         public string CodeUtilisateur { get; set; } //string utilisateur dans la bdd local
         public PersonneData Personne { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
+        #region CreatePayeurData
+        public void CreatePayeurData(PayeurData payeurdata)
+        {
+            //besoin db insert
+            throw new NotImplementedException();
+        }
+        #endregion
     }
     internal class PayeurDatas
     {

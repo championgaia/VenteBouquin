@@ -114,5 +114,23 @@ namespace VenteBouquin_BOL
             return null;
         }
         #endregion
+        #region CreatePayeurRepoBol
+        public void CreatePayeurRepoBol(PayeurDTO payeurDto)
+        {
+            var payeurBol = new PayeurBOL()
+            {
+                CodePayeur = payeurDto.CodePayeurDto,
+                CodeUtilisateur = payeurDto.CodeUtilisateurDto,
+                Personne = new PersonneBOL()
+                {
+                    CodePersonne = payeurDto.PersonneDto.CodePersonneDto,
+                    Nom = payeurDto.PersonneDto.NomDto,
+                    Prenom = payeurDto.PersonneDto.PrenomDto,
+                    DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
+                }
+            };
+            payeurBol.CreatePayeurBol(payeurBol);
+        }
+        #endregion
     }
 }

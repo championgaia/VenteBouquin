@@ -28,6 +28,7 @@ namespace VenteBouquin_DATA
             }
             return livreCategoryDTOs;
         }
+
         #endregion
         #region GetLivreParCategoryDTORepoData
         public List<LivreDTO> GetLivreParCategoryDTORepoData(int codeCategory)
@@ -111,6 +112,24 @@ namespace VenteBouquin_DATA
             }
             //manque liste d'adresse
             return null;
+        }
+        #endregion
+        #region CreatePayeurRepoDal
+        public void CreatePayeurRepoDal(PayeurDTO payeurDto)
+        {
+            var payeurdata = new PayeurData()
+            {
+                CodePayeur = payeurDto.CodePayeurDto,
+                CodeUtilisateur = payeurDto.CodeUtilisateurDto,
+                Personne = new PersonneData()
+                {
+                    CodePersonne = payeurDto.PersonneDto.CodePersonneDto,
+                    Nom = payeurDto.PersonneDto.NomDto,
+                    Prenom = payeurDto.PersonneDto.PrenomDto,
+                    DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
+                }
+            };
+            payeurdata.CreatePayeurData(payeurdata);
         }
         #endregion
     }

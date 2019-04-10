@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VenteBouquin_DATA;
+using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_BOL.Class_BOL
 {
@@ -12,6 +13,25 @@ namespace VenteBouquin_BOL.Class_BOL
         public int CodePayeur { get; set; }
         public string CodeUtilisateur { get; set; }
         public PersonneBOL Personne { get; set; }
+        private RepoData repo = new RepoData();
+        #region CreatePayeurRepoBol
+        public void CreatePayeurBol(PayeurBOL payeurBol)
+        {
+            var payeurDto = new PayeurDTO()
+            {
+                CodePayeurDto = payeurBol.CodePayeur,
+                CodeUtilisateurDto = payeurBol.CodeUtilisateur,
+                PersonneDto = new PersonneDTO()
+                {
+                    CodePersonneDto = payeurBol.Personne.CodePersonne,
+                    NomDto = payeurBol.Personne.Nom,
+                    PrenomDto = payeurBol.Personne.Prenom,
+                    DateNaissanceDto = payeurBol.Personne.DateNaissance
+                }
+            };
+            repo.CreatePayeurRepoDal(payeurDto);
+        }
+        #endregion
     }
     internal class PayeurBOLs
     {
