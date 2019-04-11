@@ -20,7 +20,7 @@
                     SelectedValue="{Binding Path=Contact}" />
             <ComboBox 
                     Width="50"
-                    ItemsSource="{Binding Path=LesPays}"
+                    ItemsSource="{Binding Path=App.LesPays}"
                     DisplayMemberPath="Nom"
                     SelectedValuePath="Nom"
                     SelectedValue="{Binding Path=Pays}" />
