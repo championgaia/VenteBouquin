@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Wpf02_02_exoDataBinding"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:CommonViewModel></local:CommonViewModel>
+    </Window.DataContext>
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock Width="50">Contact</TextBlock>
@@ -20,7 +23,7 @@
                     SelectedValue="{Binding Path=Contact}" />
             <ComboBox 
                     Width="50"
-                    ItemsSource="{Binding Path=App.LesPays}"
+                    ItemsSource="{Binding Path=LesPays}"
                     DisplayMemberPath="Nom"
                     SelectedValuePath="Nom"
                     SelectedValue="{Binding Path=Pays}" />

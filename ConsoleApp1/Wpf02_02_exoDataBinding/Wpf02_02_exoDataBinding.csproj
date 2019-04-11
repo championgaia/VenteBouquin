@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CommonViewModel.cs" />
     <Compile Include="Contact.cs" />
     <Compile Include="Formulaire.xaml.cs">
       <DependentUpon>Formulaire.xaml</DependentUpon>
