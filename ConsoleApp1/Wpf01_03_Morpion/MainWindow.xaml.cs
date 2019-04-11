@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Wpf01_03_Morpion
 {
@@ -38,7 +27,7 @@ namespace Wpf01_03_Morpion
                     {
                         FontSize = 50,
                         Content = "btn" + count.ToString()
-                };
+                    };
                     button.Click += Btn_click;
                     button.SetValue(Grid.RowProperty, i);
                     button.SetValue(Grid.ColumnProperty, j);
@@ -46,7 +35,7 @@ namespace Wpf01_03_Morpion
                     count++;
                 }
             }
-            
+
         }
         #endregion
         #region ChangerJoueur
@@ -55,7 +44,6 @@ namespace Wpf01_03_Morpion
             Joueur.Text = Joueur.Text == "O" ? "X" : "O";
         }
         #endregion
-
         #region Btn_click
         private void Btn_click(object sender, RoutedEventArgs e)
         {
@@ -88,12 +76,19 @@ namespace Wpf01_03_Morpion
             }
         }
         #endregion
+        #region DetectJoueurGagne
+        public void DetectJoueurGagne()
+        {
 
+
+
+
+        }
+        #endregion
         private void DockPanel_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void DockPanel_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 

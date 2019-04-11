@@ -33,51 +33,7 @@
             <ColumnDefinition Width="100*"/>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
-        <!--table X-->
-        <!--<Button x:Name="Btn1" Click="Btn_click">Btn1</Button>
-        <Button Click="Btn_click" Grid.Column="1" Grid.Row="0">Btn2</Button>
-        <Button Click="Btn_click" Grid.Column="2" Grid.Row="0">Btn3</Button>
-        <Button Click="Btn_click" Grid.Column="0" Grid.Row="1">Btn4</Button>
-        <Button Click="Btn_click" Grid.Column="1" Grid.Row="1">Btn5</Button>
-        <Button Click="Btn_click" Grid.Column="2" Grid.Row="1">Btn6</Button>
-        <Button Click="Btn_click" Grid.Column="0" Grid.Row="2">Btn7</Button>
-        <Button Click="Btn_click" Grid.Column="1" Grid.Row="2">Btn8</Button>
-        <Button Click="Btn_click" Grid.Column="2" Grid.Row="2">Btn9</Button>-->
-        <!--<TextBlock FontSize="100" HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="0"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="0"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="1"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="2"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="1"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="2"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="1"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="2"
-                   HorizontalAlignment="Center" Visibility="Visible">X</TextBlock>
-        --><!--table 0--><!--
-        <TextBlock FontSize="100" HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="0"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="0"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="1"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="0" Grid.Row="2"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="1"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="1" Grid.Row="2"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="1"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>
-        <TextBlock FontSize="100" Grid.Column="2" Grid.Row="2"
-                   HorizontalAlignment="Center" Visibility="Hidden">O</TextBlock>-->
+        
     </Grid>
     </DockPanel>
 </Window>
