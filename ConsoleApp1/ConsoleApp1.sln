@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp_Events", "CSharp_Eve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf02_01_DataBinding", "Wpf02_01_DataBinding\Wpf02_01_DataBinding.csproj", "{6777C73E-9BB4-472C-8166-B1443E52CDE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf02_02_exoDataBinding", "Wpf02_02_exoDataBinding\Wpf02_02_exoDataBinding.csproj", "{C7785281-8DBA-4663-A3E8-9B965726EBEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{6777C73E-9BB4-472C-8166-B1443E52CDE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6777C73E-9BB4-472C-8166-B1443E52CDE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6777C73E-9BB4-472C-8166-B1443E52CDE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7785281-8DBA-4663-A3E8-9B965726EBEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7785281-8DBA-4663-A3E8-9B965726EBEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7785281-8DBA-4663-A3E8-9B965726EBEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7785281-8DBA-4663-A3E8-9B965726EBEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

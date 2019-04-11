@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace Wpf02_01_DataBinding
 {
@@ -28,7 +15,7 @@ namespace Wpf02_01_DataBinding
                 Nom = "Nguyen",
                 Prenom = "Viet"
             };
-            DataContext = this;
+            DataContext = this; //on peut mettre Personne
         }
         //propriete simplifier C#
         //public string Nom { get; set; }
@@ -39,6 +26,13 @@ namespace Wpf02_01_DataBinding
         {
             get { return _nom1; }
             set { _nom1 = value; }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Personne.Nom = null;
+            Personne.Prenom = null;
+
         }
     }
 }

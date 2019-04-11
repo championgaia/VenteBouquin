@@ -20,11 +20,17 @@
                 Margin="5"
                 >Nom</TextBlock>
             <!--syntax complete-->
-            <TextBox Width="150" Height="50">
+            <TextBox x:Name="tbNom" Width="150" Height="50">
                 <TextBox.Text>
-                    <Binding Path="Personne.Nom"></Binding>
+                    <Binding Path="Personne.Nom" 
+                             Delay="500" 
+                             UpdateSourceTrigger="PropertyChanged"
+                             ></Binding>
+                    
                 </TextBox.Text>
             </TextBox>
+            <TextBox Width="150" Height="50" Text="{Binding Personne.Nom}"/>
+            <TextBox Width="150" Height="50" Text="{Binding ElementName=tbNom, Path=Text}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <TextBlock
@@ -36,9 +42,15 @@
                 FontSize="20"
                 Margin="5"
                 >PreNom</TextBlock>
-            <!--syntax complete-->
-            <TextBox Width="150" Height="50" Text="{Binding Path=Personne.Prenom}">
+            <!--syntax simplifié-->
+            <TextBox Width="150" Height="50"
+                     Text="{Binding Path=Personne.Prenom, 
+                       UpdateSourceTrigger=PropertyChanged}">
             </TextBox>
+            <!--syntax simple-->
+            <TextBox Width="150" Height="50" Text="{Binding Personne.Prenom}"/>
+
         </StackPanel>
+        <Button Click="Button_Click">Reset</Button>
     </StackPanel>
 </Window>
