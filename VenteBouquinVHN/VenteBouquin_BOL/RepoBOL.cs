@@ -12,6 +12,7 @@ namespace VenteBouquin_BOL
     {
         private LivreCategoryBOLs livreCategories;
         private LivreBOLs livres;
+        private PayeurBOLs payeurs;
         #region GetLivreCategoryDTOs
         public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoBol(int codeCategory)
         {
@@ -87,6 +88,48 @@ namespace VenteBouquin_BOL
                 });
             }
             return listeLivreDTO;
+        }
+        #endregion
+        #region GetPayeurDTORepoBol
+        public List<PayeurDTO> GetPayeurDTORepoBol(int codePayeur)
+        {
+            List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
+            payeurs = new PayeurBOLs(codePayeur);
+            foreach (var item in payeurs.ListePayeur)
+            {
+                monListePayeurDto.Add(new PayeurDTO()
+                {
+                    CodePayeurDto = item.CodePayeur,
+                    CodeUtilisateurDto = item.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = item.Personne.CodePersonne,
+                        NomDto = item.Personne.Nom,
+                        PrenomDto = item.Personne.Prenom,
+                        DateNaissanceDto = item.Personne.DateNaissance
+                    }
+                });
+            }
+            //manque liste d'adresse
+            return null;
+        }
+        #endregion
+        #region CreatePayeurRepoBol
+        public void CreatePayeurRepoBol(PayeurDTO payeurDto)
+        {
+            var payeurBol = new PayeurBOL()
+            {
+                CodePayeur = payeurDto.CodePayeurDto,
+                CodeUtilisateur = payeurDto.CodeUtilisateurDto,
+                Personne = new PersonneBOL()
+                {
+                    CodePersonne = payeurDto.PersonneDto.CodePersonneDto,
+                    Nom = payeurDto.PersonneDto.NomDto,
+                    Prenom = payeurDto.PersonneDto.PrenomDto,
+                    DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
+                }
+            };
+            payeurBol.CreatePayeurBol(payeurBol);
         }
         #endregion
     }

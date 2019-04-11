@@ -1,0 +1,61 @@
+﻿@model VenteBouquin_UIL.Views.Intranet.PayeurViewModel
+
+@{
+    ViewBag.Title = "DetailPayeur";
+}
+
+<h2>DetailPayeur</h2>
+
+<div>
+    <h4>PayeurModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("CodePayeurM")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayeurVM.CodePayeurM)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("CodeUtilisateurM")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayeurVM.CodeUtilisateurM)
+        </dd>
+        <dt>
+            @Html.DisplayName("CodePersonneM")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayeurVM.PersonneM.CodePersonneM)
+        </dd>
+        <dt>
+            @Html.DisplayName("Nom")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayeurVM.PersonneM.NomM)
+        </dd>
+        <dt>
+            @Html.DisplayName("Prenom")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayeurVM.PersonneM.PrenomM)
+        </dd>
+        <dt>
+            @Html.DisplayName("DateNaissanceM")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayeurVM.PersonneM.DateNaissanceM)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

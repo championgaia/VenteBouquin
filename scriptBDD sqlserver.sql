@@ -93,6 +93,7 @@ GO
 
 CREATE TABLE Utilisateur(
     IdUtilisateur INT IDENTITY(1,1),
+	CodeUtilisateur NVARCHAR(250) not null,
     Login NVARCHAR(50) NOT NULL,
     Password NVARCHAR(50) NOT NULL,
     Role NVARCHAR(50) NOT NULL,

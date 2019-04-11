@@ -25,6 +25,7 @@ namespace VenteBouquin_DATA
         public string Password { get; set; }
         public string Role { get; set; }
         public int FkPersonne { get; set; }
+        public string CodeUtilisateur { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Commande> Commandes { get; set; }

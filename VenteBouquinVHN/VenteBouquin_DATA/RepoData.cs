@@ -28,6 +28,7 @@ namespace VenteBouquin_DATA
             }
             return livreCategoryDTOs;
         }
+
         #endregion
         #region GetLivreParCategoryDTORepoData
         public List<LivreDTO> GetLivreParCategoryDTORepoData(int codeCategory)
@@ -87,6 +88,48 @@ namespace VenteBouquin_DATA
                 });
             }
             return listeLivreDTO;
+        }
+        #endregion
+        #region GetPayeurDTORepoData
+        public List<PayeurDTO> GetPayeurDTORepoData(int codePayeur)
+        {
+            List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
+            payeurs = new PayeurDatas(codePayeur);
+            foreach (var item in payeurs.ListePayeur)
+            {
+                monListePayeurDto.Add(new PayeurDTO()
+                {
+                    CodePayeurDto = item.CodePayeur,
+                    CodeUtilisateurDto = item.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = item.Personne.CodePersonne,
+                        NomDto = item.Personne.Nom,
+                        PrenomDto = item.Personne.Prenom,
+                        DateNaissanceDto = item.Personne.DateNaissance
+                    }
+                });
+            }
+            //manque liste d'adresse
+            return null;
+        }
+        #endregion
+        #region CreatePayeurRepoDal
+        public void CreatePayeurRepoDal(PayeurDTO payeurDto)
+        {
+            var payeurdata = new PayeurData()
+            {
+                CodePayeur = payeurDto.CodePayeurDto,
+                CodeUtilisateur = payeurDto.CodeUtilisateurDto,
+                Personne = new PersonneData()
+                {
+                    CodePersonne = payeurDto.PersonneDto.CodePersonneDto,
+                    Nom = payeurDto.PersonneDto.NomDto,
+                    Prenom = payeurDto.PersonneDto.PrenomDto,
+                    DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
+                }
+            };
+            payeurdata.CreatePayeurData(payeurdata);
         }
         #endregion
     }
