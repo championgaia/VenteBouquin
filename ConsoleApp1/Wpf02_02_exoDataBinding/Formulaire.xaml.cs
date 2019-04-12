@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace Wpf02_02_exoDataBinding
 {
@@ -10,12 +11,24 @@ namespace Wpf02_02_exoDataBinding
         public Formulaire()
         {
             InitializeComponent();
-            Contact = new Contact();
         }
         public Contact Contact { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ContactViewModel contactFormulaire = new ContactViewModel
+            {
+                ContactM = new Contact()
+                {
+                    Nom = "",
+                    Prenom = "",
+                    DateNaissance = DateTime.UtcNow,
+                    MonPays = new Pays()
+                    {
+                        Nom = ""
+                    }
+                }
+            };
             this.Close();
         }
     }

@@ -1,0 +1,18 @@
+http://httpd.apache.org/docs/2.4/
+
+http://httpd.apache.org/docs/2.4/rewrite/
+
+http://www.php.net/
+
+https://openclassrooms.com/fr/courses/3242591-integrez-un-serveur-ou-client-linux-dans-un-domaine-windows
+
+https://stackoverflow.com/questions/475145/opensource-projects-to-learn-from
+
+https://www.w3resource.com/mysql/date-and-time-functions/date-and-time-functions.php
+
+https://classrooms.doranco.fr/bibliotheque-numerique
+
+https://docs.oracle.com/database/121/ARPLS/d_output.htm#ARPLS67311
+
+https://mahapps.com/     --template pour WPF
+

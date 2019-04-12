@@ -6,8 +6,17 @@
         xmlns:local="clr-namespace:Wpf02_02_exoDataBinding"
         mc:Ignorable="d"
         Title="Formulaire" Height="450" Width="800">
+    <Window.DataContext>
+        <local:CommonViewModel></local:CommonViewModel>
+    </Window.DataContext>
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel Orientation="Horizontal">
+            <Label Target="{Binding ElementName=tbNom}">_Nom</Label>
+            <TextBlock >_Nom</TextBlock>
+            <TextBox x:Name="tbNom" Width="150" Height="50" Text="{Binding Contact.Nom}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            
             <TextBlock 
                 Width="100"
                 Height="50"
@@ -61,7 +70,8 @@
                     SelectedValuePath="Nom"
                     SelectedItem="{Binding Path=Pays}" />
         </StackPanel>
-        <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Click="Button_Click">Annuler</Button>
             <Button Click="Button_Click">Valider</Button>
         </StackPanel>
     </StackPanel>

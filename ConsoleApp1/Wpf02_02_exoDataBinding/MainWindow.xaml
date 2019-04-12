@@ -14,6 +14,31 @@
             <TextBlock Width="50">Contact</TextBlock>
             <TextBlock Width="50">Pays</TextBlock>
         </StackPanel>
+        <!--<StackPanel Orientation="Horizontal">-->
+            <!--<ListView  ItemsSource="{Binding Path=LesContacts}">
+                <ListViewItem>
+                    <GridView>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                        <GridViewColumn Header="DateNaissance" DisplayMemberBinding="{Binding DateNaissance, StringFormat={}{0:dd/MM/yyyy}}"/>
+                        <GridViewColumn Header="Pays" DisplayMemberBinding="{Binding MonPays.Nom}"/>
+                    </GridView>
+                </ListViewItem>
+            </ListView>
+        </StackPanel>-->
+        <StackPanel Orientation="Horizontal">
+            <ListBox ItemsSource="{Binding Path=LesContacts}">
+                <ListBoxItem>
+                    <GridView>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <!--<GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                        <GridViewColumn Header="DateNaissance" 
+                                        DisplayMemberBinding="{Binding DateNaissance, StringFormat={}{0:dd/MM/yyyy}}"/>-->
+                        <!--<GridViewColumn Header="Pays" DisplayMemberBinding="{Binding MonPays.Nom}"/>-->
+                    </GridView>
+                </ListBoxItem>
+            </ListBox>
+        </StackPanel>
         <StackPanel Orientation="Horizontal">
             <ComboBox
                     Width="50"
