@@ -23,12 +23,10 @@ namespace Wpf02_02_exoDataBinding
         public MainWindow()
         {
             InitializeComponent();
-            LesContacts = Contact.LoadContacts();
-            LesPays = Pays.LoadPays();
-            DataContext = this;
+            
+            //DataContext = this;
         }
-        public List<Contact> LesContacts { get; set; }
-        public List<Pays> LesPays { get; set; }
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var newWindow = new Formulaire();

@@ -13,5 +13,6 @@ namespace Wpf02_02_exoDataBinding
     /// </summary>
     public partial class App : Application
     {
+        public CommonViewModel CommonVM { get; set; }  = new CommonViewModel();
     }
 }

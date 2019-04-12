@@ -59,7 +59,7 @@
             <ComboBox ItemsSource="{Binding Path= LesPays}"
                     DisplayMemberPath="Nom"
                     SelectedValuePath="Nom"
-                    SelectedValue="{Binding Path=Pays}" />
+                    SelectedItem="{Binding Path=Pays}" />
         </StackPanel>
         <StackPanel>
             <Button Click="Button_Click">Valider</Button>
