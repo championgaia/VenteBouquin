@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf02_02_exoDataBinding", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf03_01_exoStyle", "Wpf03_01_exoStyle\Wpf03_01_exoStyle.csproj", "{C406E7B1-7ABC-4196-98CF-24D0E1D3F5C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf03_02_dataTemplate", "Wpf03_02_dataTemplate\Wpf03_02_dataTemplate.csproj", "{35474AA2-C428-4B21-A13C-40CCDB6E9E0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{C406E7B1-7ABC-4196-98CF-24D0E1D3F5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C406E7B1-7ABC-4196-98CF-24D0E1D3F5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C406E7B1-7ABC-4196-98CF-24D0E1D3F5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35474AA2-C428-4B21-A13C-40CCDB6E9E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35474AA2-C428-4B21-A13C-40CCDB6E9E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35474AA2-C428-4B21-A13C-40CCDB6E9E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35474AA2-C428-4B21-A13C-40CCDB6E9E0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
