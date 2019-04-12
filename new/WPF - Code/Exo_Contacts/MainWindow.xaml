@@ -1,0 +1,58 @@
+﻿<Window x:Class="Exo_Contacts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Exo_Contacts"
+        mc:Ignorable="d"
+        Title="Gestion des contacts" Height="450" Width="800"
+        Background="#BA738DBB">
+    <TabControl Margin="10">
+        <TabItem Header="Contacts">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="75"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Liste des contacts -->
+                <ListView Grid.Row="1" ItemsSource="{Binding ListeContacts}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                            <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                            <GridViewColumn Header="Date de naissance" DisplayMemberBinding="{Binding DateNaissance, StringFormat={}{0:dd/MM/yyyy}}"/>
+                            <GridViewColumn Header="Pays" DisplayMemberBinding="{Binding Pays.Nom}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <!-- Bouton d'ajout d'un contact -->
+                <Button Click="AjouterContact_Click" Grid.Column="1" Margin="5">Nouveau</Button>
+            </Grid>
+
+        </TabItem>
+        <TabItem Header="Pays">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="75"/>
+                </Grid.ColumnDefinitions>
+                
+                <!-- Liste des pays -->
+                <ListBox Grid.Row="1" ItemsSource="{Binding ListePays}" DisplayMemberPath="Nom"/>
+
+                <!-- Bouton d'ajout d'un pays -->
+                <Button Click="AjouterPays_Click" Grid.Column="1" Margin="5">Nouveau</Button>
+            </Grid>
+
+        </TabItem>
+    </TabControl>
+</Window>

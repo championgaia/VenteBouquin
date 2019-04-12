@@ -29,10 +29,11 @@
         </Style>
     </Window.Resources>
     <TabControl>
-        <TabItem>
+        <TabItem Name="Grid" Header="Grid">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
+                    
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
