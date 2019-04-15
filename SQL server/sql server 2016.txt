@@ -1,0 +1,2 @@
+sql 2016 Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;
+sql 2017 Server=localhost\SQLEXPRESS01;Database=master;Trusted_Connection=True;
