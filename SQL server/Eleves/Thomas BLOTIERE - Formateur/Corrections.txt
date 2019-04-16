@@ -1,0 +1,155 @@
+
+1.Sélectionner tous les enregistrements de la table Customers 
+select * from customers
+
+
+2. Sélectionner toutes les City de la table Customers 
+select city from customers
+
+3. Sélectionner les differentes valeurs de Countryde la table Customers 
+select distinct country from customers
+
+4. Sélectionner tous les enregistrements pour lesquels la colonne City a la valeur "Berlin". 
+select * from customers where city='Berlin'
+
+5. Sélectionnez tous les enregistrements pour lesquels la colonne CustomerIDa la valeur 32.
+select * from customers where customerId='32'
+
+
+Sélectionnez tous les enregistrements pour lesquels la colonne Citya la valeur 'Berlin' 
+et la colonne PostalCodea la valeur 12209. 
+
+select * from customers where city='Berlin' and PostalCode = 12209
+
+2. Sélectionnez tous les enregistrements pour lesquels la colonne Citya la valeur 'Berlin', 
+ainsi que ceux pour lesquels la colonne Citya la valeur 'London'. 
+
+select * from customers where city ='Berlin' or city ='london' 
+
+3. Sélectionnez tous les enregistrements de la table Customers, 
+triez le résultat inversé par ordre alphabétique par la colonne City. 
+
+select * from customers order by city desc
+
+4. Sélectionnez tous les enregistrements de la table Customers, 
+triez le résultat par ordre alphabétique, d’abord par la colonne Country, puis par la colonne City.
+
+select * from customers order by country,city
+
+
+Insérez un nouvel enregistrement dans la table Customers.
+
+Insert into customers (CustomerId,CompanyName)
+values('toto','totocom')
+
+Sélectionnez tous les enregistrements des Customers où la colonne PostalCode est vide.
+
+select * from customers where postalcode is null
+
+Sélectionnez tous les enregistrements des Customers où la colonne PostalCode n’est pas vide
+
+select * from customers where postalcode is not null
+
+
+Définissez la valeur des colonnes Citysur "Oslo", mais uniquement sur celles où la colonne Country 
+a la valeur "Norway".
+update customer 
+set city = 'Oslo'
+where country ='Norway'
+
+Mettez à jour la valeur City et la valeur Country pour le CustomerId=32 en 1 seule requête
+update customer 
+set city = 'Oslo',country='France'
+where customerid='32'
+
+
+Indiquez le nombre de Customers dans chaque Country.
+select country, count(*) from customers
+group by country
+
+
+---------------
+Sélectionnez tous les enregistrements pour lesquels la valeur de la colonne Citycommence par la lettre "a". (table Customers) 
+
+select * from customers where city like 'a%'
+
+2. Sélectionnez tous les enregistrements pour lesquels la valeur de la colonne Cityfinitpar la lettre "a". (table Customers) 
+select * from customers where city like '%a'
+
+3. Sélectionnez tous les enregistrements pour lesquels la valeur de la colonne Citycontient la lettre "a". (table Customers) 
+select * from customers where city like '%a%'
+
+4. Sélectionnez tous les enregistrements pour lesquels la valeur de la colonne Citycommence par la lettre « a » et finit par « b ». 
+select * from customers where city like 'a%b'
+
+5. Sélectionnez tous les enregistrements pour lesquels la valeur de la colonne CityNE commence PAS par la lettre "a". 
+
+select * from customers where city not like 'a%'
+
+6. Sélectionnez tous les enregistrements où la première lettre de la City est un "a", un "c" ou un "s".
+
+select * from customers where city like 'a%' or city like 'c%' city like 's%'
+
+
+Sélectionnez tous les noms de Products et leurs noms de Categories
+
+select productname, categoryname from products p
+inner join categories c on c.categoryId = p.categoryId
+
+Sélectionnez tous les noms de Products, prix unitaires et la région du Supppliers qui n’a pas de 
+fournisseurs des USA.
+
+select p.unitprice, p.productName,s.region from products p
+inner join suppliers s on p.supplierid = s.supplierid
+where s.country != 'USA'
+
+Liste les Employees et le nom de leur responsable, sans inclure les Employees qui n'ont personne à qui faire rapport.
+
+select e.FirstName, e.Lastname,s.firstname,s.lastname from employees e
+right join employees s on e.reportsto = s.employeeid where e.resportsto is not null
+
+
+
+Indiquez le nombre de Customers dans chaque Country, classés par Country avec le plus grand nombre de Customers en premier
+
+select country, count(*) from customers
+group by country
+order by count(*) desc
+
+--------------------------------------
+Exercice foreign key
+-----------------
+create table CustomerLanguage
+(
+Id INT IDENTITY,
+CustomerId nchar(5) not null,
+Langage VARCHAR(20),
+PRIMARY KEY(Id)
+)
+
+--1)ajouter une cle etrangere de la table CUSTOMERS colonne customerID vers CustomerLanguage
+ALTER TABLE CustomerLanguage ADD FOREIGN KEY (CustomerId) REFERENCES Customers(CustomerId);
+--2) Insérer des une valeurs de language 'Francais' pour  'BLONP'
+INSERT INTO CustomerLanguage (CustomerId,Langage) VALUES('BLONP','Francais')
+--3) (Essayer) d'insérer des une valeurs de language 'Francais' pour  'TOTO9'
+INSERT INTO CustomerLanguage (CustomerId,Langage) VALUES('TOTO9','Francais')
+L'instruction INSERT est en conflit avec la contrainte FOREIGN KEY 
+"FK__CustomerL__Custo__17036CC0". Le conflit 
+s'est produit dans la base de données "NorthwindDb", 
+table "dbo.Customers", column 'CustomerID'.
+--4) (essayer) de supprimer le customer 'BLONP'
+delete from customers where customerid ='BLONP'
+marche pas => violatio nde cle etrangere
+
+
+
+
+
+
+
+
+
+
+
+
+

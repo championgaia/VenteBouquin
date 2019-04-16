@@ -1,0 +1,19 @@
+SELECT *
+FROM Products
+INNER JOIN categories ON products.categoryid = categories.categoryId
+
+
+SELECT Productname aliasPN,UnitPrice aliasUP, Country aliasC from Suppliers 
+INNER JOIN products ON suppliers.supplierID = products.supplierID WHERE country != 'USA';
+
+SELECT country, count(*)
+FROM customers
+GROUP BY country
+
+
+ALTER TABLE customerlanguage
+ADD CONSTRAINT FKcustomerEssai
+FOREIGN KEY (customerid) REFERENCES customers(customerId); 
+
+ INSERT INTO customers (customerid, companyname)
+ VALUES ('toto9', 'test')
