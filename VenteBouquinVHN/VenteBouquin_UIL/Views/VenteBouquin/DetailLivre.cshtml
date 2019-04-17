@@ -5,67 +5,65 @@
 }
 
 <h2>DetailLivre</h2>
-
+<link href="~/Style/site.css" rel="stylesheet" />
 <div>
     <h4>LivreModel</h4>
     <hr />
-    <dl class="dl-horizontal " >
-        <dt>
-            @Html.DisplayName("CodeISBNM")
-        </dt>
+    <div >
+        <table class="table-bordered table-hover table-striped table-condensed  table-responsive">
+            <tr>
+                <th>
+                    @Html.DisplayName("CodeISBNM")
+                </th>
+                <th>
+                    @Html.DisplayName("NomLivreM")
+                </th>
+                <th>
+                    @Html.DisplayName("AuteurM")
+                </th>
+                <th>
+                    @Html.DisplayName("EditeurM")
+                </th>
+                <th>
+                    @Html.DisplayName("CoverImageM")
+                </th>
+                <th>
+                    @Html.DisplayName("PrixM")
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.LivreVM.CodeISBNM)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LivreVM.NomLivreM)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LivreVM.AuteurM)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LivreVM.EditeurM)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LivreVM.CoverImageM)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LivreVM.PrixM)
+                </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.LivreVM.CodeISBNM)
-        </dd>
+            </tr>
 
-        <dt>
-            @Html.DisplayName("NomLivreM")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LivreVM.NomLivreM)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("AuteurM")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LivreVM.AuteurM)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("EditeurM")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LivreVM.EditeurM)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("CoverImageM")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LivreVM.CoverImageM)
-        </dd>
-
-        <dt>
-            @Html.DisplayName("PrixM")
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LivreVM.PrixM)
-        </dd>
-        <dt>
-            @Html.DisplayName("Description")
-        </dt>
-
-        <dd>
+        </table>
+    </div>
+    
+    <div >
+        <p class="text-danger">
+            Description
+        </p>
+        <p class="text-success">
             @Html.DisplayFor(model => model.LivreVM.DescriptionM.DetailM)
-        </dd>
-
-    </dl>
+        </p>
+    </div>
 </div>
 <p>
 

@@ -214,6 +214,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Style\site.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -261,6 +262,7 @@
     <Content Include="Views\VenteBouquin\razor ref\CreatePayeur ref.cshtml" />
     <Content Include="Views\Intranet\CreatePayeur.cshtml" />
     <Content Include="Views\Intranet\Index.cshtml" />
+    <Content Include="Views\VenteBouquin\DetailLivre - Copier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

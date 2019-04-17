@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf03_02_dataTemplate", "Wp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado02_01_ConnectionString", "Ado02_01_ConnectionString\Ado02_01_ConnectionString.csproj", "{C7AF91FB-1D13-44EA-8293-8A54BA4C47F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ado03_01_Linq", "Ado03_01_Linq\Ado03_01_Linq.csproj", "{DCEB5C30-6A51-4969-83D9-E8DBC8279322}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{C7AF91FB-1D13-44EA-8293-8A54BA4C47F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7AF91FB-1D13-44EA-8293-8A54BA4C47F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7AF91FB-1D13-44EA-8293-8A54BA4C47F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCEB5C30-6A51-4969-83D9-E8DBC8279322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCEB5C30-6A51-4969-83D9-E8DBC8279322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCEB5C30-6A51-4969-83D9-E8DBC8279322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCEB5C30-6A51-4969-83D9-E8DBC8279322}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

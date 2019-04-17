@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C7AF91FB-1D13-44EA-8293-8A54BA4C47F5}</ProjectGuid>
+    <ProjectGuid>{DCEB5C30-6A51-4969-83D9-E8DBC8279322}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ado02_01_ConnectionString</RootNamespace>
-    <AssemblyName>Ado02_01_ConnectionString</AssemblyName>
+    <RootNamespace>Ado03_01_Linq</RootNamespace>
+    <AssemblyName>Ado03_01_Linq</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,7 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,15 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classesMain\Customer.cs" />
-    <Compile Include="classesMain\Db.cs" />
-    <Compile Include="classesMain\Manipulation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
