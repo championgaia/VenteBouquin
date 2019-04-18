@@ -110,6 +110,43 @@ namespace Ado02_01_ConnectionString
                     }
                 }
             }
+            /* A Faire
+             * chaque PS peut avoir plusieur variable
+             * If faut mettre un Dictionaire (nomVariable, nomCategory)
+             * 
+             * */
+        }
+        #endregion
+        #region GetCustomers avec param @city par une PS
+        public void GetSalesByCategoryDictionaryPS(string nomPS, string nomCategory, Dictionary<string, string> myDic)
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = Db.ConnectionString;
+                connection.Open();
+                SqlCommand command = new SqlCommand(nomPS, connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                //chercher element dans la dictionaire
+                var element = myDic.Where(c => c.Value == nomCategory).FirstOrDefault();
+                //passer les params
+                command.Parameters.AddWithValue(element.Key, element.Value);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        System.Diagnostics.Debug.WriteLine("\t{0}\t{1}",
+                        reader[0], reader[1]);
+                    }
+                }
+            }
+            /* A Faire
+             * chaque PS peut avoir plusieur variable
+             * If faut mettre un Dictionaire (nomVariable, nomCatrgory)
+             * 
+             * */
         }
         #endregion
     }
