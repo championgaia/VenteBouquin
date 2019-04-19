@@ -1,0 +1,116 @@
+1) Comment assure t-on l'intégrité des données dans une base ?
+
+	utiliser les clés primaires, clés étrangeres et index unique
+
+2) Ecrire une requete SQL pour récupérer tous les Customers dont la CompanyName contient les lettres 'li' (ex : BoLIdo)
+
+	SELECT DISTINCT *
+	FROM Customers
+	WHERE CompanyName like '%li%'
+3) Ecrire une requete LINQ pour récupérer tous les Customers dont le Country est 'France'
+
+	using (var context = new NorthwindDbContext())
+	 {
+		var lesClients = context.Customers.WHERE(c=>c.Country == "France").ToList();
+	 }
+4) Je veux créer un nouveau Customer avec Entity Framework avec les caracteristique suivantes :
+( CustomerId = "TOTT", COMpanyName ="MYSuperCompany" ,ContactName="Thierry" ,City="Bangkok", Country="France")
+
+Quel est le code à ecrire ?
+	using (var context = new NorthwindDbContext())
+	 {
+		context.Customers.Add(new Customers 
+		{
+			CustomerId = "TOTT", 
+			CompanyName ="MYSuperCompany" ,
+			ContactName="Thierry" ,
+			City="Bangkok", 
+			Country="France"
+		});
+		context.SaveChange();
+	 }
+
+5) Je veux supprimer ce meme utilisateur en base , je dispose uniquement du CustomerID (TOTT) comment le supprimer avec EntityFramework ?
+
+	using (var context = new NorthwindDbContext())
+	 {
+		context.Customers.RemoveRange(context.Customers.WHERE(c=>c.CustomerID == "TOTT"));
+		context.SaveChange();
+	 }
+
+6) Quel est l'intéret d'un index en base de données ?
+	Diminuer le temps d'excécution de la requete => amiliorer la performance d'une requete
+	Gerer les doublons
+	
+
+7) J'ai une erreur avec le code suivant, remplacer ou ajouter le code pour corriger le probleme :
+
+System.Data.SqlClient.SqlException : 'La procédure ou fonction 'SalesByCategory' attend le paramètre '@CategoryName', qui n'a pas été fourni.'
+
+dans program.cs :
+
+   var rrr = new ProcedureStockeeExemple();
+   rrr.GetSalesByCategoryResults();
+
+dans ProcedureStockeeExemple.cs :
+
+ public List<Resultat> GetSalesByCategoryResults(string categoryName="Beverages")
+        {
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = Db.ConnectionString;
+                connection.Open();
+
+                SqlCommand command = new SqlCommand("SalesByCategory", connection);
+				command.CommandType = CommandType.StoredProcedure //AJOUTER
+                command.Parameters.AddWithValue("@CategoryName", categoryName);
+
+                var res = new List<Resultat>();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var resultat = new Resultat();
+                        resultat.ProductName = (string)reader["ProductName"];
+                        resultat.TotalPurchase = (decimal)reader["TotalPurchase"];
+                        res.Add(resultat);
+                    }
+                }
+                return res;
+            }
+        }
+
+8) Je veux récupérer toutes les Order_Details liées à l'OrderId 10273.
+Faire cela de 2 manières différentes ( SQL ou EntityFramweork)
+--SQL
+SELECT *
+FROM Order_Details
+WHERE OrderId = 10273
+-- LINQ 1
+using (var context = new NorthwindDbContext())
+	 {
+		var lesLingeCommandes = context.Order_Details.WHERE(od=>od.OrderId == 10273).ToList();
+	 }
+-- LINQ 2
+var lesLingeCommandes = (from od in Context.Order_Details
+                                     where od.OrderID == 10273
+                                     select od).ToList();
+									 
+9) J'ai executé le code suivant mais rien n'est ajouté en base, quel est le probleme ? : context.SaveChange();//AJOUTER
+
+using(var context = new NorthwindDbContext())
+{
+
+	var entity = context.Customers.FirstOrDefault(c => c.CustumerId == "BLONP");
+	if(entity != null)
+	{
+		entity.Email = "test@yopmail.com";
+	}
+	context.SaveChange();//AJOUTER
+}
+
+10) Avec EntityFramework Database first où sont stockées les informations de mapping entre mes tables dans ma base et mes clases générées ?
+
+Dans le fichier EDMX
+
+
