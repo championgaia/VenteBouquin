@@ -85,7 +85,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalculateurPrixAssurance.cs" />
     <Compile Include="Categories.cs" />
+    <Compile Include="ClassUnPeuLourde.cs" />
     <Compile Include="ConnectedRepository.cs" />
     <Compile Include="CustomerAndOrder.cs" />
     <Compile Include="CustomerDemographics.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Customers.cs" />
     <Compile Include="Employees.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="IServiceFiscalite.cs" />
     <Compile Include="MaClasseAvecInjection.cs" />
     <Compile Include="Migrations\201904110915154_Initial.cs" />
     <Compile Include="Migrations\201904110915154_Initial.Designer.cs">
@@ -105,6 +108,7 @@
     <Compile Include="Products.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rectangle.cs" />
     <Compile Include="Region.cs" />
     <Compile Include="ServiceLocator.cs" />
     <Compile Include="Shippers.cs" />
@@ -120,6 +124,9 @@
     <EmbeddedResource Include="Migrations\201904110915154_Initial.resx">
       <DependentUpon>201904110915154_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SOLID.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

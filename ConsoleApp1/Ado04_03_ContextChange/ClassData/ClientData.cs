@@ -55,9 +55,9 @@ namespace Ado04_03_ContextChange.ClassData
             //    n == 3 ? "Three" : "Unknown"
             //)
 
-            mesCustomer = Context.Customers.Where(c =>  (name != null) ? c.ContactName == name :
+            mesCustomer = Context.Customers.Where(c => (name != null) ? c.ContactName == name :
                                                     (addresse != null) ? c.Address == addresse :
-                                                    (region != null)   ? c.Region == region : (1==1)).ToList();  
+                                                    (region != null) ? c.Region == region : (1 == 1)).ToList();
             return mesCustomer;
         }
         #endregion
@@ -71,6 +71,16 @@ namespace Ado04_03_ContextChange.ClassData
             mesCustomer = (addresse != null) ? mesCustomer.Where(c => c.Address == addresse) : mesCustomer;
             mesCustomer = (region != null) ? mesCustomer.Where(c => c.Region == region) : mesCustomer;
             return mesCustomer.ToList();
+        }
+        #endregion
+        #region MyRegion
+        public List<Order_Details> GetOrderDetails(int orderId)
+        {
+
+            var lesLingeCommandes = (from od in Context.Order_Details
+                                     where od.OrderID == 10273
+                                     select od).ToList();
+            return lesLingeCommandes;
         }
         #endregion
 

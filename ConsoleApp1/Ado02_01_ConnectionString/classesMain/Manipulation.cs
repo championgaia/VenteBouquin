@@ -118,34 +118,42 @@ namespace Ado02_01_ConnectionString
         }
         #endregion
         #region GetCustomers avec param @city par une PS
-        public void GetSalesByCategoryDictionaryPS(string nomPS, string nomCategory, Dictionary<string, string> myDic)
+        public void GetSalesByCategoryDictionaryPS(string nomPS, Dictionary<string, string> myDic)
         {
             using (SqlConnection connection = new SqlConnection())
             {
                 connection.ConnectionString = Db.ConnectionString;
                 connection.Open();
+                Customer client = new Customer();/////////////////////////////////////////////////////
                 SqlCommand command = new SqlCommand(nomPS, connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 };
                 //chercher element dans la dictionaire
-                var element = myDic.Where(c => c.Value == nomCategory).FirstOrDefault();
-                //passer les params
-                command.Parameters.AddWithValue(element.Key, element.Value);
-
+                foreach (var item in myDic)
+                {
+                    command.Parameters.AddWithValue(item.Key, item.Value);
+                }
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        System.Diagnostics.Debug.WriteLine("\t{0}\t{1}",
-                        reader[0], reader[1]);
+                        ////////////////////////////////////////////////////////////////////////////
+                        client = new Customer
+                        {
+                            
+                            CompanyName = reader["CompanyName"].ToString(),
+                            ContactName = reader.GetString(reader.GetOrdinal("ContactName")),
+                            CustomerId = reader["CustomerId"].ToString()
+                        };
                     }
                 }
             }
             /* A Faire
-             * chaque PS peut avoir plusieur variable
-             * If faut mettre un Dictionaire (nomVariable, nomCatrgory)
-             * 
+             * nomPS à passer en params
+             * chaque PS peut avoir plusieur params
+             * If faut mettre un Dictionaire (@Variable, variable)
+             * comment on fait retour un liste d'objet pour transformer apres
              * */
         }
         #endregion

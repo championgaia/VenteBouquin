@@ -13,6 +13,19 @@ namespace VenteBouquin_UIL
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //DetailLivre
+            routes.MapRoute(
+                name: "DetailLivre",
+                url: "{controller}/DetailLivre/{codeISBN}",
+                defaults: new { controller = "VenteBouquinController", action = "DetailLivre" }
+            );
+            //route GetLivreParCategory
+            routes.MapRoute(
+                name: "GetLivreParCategory",
+                url: "{controller}/GetLivreParCategory/{codeCategory}",
+                defaults: new { controller = "VenteBouquinController", action = "GetLivreParCategory" }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

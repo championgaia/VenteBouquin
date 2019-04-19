@@ -3,6 +3,7 @@ using StackExchange.Profiling.EntityFramework6;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,27 @@ namespace DemoEntityFrameworkCodeFirst
         static void Main(string[] args)
         {
 
+            //var r = new Rectangle(5, 4);
+            //var perimetre = r.CalculPérimetre();
+
+            //if (perimetre != 18)
+            //    throw new Exception("le calcul du perimetre n'est pas bon");
+
+            //var c = new Carre(5, 4);
+            // perimetre = c.CalculPérimetre();
+
+            //if (perimetre != 18)
+            //    throw new Exception("le calcul du perimetre n'est pas bon");
+
+
+
+
+
+
             using (var context = new NorthwindDbContext())
             {
-                //var entity = context.Customers.FirstOrDefault(c => c.ContactName == "Maria Anders");
+                //var customer = context.Customers.FirstOrDefault(c => c.ContactName == "Maria Anders");
+
 
                 //var orders = context.Customers.FirstOrDefault(c => c.ContactName == "Maria Anders").Orders;
 
@@ -88,12 +107,13 @@ namespace DemoEntityFrameworkCodeFirst
                 //   IEnumerable<Customers> customers = context.GetCustomers();
 
                 //}
+                var repo = ServiceLocator.Container.Resolve<IRepository>();
 
-                MaClasseAvecInjection injected = new MaClasseAvecInjection();
-                injected.Execute();
 
-                //MaClasseAvecInjection injected2 = new MaClasseAvecInjection(ServiceLocator.Container.Resolve<IRepository>());
-                //injected.Execute();
+
+                MaClasseAvecInjection injected2 = new MaClasseAvecInjection(repo);
+
+                injected2.Execute();
 
 
 

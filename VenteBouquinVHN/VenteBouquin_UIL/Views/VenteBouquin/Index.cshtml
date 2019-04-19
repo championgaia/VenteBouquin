@@ -1,28 +1,16 @@
 ﻿@model VenteBouquin_UIL.Views.VenteBouquin.LivreCategoryViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Accueil";
 }
 <link href="~/Style/site.css" rel="stylesheet" />
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
-<div class="row">
-    <div class="col-lg-3 col-sm-6">1</div>
-    <div class="col-lg-3 col-sm-6">2</div>
-    <div class="col-lg-3 col-sm-6">3</div>
-    <div class="col-lg-3 col-sm-6">4</div>
+<div class="jumbotron text-center">
+    <h2>Accueil</h2>
+    <h3>Choissiez votre catégorie</h3>
 </div>
-
 
 <table class="table-bordered table-hover table-striped table-condensed table-responsive">
     <tr>
-        <th>
-            @Html.DisplayName("CodeCategory")
-        </th>
         <th>
             @Html.DisplayName("NomCategory")
         </th>
@@ -33,10 +21,8 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodeCategoryM)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.NomCategoryM)
+               
             </td>
             <td>
                 @Html.ActionLink("GetLivre", "GetLivreParCategory", new { codeCategory = item.CodeCategoryM })
@@ -45,3 +31,60 @@
     }
 
 </table>
+<div class="container text-center padding30">
+    <h3>Pourquoi commander chez nous</h3>
+    <h4>jhfjkdhdhfdhjdhfjkdhfjhdjfhjdhfjhdfjdjdfjdhfj</h4>
+    <div class="row ">
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-shopping-cart logo-small"></span>
+            <h4>1</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-heart-empty logo-small"></span>
+            <h4>2</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-fullscreen logo-small"></span>
+            <h4>3</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-tree-deciduous logo-small"></span>
+            <h4>4</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-bell logo-small"></span>
+            <h4>5</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-barcode logo-small"></span>
+            <h4>6</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-apple logo-small"></span>
+            <h4>7</h4>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <span class="glyphicon glyphicon-bishop logo-small"></span>
+            <h4>8</h4>
+        </div>
+    </div>
+</div>
+<div class="container text-center padding30">
+    <div class="row ">
+        <div class="col-lg-8 col-sm-8">
+            <h3>jhfjkdhdhfdhjdhfjkdhfjhdjfhjdhfjhdfjdjdfjdhfj</h3>
+        </div>
+        <div class="col-lg-4 col-sm-4">
+            <div class="widget">Avis Eleve 4.8/5
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="glyphicon glyphicon-star"></span>
+            </div>
+            <div class="widget-button">
+
+            </div>
+        </div>
+    </div>
+</div>

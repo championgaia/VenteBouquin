@@ -11,10 +11,10 @@ namespace DemoEntityFrameworkCodeFirst
     {
          IRepository _repository;
 
-        public MaClasseAvecInjection()
-        {
-            _repository = ServiceLocator.Container.Resolve<IRepository>();
-        }
+        //public MaClasseAvecInjection()
+        //{
+        //    _repository = ServiceLocator.Container.Resolve<IRepository>();
+        //}
         public MaClasseAvecInjection(IRepository repository)
         {
             _repository = repository;
