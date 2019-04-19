@@ -19,7 +19,7 @@ namespace Ado04_03_UIL
             //{
             //    Console.WriteLine(item.CompanyName);
             //}
-            foreach (var item in client.GetCustomersAsQuerry("0", "0", "SP"))
+            foreach (var item in client.GetCustomersAsQuerry(null, null, "SP"))
             {
                 Console.WriteLine(item.CompanyName);
             }
