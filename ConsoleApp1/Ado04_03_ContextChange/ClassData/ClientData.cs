@@ -45,7 +45,7 @@ namespace Ado04_03_ContextChange.ClassData
         #endregion
         #region GetCustomers
         public List<Customers> GetCustomers
-            (string name = "0", string addresse = "0", string region = "0")
+            (string name = null, string addresse = null, string region = null)
         {
             List<Customers> mesCustomer = new List<Customers>();
             //    Text =
@@ -55,22 +55,32 @@ namespace Ado04_03_ContextChange.ClassData
             //    n == 3 ? "Three" : "Unknown"
             //)
 
-            mesCustomer = Context.Customers.Where(c =>  (name != "0") ? c.ContactName == name :
-                                                    (addresse != "0") ? c.Address == addresse :
-                                                    (region != "0")   ? c.Region == region : (1==1)).ToList();  
+            mesCustomer = Context.Customers.Where(c => (name != null) ? c.ContactName == name :
+                                                    (addresse != null) ? c.Address == addresse :
+                                                    (region != null) ? c.Region == region : (1 == 1)).ToList();
             return mesCustomer;
         }
         #endregion
         #region GetCustomers
         public List<Customers> GetCustomersAsQuerry
-            (string name = "0", string addresse = "0", string region = "0")
+            (string name = null, string addresse = null, string region = null)
         {
             var mesCustomer = Context.Customers.AsQueryable();
 
-            mesCustomer = (name != "0") ? mesCustomer.Where(c => c.ContactName == name) : mesCustomer;
-            mesCustomer = (addresse != "0") ? mesCustomer.Where(c => c.Address == addresse) : mesCustomer;
-            mesCustomer = (region != "0") ? mesCustomer.Where(c => c.Region == region) : mesCustomer;
+            mesCustomer = (name != null) ? mesCustomer.Where(c => c.ContactName == name) : mesCustomer;
+            mesCustomer = (addresse != null) ? mesCustomer.Where(c => c.Address == addresse) : mesCustomer;
+            mesCustomer = (region != null) ? mesCustomer.Where(c => c.Region == region) : mesCustomer;
             return mesCustomer.ToList();
+        }
+        #endregion
+        #region MyRegion
+        public List<Order_Details> GetOrderDetails(int orderId)
+        {
+
+            var lesLingeCommandes = (from od in Context.Order_Details
+                                     where od.OrderID == 10273
+                                     select od).ToList();
+            return lesLingeCommandes;
         }
         #endregion
 

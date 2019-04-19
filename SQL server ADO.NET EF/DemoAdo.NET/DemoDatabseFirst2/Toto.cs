@@ -21,7 +21,7 @@ namespace DemoDatabseFirst2
             using (var context = new NorthwindDbEntities())
             {
                 //recuperer tous les customers
-                resultats = context.Customers.ToList();
+                //resultats = context.Customers.ToList();
 
                 //recuperer blonp uniquement
                 c = context.Customers.FirstOrDefault(cu => cu.CustomerID == "BLONP");

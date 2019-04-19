@@ -19,7 +19,7 @@ namespace DemoAdo.NET
                 connection.Open();
 
                 SqlCommand command = new SqlCommand("SalesByCategory", connection);
-               // command.CommandType = CommandType.StoredProcedure;
+                command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@CategoryName", categoryName);
 
                 var res = new List<Resultat>();
