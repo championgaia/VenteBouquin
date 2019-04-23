@@ -40,3 +40,22 @@ p {
 .padding30{
     padding: 30px;
 }
+.widget div{
+    padding: 15px;
+}
+.widget {
+    background-color: white;
+    border: solid 1px orange;
+    border-radius: 5px;
+}
+.widget-bottom {
+    background-color: orange;
+    color: white;
+}
+.yellow {
+    color: orange;
+}
+.bigPercent{
+    font-size: 3em;
+    font-weight:bold;
+}
