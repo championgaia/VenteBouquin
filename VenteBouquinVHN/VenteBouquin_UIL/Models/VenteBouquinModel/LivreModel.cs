@@ -53,7 +53,6 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
                         CodeCategoryM = item.LaCategoryDto.CodeCategoryDto,
                         NomCategoryM = item.LaCategoryDto.NomCategoryDto
                     }
-
                 });
             }
         }

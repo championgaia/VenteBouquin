@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using VenteBouquin_UIL.Models.VenteBouquinModel;
 
-namespace VenteBouquin_UIL.Views.Intranet
+namespace VenteBouquin_UIL.Views.VenteBouquin
 {
     public class PayeurViewModel
     {

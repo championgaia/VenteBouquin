@@ -29,7 +29,7 @@ namespace VenteBouquin_BOL.Class_BOL
                     DateNaissanceDto = payeurBol.Personne.DateNaissance
                 }
             };
-            repo.CreatePayeurRepoDal(payeurDto);
+            repo.CreatePayeurRepoData(payeurDto);
         }
         #endregion
     }

@@ -30,7 +30,46 @@ namespace VenteBouquin_UIL.Controllers
             return View(livre);
         }
         #endregion
-        
+        #region Payeur
+        #region CreatePayeur
+        public ActionResult CreatePayeur()
+        {
+            string codeUtilisateur = User.Identity.Name;
+            PayeurViewModel payeur = new PayeurViewModel(codeUtilisateur);
+            return View(payeur);
+        }
+        [HttpPost]
+        public ActionResult CreatePayeur(PayeurViewModel payeurVM)
+        {
+            payeurVM.CreatePayeurViewModel(payeurVM);
+            return RedirectToAction("GetPayeur", new { codePayeur = 0 });
+        }
+        #endregion
 
+        #endregion
+        //#region Commande
+        //public ActionResult AddPanier(string codeISBN)
+        //{
+        //    PanierViewModel panier = new PanierViewModel(codeISBN);
+        //    return View(panier);
+        //}
+        //#endregion
+        #region Commande
+        #region Panier
+        public ActionResult AddPanier(List<string> mesCodeISBN)
+        {
+            //add codeISBN via variable locale
+            PanierViewModel panier = new PanierViewModel(mesCodeISBN);
+            return View(panier);
+        }
+        #endregion
+        #region CreateCommande
+        public ActionResult CreateCommande(List<string> mesCodeISBN, string codePayer)
+        {
+            CreateCommandeViewModel commande = new CreateCommandeViewModel(mesCodeISBN, codePayer);
+            return View(commande);
+        }
+        #endregion
+        #endregion
     }
 }

@@ -54,11 +54,14 @@
       <DependentUpon>ModelVenteBouquin.tt</DependentUpon>
     </Compile>
     <Compile Include="Class DATA\AdresseData.cs" />
+    <Compile Include="Class DATA\CommandeData.cs" />
     <Compile Include="Class DATA\DescriptionData.cs" />
+    <Compile Include="Class DATA\LigneDeCommandeData.cs" />
     <Compile Include="Class DATA\LivreData.cs" />
     <Compile Include="Class DATA\LivreCategoryData.cs" />
     <Compile Include="Class DATA\PayeurData.cs" />
     <Compile Include="Class DATA\PersonneData.cs" />
+    <Compile Include="Class DATA\PromotionData.cs" />
     <Compile Include="Commande.cs">
       <DependentUpon>ModelVenteBouquin.tt</DependentUpon>
     </Compile>

@@ -1,0 +1,73 @@
+﻿@model VenteBouquin_UIL.Views.VenteBouquin.PanierViewModel
+
+@{
+    ViewBag.Title = "AddPanier";
+}
+
+<h2>AddPanier</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("CodeISBNM")
+        </th>
+        <th>
+            @Html.DisplayName("NomLivreM")
+        </th>
+        <th>
+            @Html.DisplayName("AuteurM")
+        </th>
+        <th>
+            @Html.DisplayName("EditeurM")
+        </th>
+        <th>
+            @Html.DisplayName("CoverImageM")
+        </th>
+        <th>
+            @Html.DisplayName("PrixM")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.MonChoixLivreVM)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodeISBNM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomLivreM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuteurM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EditeurM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CoverImageM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrixM)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "DetailLivre", new { codeISBN = item.CodeISBNM }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>
+<div class="text-center">
+    <button id="btnValider" class="btn-success" onclick="validerPanier();">Valider</button>
+    <button id="btnAnnuler" class="btn-danger" onclick="annulerPanier();">Annuler</button>
+</div>
+<script>
+    function validerPanier() {
+        location.href = '@Url.Action("CreateCommande", "VenteBouquin")';
+    }
+    function annulerPanier() {
+        location.href = '@Url.Action("Index", "VenteBouquin")';
+        return false;
+    }
+</script>

@@ -10,14 +10,14 @@ namespace VenteBouquin_DATA
 {
     public class RepoData
     {
-        private LivreCategoryDatas livreCategories = new LivreCategoryDatas();
+        private LivreCategoryDatas livreCategoryDatas;
         private LivreDatas livres;
         private PayeurDatas payeurs;
         #region GetLivreCategoryDTOsRepoData
         public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoData(int codeCategory)
         {
             List<LivreCategoryDTO> livreCategoryDTOs = new List<LivreCategoryDTO>();
-            LivreCategoryDatas livreCategoryDatas = new LivreCategoryDatas(codeCategory);
+            livreCategoryDatas = new LivreCategoryDatas(codeCategory);
             foreach (var item in livreCategoryDatas.ListeCategory)
             {
                 livreCategoryDTOs.Add(new LivreCategoryDTO
@@ -114,8 +114,8 @@ namespace VenteBouquin_DATA
             return null;
         }
         #endregion
-        #region CreatePayeurRepoDal
-        public void CreatePayeurRepoDal(PayeurDTO payeurDto)
+        #region CreatePayeurRepoData
+        public void CreatePayeurRepoData(PayeurDTO payeurDto)
         {
             var payeurdata = new PayeurData()
             {
@@ -131,6 +131,59 @@ namespace VenteBouquin_DATA
             };
             payeurdata.CreatePayeurData(payeurdata);
         }
+        #endregion
+        #region GetCommandeDTORepoData
+        #region GetCommandeDTORepoData par codeCommande
+        public CommandeDTO GetCommandeDTORepoData(int codeCommande)
+        {
+            CommandeData commande = new CommandeData(codeCommande);
+            CommandeDTO commandeDto = new CommandeDTO
+            {
+                CodeCommandeDto = commande.CodeCommande,
+                PrixTotalDto = commande.PrixTotal,
+                LePayeurDto = new PayeurDTO
+                {
+                    CodePayeurDto = commande.LePayeur.CodePayeur,
+                    CodeUtilisateurDto = commande.LePayeur.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                       CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
+                       NomDto = commande.LePayeur.Personne.Nom,
+                       PrenomDto = commande.LePayeur.Personne.Prenom,
+                       DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
+                    }
+                }
+            };
+            return commandeDto;
+        }
+        #endregion
+        #region GetListCommandeDTORepoData par codePayeur
+        public List<CommandeDTO> GetListCommandeDTORepoData(int codePayeur)
+        {
+            List<CommandeDTO> maListe = new List<CommandeDTO>();
+            foreach (var commande in new CommandeDatas(codePayeur).LesCommandes)
+            {
+                maListe.Add(new CommandeDTO
+                {
+                    CodeCommandeDto = commande.CodeCommande,
+                    PrixTotalDto = commande.PrixTotal,
+                    LePayeurDto = new PayeurDTO
+                    {
+                        CodePayeurDto = commande.LePayeur.CodePayeur,
+                        CodeUtilisateurDto = commande.LePayeur.CodeUtilisateur,
+                        PersonneDto = new PersonneDTO
+                        {
+                            CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
+                            NomDto = commande.LePayeur.Personne.Nom,
+                            PrenomDto = commande.LePayeur.Personne.Prenom,
+                            DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
+                        }
+                    }
+                });
+            }
+            return maListe;
+        }
+        #endregion
         #endregion
     }
 }

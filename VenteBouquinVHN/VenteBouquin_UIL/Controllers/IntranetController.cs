@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VenteBouquin_UIL.Views.Intranet;
+using VenteBouquin_UIL.Views.VenteBouquin;
 
 namespace VenteBouquin_UIL.Controllers
 {
@@ -31,21 +32,6 @@ namespace VenteBouquin_UIL.Controllers
             return View(myPayeur);
         }
         #endregion
-        #region CreatePayeur
-        public ActionResult CreatePayeur()
-        {
-            string codeUtilisateur = User.Identity.Name;
-            PayeurViewModel payeur = new PayeurViewModel(codeUtilisateur);
-            return View(payeur);
-        }
-        [HttpPost]
-        public ActionResult CreatePayeur(PayeurViewModel payeurVM)
-        {
-            payeurVM.CreatePayeurViewModel(payeurVM);
-            return RedirectToAction("GetPayeur", new {codePayeur = 0 });
-        }
-        #endregion
-
         #endregion
     }
 }

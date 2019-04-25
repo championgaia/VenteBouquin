@@ -9,13 +9,13 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
     public class ListeLivreViewModel
     {
         public List<LivreModel> ListeLivreVM { get; set; }
-        #region MyRegion
+        #region constructeur par deffaut
         public ListeLivreViewModel()
         {
 
         }
         #endregion
-        #region MyRegion
+        #region constructeur par codeCategory
         public ListeLivreViewModel(int codeCategory)
         {
             ListeLivreVM = new LivreModels(codeCategory).ListeLivreM;
