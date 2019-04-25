@@ -31,32 +31,35 @@ namespace VenteBouquin_DATA.Class_DATA
         public LivreDatas(string codeISBN)
         {
             ListeLivre = new List<LivreData>();
+            #region Version1
             //besoin contexte
-            var listeLivreCodeISBN = context.Livres
-                .Include("Description")
-                .Select(c => c)
-                .Distinct()
-                .Where(c => c.CodeISBN == codeISBN)
-                .ToList();
-            foreach (var item in listeLivreCodeISBN)
-            {
-                ListeLivre.Add(new LivreData
-                {
-                    CodeISBN = item.CodeISBN,
-                    NomLivre = item.NomLivre,
-                    Auteur = item.Auteur,
-                    Editeur = item.Editeur,
-                    CoverImage = item.CoverImage,
-                    Prix = (double)item.Prix,
-                    Description = new DescriptionData
-                    {
-                        CodeDescription = item.Description.IdDescription,
-                        CodeISBN = item.Description.CodeISBN,
-                        Detail = item.Description.Detail
-                    },
-                    LaCategory = new LivreCategoryDatas(item.FkLivreCategory).ListeCategory.FirstOrDefault()
-                });
-            }
+            //var listeLivreCodeISBN = context.Livres
+            //    .Include("Description")
+            //    .Select(c => c)
+            //    .Distinct()
+            //    .Where(c => c.CodeISBN == codeISBN)
+            //    .ToList();
+            //foreach (var item in listeLivreCodeISBN)
+            //{
+            //    ListeLivre.Add(new LivreData
+            //    {
+            //        CodeISBN = item.CodeISBN,
+            //        NomLivre = item.NomLivre,
+            //        Auteur = item.Auteur,
+            //        Editeur = item.Editeur,
+            //        CoverImage = item.CoverImage,
+            //        Prix = (double)item.Prix,
+            //        Description = new DescriptionData
+            //        {
+            //            CodeDescription = item.Description.IdDescription,
+            //            CodeISBN = item.Description.CodeISBN,
+            //            Detail = item.Description.Detail
+            //        },
+            //        LaCategory = new LivreCategoryDatas(item.FkLivreCategory).ListeCategory.FirstOrDefault()
+            //    });
+            //}
+            #endregion
+            #region Version 2
             //version 2
             var liste2 = context.Livres
                 .Where(c => c.CodeISBN == codeISBN)
@@ -85,6 +88,7 @@ namespace VenteBouquin_DATA.Class_DATA
                 });
 
             }
+            #endregion
         }
         #endregion
         #region Constructeur par codeCategory
@@ -146,7 +150,6 @@ namespace VenteBouquin_DATA.Class_DATA
                         NomCategory = livre.LivreCategory.NomCategory
                     }
                 });
-
             }
             #endregion
 
