@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public string Prenom { get; set; }
         public DateTime DateNaissance { get; set; }
         public List<AdresseData> ListeAdresse { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region MyRegion
         public PersonneData() { }
         #endregion
@@ -20,6 +22,19 @@ namespace VenteBouquin_DATA.Class_DATA
         public PersonneData(int codePersonne)
         {
             //////////////////////////////////////////////
+        }
+        #endregion
+        #region CreateNewPersonne
+        public void CreateNewPersonne(PersonneData personne)
+        {
+            context.Personnes.AddOrUpdate(new Personne
+            {
+                Nom = personne.Nom,
+                Prenom = personne.Prenom,
+                DateNaissance = personne.DateNaissance,
+                FkAdresse = 2 //entre en dur
+            });
+            context.SaveChanges();
         }
         #endregion
     }

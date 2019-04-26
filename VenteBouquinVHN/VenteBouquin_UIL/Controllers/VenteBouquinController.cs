@@ -34,18 +34,20 @@ namespace VenteBouquin_UIL.Controllers
         #region Payeur
         #region CreatePayeur
         [Authorize]
-        public ActionResult CreatePayeur()
+        [HttpGet]
+        public ActionResult CreatePayeur(string idClient)
         {
             var codeUtilisateur = User.Identity.GetUserId();
-            PayeurViewModel payeur = new PayeurViewModel(codeUtilisateur);
-            return View(payeur);
+            var email = User.Identity.Name;
+            PayeurViewModel payeurVM1 = new PayeurViewModel(codeUtilisateur, email);
+            return View(payeurVM1);
         }
-        [HttpPost]
         [Authorize]
-        public ActionResult CreatePayeur(PayeurViewModel payeurVM)
+        [HttpPost]
+        public ActionResult CreatePayeur(PayeurViewModel payeurVM2)
         {
-            payeurVM.CreatePayeurViewModel(payeurVM);
-            return RedirectToAction("GetPayeur", new { codePayeur = 0 });//a modifier
+            payeurVM2.CreatePayeurViewModel(payeurVM2);
+            return RedirectToAction("Index");
         }
         #endregion
         #endregion
@@ -71,13 +73,13 @@ namespace VenteBouquin_UIL.Controllers
         {
             string codeUtilisateur = User.Identity.GetUserId();
             PayeurViewModel payeur = new PayeurViewModel(codeUtilisateur);
-            if (payeur != null)
+            if (payeur.PayeurVM.CodeUtilisateurM != null)
             {
                 CreateCommandeViewModel commande = new CreateCommandeViewModel(mesCodeISBN, codeUtilisateur);
                 return View(commande);
             }
             else
-                return RedirectToAction("CreatePayeur");
+                return RedirectToAction("CreatePayeur", new {idClient = codeUtilisateur });
         }
         #endregion
         #region CreateCommande

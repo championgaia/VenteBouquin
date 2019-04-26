@@ -21,30 +21,36 @@ namespace VenteBouquin_BOL.Class_BOL
         public PayeurBOL(int codePayeur)
         {
             var payeur = repo.GetPayeurDTORepoData(codePayeur);
-            CodePayeur = payeur.CodePayeurDto;
-            CodeUtilisateur = payeur.CodeUtilisateurDto;
-            Personne = new PersonneBOL
+            if (payeur != null)
             {
-                CodePersonne = payeur.PersonneDto.CodePersonneDto,
-                Nom = payeur.PersonneDto.NomDto,
-                Prenom = payeur.PersonneDto.PrenomDto,
-                DateNaissance = payeur.PersonneDto.DateNaissanceDto,
-            };
+                CodePayeur = payeur.CodePayeurDto;
+                CodeUtilisateur = payeur.CodeUtilisateurDto;
+                Personne = new PersonneBOL
+                {
+                    CodePersonne = payeur.PersonneDto.CodePersonneDto,
+                    Nom = payeur.PersonneDto.NomDto,
+                    Prenom = payeur.PersonneDto.PrenomDto,
+                    DateNaissance = payeur.PersonneDto.DateNaissanceDto,
+                };
+            }
         }
         #endregion
         #region Constructeur par codeUtilisateur
         public PayeurBOL(string codeUtilisateur)
         {
             var payeur = repo.GetPayeurDTORepoData(codeUtilisateur);
-            CodePayeur = payeur.CodePayeurDto;
-            CodeUtilisateur = payeur.CodeUtilisateurDto;
-            Personne = new PersonneBOL
+            if (payeur != null)
             {
-                CodePersonne = payeur.PersonneDto.CodePersonneDto,
-                Nom = payeur.PersonneDto.NomDto,
-                Prenom = payeur.PersonneDto.PrenomDto,
-                DateNaissance = payeur.PersonneDto.DateNaissanceDto,
-            };
+                CodePayeur = payeur.CodePayeurDto;
+                CodeUtilisateur = payeur.CodeUtilisateurDto;
+                Personne = new PersonneBOL
+                {
+                    CodePersonne = payeur.PersonneDto.CodePersonneDto,
+                    Nom = payeur.PersonneDto.NomDto,
+                    Prenom = payeur.PersonneDto.PrenomDto,
+                    DateNaissance = payeur.PersonneDto.DateNaissanceDto,
+                };
+            }
         }
         #endregion
         #region CreatePayeurRepoBol

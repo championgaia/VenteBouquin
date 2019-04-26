@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,16 +22,19 @@ namespace VenteBouquin_DATA.Class_DATA
             var payeur = context.Utilisateurs
                 .Where(c => c.IdUtilisateur == codePayeur)
                 .ToList().FirstOrDefault();
-            CodePayeur = payeur.IdUtilisateur;
-            CodeUtilisateur = payeur.CodeUtilisateur;
-            Personne = new PersonneData
+            if (payeur != null)
             {
-                CodePersonne = payeur.Personne.IdPersonne,
-                Nom = payeur.Personne.Nom,
-                Prenom = payeur.Personne.Prenom,
-                DateNaissance = payeur.Personne.DateNaissance
-            };
-            //manque liste d'adresse
+                CodePayeur = payeur.IdUtilisateur;
+                CodeUtilisateur = payeur.CodeUtilisateur;
+                Personne = new PersonneData
+                {
+                    CodePersonne = payeur.Personne.IdPersonne,
+                    Nom = payeur.Personne.Nom,
+                    Prenom = payeur.Personne.Prenom,
+                    DateNaissance = payeur.Personne.DateNaissance
+                };
+                //manque liste d'adresse
+            }
         }
         #endregion
         #region Constructeur par codeUtilisateur
@@ -39,23 +43,38 @@ namespace VenteBouquin_DATA.Class_DATA
             var payeur = context.Utilisateurs
                 .Where(c => c.CodeUtilisateur == codeUtilisateur)
                 .ToList().FirstOrDefault();
-            CodePayeur = payeur.IdUtilisateur;
-            CodeUtilisateur = payeur.CodeUtilisateur;
-            Personne = new PersonneData
+            if (payeur != null)
             {
-                CodePersonne = payeur.Personne.IdPersonne,
-                Nom = payeur.Personne.Nom,
-                Prenom = payeur.Personne.Prenom,
-                DateNaissance = payeur.Personne.DateNaissance
-            };
-            //manque liste d'adresse
+                CodePayeur = payeur.IdUtilisateur;
+                CodeUtilisateur = payeur.CodeUtilisateur;
+                Personne = new PersonneData
+                {
+                    CodePersonne = payeur.Personne.IdPersonne,
+                    Nom = payeur.Personne.Nom,
+                    Prenom = payeur.Personne.Prenom,
+                    DateNaissance = payeur.Personne.DateNaissance
+                };
+                //manque liste d'adresse
+            }
         }
         #endregion
         #region CreatePayeurData
         public void CreatePayeurData(PayeurData payeurdata)
         {
             //besoin db insert
-            throw new NotImplementedException();//////////////////////////////////////////////////////////////////
+            payeurdata.Personne.CreateNewPersonne(payeurdata.Personne);
+            //context = new VenteBouquinContext();
+            var codePersonne = context.Personnes
+                .Where(c => c.DateNaissance == payeurdata.Personne.DateNaissance && c.Nom == payeurdata.Personne.Nom && c.Prenom == payeurdata.Personne.Prenom)
+                .ToList()
+                .FirstOrDefault()
+                .IdPersonne;
+            context.Utilisateurs.AddOrUpdate(new Utilisateur
+            {
+                CodeUtilisateur = payeurdata.CodeUtilisateur,
+                FkPersonne =  codePersonne
+            });
+            context.SaveChanges();
         }
         #endregion
     }

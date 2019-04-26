@@ -6,31 +6,31 @@
 
 <h2>CreatePayeur</h2>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "myForm" })) 
+@using (Html.BeginForm(null, null, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
-    <h4>PayeurViewModel</h4>
+    <h4>PayeurModel</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PayeurVM.CodePayeurM, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.PayeurVM.CodePayeurM, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PayeurVM.CodePayeurM, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PayeurVM.CodeUtilisateurM, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.PayeurVM.CodeUtilisateurM, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PayeurVM.CodeUtilisateurM, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PayeurVM.PersonneM.CodePersonneM, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.HiddenFor(model => model.PayeurVM.PersonneM.CodePersonneM, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PayeurVM.PersonneM.CodePersonneM, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -49,16 +49,16 @@
             @Html.ValidationMessageFor(model => model.PayeurVM.PersonneM.PrenomM, "", new { @class = "text-danger" })
         </div>
     </div>
-    <div class="form-group input-group-sm">
+    <div class="form-group">
         @Html.LabelFor(model => model.PayeurVM.PersonneM.DateNaissanceM, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PayeurVM.PersonneM.DateNaissanceM, new { htmlAttributes = new { @class = "form-control datepicker" } })
+            @Html.EditorFor(model => model.PayeurVM.PersonneM.DateNaissanceM, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PayeurVM.PersonneM.DateNaissanceM, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn btn-default" />
         </div>
     </div>
 </div>

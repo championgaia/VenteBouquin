@@ -146,40 +146,48 @@ namespace VenteBouquin_BOL
         public PayeurDTO GetPayeurDTORepoBol(int codePayeur)
         {
             var payeur = new PayeurBOL(codePayeur);
-            PayeurDTO payeurDto = new PayeurDTO
+            if (payeur.CodeUtilisateur != null)
             {
-                CodePayeurDto = payeur.CodePayeur,
-                CodeUtilisateurDto = payeur.CodeUtilisateur,
-                PersonneDto = new PersonneDTO
+                PayeurDTO payeurDto = new PayeurDTO
                 {
-                    CodePersonneDto = payeur.Personne.CodePersonne,
-                    NomDto = payeur.Personne.Nom,
-                    PrenomDto = payeur.Personne.Prenom,
-                    DateNaissanceDto = payeur.Personne.DateNaissance
-                }
-            };
-            //manque liste d'adresse
-            return payeurDto;
+                    CodePayeurDto = payeur.CodePayeur,
+                    CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = payeur.Personne.CodePersonne,
+                        NomDto = payeur.Personne.Nom,
+                        PrenomDto = payeur.Personne.Prenom,
+                        DateNaissanceDto = payeur.Personne.DateNaissance
+                    }
+                };
+                //manque liste d'adresse
+                return payeurDto;
+            }
+            return null;
         }
         #endregion
         #region GetPayeurDTORepoBol par codePacodeUtilisateuryeur
         public PayeurDTO GetPayeurDTORepoBol(string codeUtilisateur)
         {
             var payeur = new PayeurBOL(codeUtilisateur);
-            PayeurDTO payeurDto = new PayeurDTO
+            if (payeur.CodeUtilisateur != null)
             {
-                CodePayeurDto = payeur.CodePayeur,
-                CodeUtilisateurDto = payeur.CodeUtilisateur,
-                PersonneDto = new PersonneDTO
+                PayeurDTO payeurDto = new PayeurDTO
                 {
-                    CodePersonneDto = payeur.Personne.CodePersonne,
-                    NomDto = payeur.Personne.Nom,
-                    PrenomDto = payeur.Personne.Prenom,
-                    DateNaissanceDto = payeur.Personne.DateNaissance
-                }
-            };
-            //manque liste d'adresse
-            return payeurDto;
+                    CodePayeurDto = payeur.CodePayeur,
+                    CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = payeur.Personne.CodePersonne,
+                        NomDto = payeur.Personne.Nom,
+                        PrenomDto = payeur.Personne.Prenom,
+                        DateNaissanceDto = payeur.Personne.DateNaissance
+                    }
+                };
+                //manque liste d'adresse
+                return payeurDto;
+            }
+            return null;
         }
         #endregion
         #region CreatePayeurRepoBol

@@ -135,46 +135,52 @@ namespace VenteBouquin_DATA
         #endregion
         #endregion
         #region Payeur
-        #region GetPayeurDTORepoData
+        #region GetPayeurDTORepoData par codePayeur
         public PayeurDTO GetPayeurDTORepoData(int codePayeur)
         {
             var payeur = new PayeurData(codePayeur);
-            PayeurDTO payeurDto = new PayeurDTO
+            if (payeur.CodeUtilisateur != null)
             {
-                CodePayeurDto = payeur.CodePayeur,
-                CodeUtilisateurDto = payeur.CodeUtilisateur,
-                PersonneDto = new PersonneDTO
+                PayeurDTO payeurDto = new PayeurDTO
                 {
-                    CodePersonneDto = payeur.Personne.CodePersonne,
-                    NomDto = payeur.Personne.Nom,
-                    PrenomDto = payeur.Personne.Prenom,
-                    DateNaissanceDto = payeur.Personne.DateNaissance
-                }
-            };
-
-            //manque liste d'adresse
-            return payeurDto;
+                    CodePayeurDto = payeur.CodePayeur,
+                    CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = payeur.Personne.CodePersonne,
+                        NomDto = payeur.Personne.Nom,
+                        PrenomDto = payeur.Personne.Prenom,
+                        DateNaissanceDto = payeur.Personne.DateNaissance
+                    }
+                };
+                //manque liste d'adresse
+                return payeurDto;
+            }
+            return null;
         }
         #endregion
-        #region GetPayeurDTORepoData
+        #region GetPayeurDTORepoData par codeUtilisateur
         public PayeurDTO GetPayeurDTORepoData(string codeUtilisateur)
         {
-
             var payeur = new PayeurData(codeUtilisateur);
-            PayeurDTO payeurDto = new PayeurDTO
+            if (payeur.CodeUtilisateur != null)
             {
-                CodePayeurDto = payeur.CodePayeur,
-                CodeUtilisateurDto = payeur.CodeUtilisateur,
-                PersonneDto = new PersonneDTO
+                PayeurDTO payeurDto = new PayeurDTO
                 {
-                    CodePersonneDto = payeur.Personne.CodePersonne,
-                    NomDto = payeur.Personne.Nom,
-                    PrenomDto = payeur.Personne.Prenom,
-                    DateNaissanceDto = payeur.Personne.DateNaissance
-                }
-            };
-            //manque liste d'adresse
-            return payeurDto;
+                    CodePayeurDto = payeur.CodePayeur,
+                    CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = payeur.Personne.CodePersonne,
+                        NomDto = payeur.Personne.Nom,
+                        PrenomDto = payeur.Personne.Prenom,
+                        DateNaissanceDto = payeur.Personne.DateNaissance
+                    }
+                };
+                //manque liste d'adresse
+                return payeurDto;
+            }
+            return null;
         }
         #endregion
         #region GetAllPayeurDTORepoData

@@ -23,30 +23,36 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         public PayeurModel(string codeUtilisateur)
         {
             var payeur = repo.GetPayeurDTORepoBol(codeUtilisateur);
-            CodePayeurM = payeur.CodePayeurDto;
-            CodeUtilisateurM = payeur.CodeUtilisateurDto;
-            PersonneM = new PersonneModel
+            if (payeur != null)
             {
-                CodePersonneM = payeur.PersonneDto.CodePersonneDto,
-                NomM = payeur.PersonneDto.NomDto,
-                PrenomM = payeur.PersonneDto.PrenomDto,
-                DateNaissanceM = payeur.PersonneDto.DateNaissanceDto
-            };
+                CodePayeurM = payeur.CodePayeurDto;
+                CodeUtilisateurM = payeur.CodeUtilisateurDto;
+                PersonneM = new PersonneModel
+                {
+                    CodePersonneM = payeur.PersonneDto.CodePersonneDto,
+                    NomM = payeur.PersonneDto.NomDto,
+                    PrenomM = payeur.PersonneDto.PrenomDto,
+                    DateNaissanceM = payeur.PersonneDto.DateNaissanceDto
+                };
+            }
         }
         #endregion
         #region Constructeur par codePayeur
         public PayeurModel(int codePayeur)
         {
             var payeur = repo.GetPayeurDTORepoBol(codePayeur);
-            CodePayeurM = payeur.CodePayeurDto;
-            CodeUtilisateurM = payeur.CodeUtilisateurDto;
-            PersonneM = new PersonneModel
+            if (payeur != null)
             {
-                CodePersonneM = payeur.PersonneDto.CodePersonneDto,
-                NomM = payeur.PersonneDto.NomDto,
-                PrenomM = payeur.PersonneDto.PrenomDto,
-                DateNaissanceM = payeur.PersonneDto.DateNaissanceDto
-            };
+                CodePayeurM = payeur.CodePayeurDto;
+                CodeUtilisateurM = payeur.CodeUtilisateurDto;
+                PersonneM = new PersonneModel
+                {
+                    CodePersonneM = payeur.PersonneDto.CodePersonneDto,
+                    NomM = payeur.PersonneDto.NomDto,
+                    PrenomM = payeur.PersonneDto.PrenomDto,
+                    DateNaissanceM = payeur.PersonneDto.DateNaissanceDto
+                };
+            }
         }
         #endregion
         #region CreatePayeurModel
