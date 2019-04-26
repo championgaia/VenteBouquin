@@ -11,6 +11,15 @@ namespace VenteBouquin_BOL.Class_BOL
         public int CodeDescription { get; set; }
         public string CodeISBN { get; set; }
         public string Detail { get; set; }
+        #region  Constructeur par deffault
+        public DescriptionBOL() { }
+        #endregion
+        #region Constructeur
+        public DescriptionBOL(int codeDescription)
+        {
+        //////////////////////////////
+        }
+        #endregion
     }
     internal class DescriptionBOLs
     {
@@ -18,14 +27,8 @@ namespace VenteBouquin_BOL.Class_BOL
         #region Constructeur par deffault
         public DescriptionBOLs()
         {
-
-        }
-        #endregion
-        #region Constructeur
-        public DescriptionBOLs(int codeDescription)
-        {
             ListeDescription = new List<DescriptionBOL>();
-            //besoin contexte
+            //besoin repo
         }
         #endregion
     }

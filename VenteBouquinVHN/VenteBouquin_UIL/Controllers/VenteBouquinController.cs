@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ namespace VenteBouquin_UIL.Controllers
         // GET: VenteBouquin
         public ActionResult Index()
         {
-            LivreCategoryViewModel livreCategoryViewModel = new LivreCategoryViewModel(0);
+            LivreCategoryViewModel livreCategoryViewModel = new LivreCategoryViewModel();
             return View(livreCategoryViewModel);
         }
         // GET: GetLivreParCategory
@@ -32,13 +33,15 @@ namespace VenteBouquin_UIL.Controllers
         #endregion
         #region Payeur
         #region CreatePayeur
+        [Authorize]
         public ActionResult CreatePayeur()
         {
-            string codeUtilisateur = User.Identity.Name;
+            var codeUtilisateur = User.Identity.GetUserId();
             PayeurViewModel payeur = new PayeurViewModel(codeUtilisateur);
             return View(payeur);
         }
         [HttpPost]
+        [Authorize]
         public ActionResult CreatePayeur(PayeurViewModel payeurVM)
         {
             payeurVM.CreatePayeurViewModel(payeurVM);
@@ -63,10 +66,18 @@ namespace VenteBouquin_UIL.Controllers
         }
         #endregion
         #region CreateCommande
-        public ActionResult CreateCommande(List<string> mesCodeISBN, string codePayer)
+        [Authorize]
+        public ActionResult CreateCommande(List<string> mesCodeISBN)
         {
-            CreateCommandeViewModel commande = new CreateCommandeViewModel(mesCodeISBN, codePayer);
-            return View(commande);
+            string codeUtilisateur = User.Identity.GetUserId();
+            PayeurViewModel payeur = new PayeurViewModel(codeUtilisateur);
+            if (payeur != null)
+            {
+                CreateCommandeViewModel commande = new CreateCommandeViewModel(mesCodeISBN, codeUtilisateur);
+                return View(commande);
+            }
+            else
+                return RedirectToAction("CreatePayeur");
         }
         #endregion
         #region CreateCommande

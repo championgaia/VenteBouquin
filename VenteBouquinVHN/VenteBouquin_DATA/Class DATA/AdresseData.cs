@@ -21,6 +21,12 @@ namespace VenteBouquin_DATA.Class_DATA
 
         }
         #endregion
+        #region Constructeur
+        public AdresseData(int codeAdresse)
+        {
+            //context besoin
+        }
+        #endregion
     }
     internal class AddresseDataPlus
     {
@@ -28,15 +34,9 @@ namespace VenteBouquin_DATA.Class_DATA
         #region Constructeur par déffault
         public AddresseDataPlus()
         {
-
-        }
-        #endregion
-        #region Constructeur
-        public AddresseDataPlus(int codeAdresse)
-        {
             ListeAdresse = new List<AdresseData>();
-            //context besoin
         }
         #endregion
+        
     }
 }

@@ -13,6 +13,15 @@ namespace VenteBouquin_DATA.Class_DATA
         public string Prenom { get; set; }
         public DateTime DateNaissance { get; set; }
         public List<AdresseData> ListeAdresse { get; set; }
+        #region MyRegion
+        public PersonneData() { }
+        #endregion
+        #region Constructeur
+        public PersonneData(int codePersonne)
+        {
+            //////////////////////////////////////////////
+        }
+        #endregion
     }
     internal class PersonneDatas
     {
@@ -20,15 +29,10 @@ namespace VenteBouquin_DATA.Class_DATA
         #region Constructeur par deffault
         public PersonneDatas()
         {
-
-        }
-        #endregion
-        #region Constructeur
-        public PersonneDatas(int codePersonne)
-        {
             ListePersonne = new List<PersonneData>();
             //besoin contexte
         }
         #endregion
+        
     }
 }

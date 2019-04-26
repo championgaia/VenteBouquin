@@ -55,7 +55,20 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         private RepoBOL repo = new RepoBOL();
         #region constructeur
         #region constructeur par deffaut
-        public CommandeModels() { }
+        public CommandeModels()
+        {
+            var lesCommande = repo.GetAllCommandeDTORepoData();
+            foreach (var leCommande in lesCommande)
+            {
+                LesCommandes.Add(new CommandeModel
+                {
+                    CodeCommandeM = leCommande.CodeCommandeDto,
+                    PrixTotalM = leCommande.PrixTotalDto,
+                    LePayeurM = new PayeurModel(leCommande.LePayeurDto.CodePayeurDto),
+                    LesLignesM = new LigneDeCommandeModels(leCommande.CodeCommandeDto).ListeLigneCommande
+                });
+            }
+        }
         #endregion
         #region constructeur par codePayeur
         public CommandeModels(int codePayeur)
@@ -67,7 +80,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
                 {
                     CodeCommandeM = leCommande.CodeCommandeDto,
                     PrixTotalM = leCommande.PrixTotalDto,
-                    LePayeurM = new PayeurModels(leCommande.LePayeurDto.CodePayeurDto).ListePayeur.FirstOrDefault(),
+                    LePayeurM = new PayeurModel(leCommande.LePayeurDto.CodePayeurDto),
                     LesLignesM = new LigneDeCommandeModels(leCommande.CodeCommandeDto).ListeLigneCommande
                 });
             }

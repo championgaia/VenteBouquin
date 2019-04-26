@@ -29,7 +29,7 @@ namespace VenteBouquin_DATA.Class_DATA
                                 .FirstOrDefault();
             CodeLigneCommande = laLigne.IdLigneDeCommande;
             Quantite = laLigne.Quantite;
-            LeLivre = new LivreDatas(laLigne.Livre.CodeISBN).ListeLivre.FirstOrDefault();
+            LeLivre = new LivreData(laLigne.Livre.CodeISBN);
         }
         #endregion
     }

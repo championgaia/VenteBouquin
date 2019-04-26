@@ -11,10 +11,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         public CommandeModel LaCommandeVM { get; set; }
         #region Constructeur
         #region constructeur par deffaut
-        public CreateCommandeViewModel()
-        {
-
-        }
+        public CreateCommandeViewModel() { }
         #endregion
         #region constructeur par mesCodeISBN, codePayer
         public CreateCommandeViewModel(List<string> mesCodeISBN, string codeUtilisateur)
@@ -32,8 +29,6 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
                 });
             }
         }
-
-
         #endregion
         #endregion
         #region CreateCommande

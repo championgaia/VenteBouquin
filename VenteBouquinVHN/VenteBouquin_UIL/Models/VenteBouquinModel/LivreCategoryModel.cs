@@ -16,6 +16,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
 
         }
         #endregion
+
     }
     public class LivreCategoryModels
     {
@@ -24,15 +25,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         #region Constructeur par deffault
         public LivreCategoryModels()
         {
-
-        }
-        #endregion
-        #region Constructeur
-        public LivreCategoryModels(int codeCategory)
-        {
             ListeCategoryM = new List<LivreCategoryModel>();
             //besoin repo
-            foreach (var item in repo.GetLivreCategoryDTOsRepoBol(codeCategory))
+            foreach (var item in repo.GetLivreCategoryDTOsRepoBol())
             {
                 ListeCategoryM.Add(new LivreCategoryModel
                 {

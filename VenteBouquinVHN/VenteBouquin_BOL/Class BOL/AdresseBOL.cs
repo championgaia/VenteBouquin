@@ -21,18 +21,18 @@ namespace VenteBouquin_BOL.Class_BOL
 
         }
         #endregion
+        #region Constructeur par codeAdresse
+        public AdresseBOL(int codeAdresse)
+        {
+            //////////////////////////////
+        }
+        #endregion
     }
     internal class AdresseBOLPlus
     {
         public List<AdresseBOL> ListeAdresse { get; set; }
         #region Constructeur par déffault
         public AdresseBOLPlus()
-        {
-
-        }
-        #endregion
-        #region Constructeur
-        public AdresseBOLPlus(int codeAdresse)
         {
             ListeAdresse = new List<AdresseBOL>();
             //context besoin

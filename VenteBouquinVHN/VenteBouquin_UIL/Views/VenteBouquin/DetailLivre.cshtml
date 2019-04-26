@@ -69,7 +69,7 @@
 </div>
 <p>
     <button id="btnAddPanier" class="btn-success" onclick="myFunction(Model.LivreVM.CodeISBNM);">Ajouter au panier</button>|
-    @Html.ActionLink("Ajouter au panier", "AddPanier", new { mesCodeISBN = Model.LivreVM.CodeISBNM })|
+    @Html.ActionLink("Voir panier", "AddPanier", new { mesCodeISBN = Model.LivreVM.CodeISBNM, codeUtilisateur = User.Identity.Name })|
     @Html.ActionLink("Back to List", "Index")
 </p>
 <script>

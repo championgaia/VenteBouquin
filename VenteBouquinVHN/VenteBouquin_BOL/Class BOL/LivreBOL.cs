@@ -50,13 +50,38 @@ namespace VenteBouquin_BOL.Class_BOL
         public List<LivreBOL> ListeLivre { get; set; }
         private RepoData repo = new RepoData();
         #region Constructeur par deffault
-        public LivreBOLs() { }
+        public LivreBOLs()
+        {
+            ListeLivre = new List<LivreBOL>();
+            foreach (var item in repo.GetAllLivreDTORepoData())
+            {
+                ListeLivre.Add(new LivreBOL
+                {
+                    CodeISBN = item.CodeISBNDto,
+                    NomLivre = item.NomLivreDto,
+                    Auteur = item.AuteurDto,
+                    Editeur = item.EditeurDto,
+                    CoverImage = item.CoverImageDto,
+                    Prix = item.PrixDto,
+                    Description = new DescriptionBOL
+                    {
+                        CodeDescription = item.DescriptionDto.CodeDescriptionDto,
+                        CodeISBN = item.DescriptionDto.CodeISBNDto,
+                        Detail = item.DescriptionDto.DetailDto
+                    },
+                    LaCategory = new LivreCategoryBOL
+                    {
+                        CodeCategory = item.LaCategoryDto.CodeCategoryDto,
+                        NomCategory = item.LaCategoryDto.NomCategoryDto
+                    }
+                });
+            }
+        }
         #endregion
         #region Constructeur par codeCategory
         public LivreBOLs(int codeCategory)
         {
             ListeLivre = new List<LivreBOL>();
-            //besoin repo
             foreach (var item in repo.GetLivreParCategoryDTORepoData(codeCategory))
             {
                 ListeLivre.Add(new LivreBOL
@@ -78,7 +103,6 @@ namespace VenteBouquin_BOL.Class_BOL
                         CodeCategory = item.LaCategoryDto.CodeCategoryDto,
                         NomCategory = item.LaCategoryDto.NomCategoryDto
                     }
-
                 });
             }
         }

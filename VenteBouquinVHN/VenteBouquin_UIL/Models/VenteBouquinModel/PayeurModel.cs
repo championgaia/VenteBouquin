@@ -22,11 +22,34 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         #region Constructeur par codeUtilisateur
         public PayeurModel(string codeUtilisateur)
         {
-            CodeUtilisateurM = codeUtilisateur;
+            var payeur = repo.GetPayeurDTORepoBol(codeUtilisateur);
+            CodePayeurM = payeur.CodePayeurDto;
+            CodeUtilisateurM = payeur.CodeUtilisateurDto;
+            PersonneM = new PersonneModel
+            {
+                CodePersonneM = payeur.PersonneDto.CodePersonneDto,
+                NomM = payeur.PersonneDto.NomDto,
+                PrenomM = payeur.PersonneDto.PrenomDto,
+                DateNaissanceM = payeur.PersonneDto.DateNaissanceDto
+            };
+        }
+        #endregion
+        #region Constructeur par codePayeur
+        public PayeurModel(int codePayeur)
+        {
+            var payeur = repo.GetPayeurDTORepoBol(codePayeur);
+            CodePayeurM = payeur.CodePayeurDto;
+            CodeUtilisateurM = payeur.CodeUtilisateurDto;
+            PersonneM = new PersonneModel
+            {
+                CodePersonneM = payeur.PersonneDto.CodePersonneDto,
+                NomM = payeur.PersonneDto.NomDto,
+                PrenomM = payeur.PersonneDto.PrenomDto,
+                DateNaissanceM = payeur.PersonneDto.DateNaissanceDto
+            };
         }
         #endregion
         #region CreatePayeurModel
-
         public void CreatePayeurModel(PayeurModel payeurM)
         {
             var payeurDto = new PayeurDTO()
@@ -52,15 +75,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         #region Constructeur par deffault
         public PayeurModels()
         {
-
-        }
-        #endregion
-        #region Constructeur par codePayeur
-        public PayeurModels(int codePayeur)
-        {
             ListePayeur = new List<PayeurModel>();
             //besoin repodata
-            foreach (var item in repo.GetPayeurDTORepoBol(codePayeur))
+            foreach (var item in repo.GetAllPayeurDTORepoData())
             {
                 ListePayeur.Add(new PayeurModel
                 {
@@ -77,5 +94,6 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             }
         }
         #endregion
+        
     }
 }

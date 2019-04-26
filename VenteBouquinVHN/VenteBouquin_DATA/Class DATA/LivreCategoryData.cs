@@ -10,10 +10,24 @@ namespace VenteBouquin_DATA.Class_DATA
     {
         public int CodeCategory { get; set; }
         public string NomCategory { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur par défault
         public LivreCategoryData()
         {
 
+        }
+        #endregion
+        #region Constructeur par codeCategory
+        public LivreCategoryData(int codeCategory)
+        {
+            var category = context.LivreCategories
+                        .Select(c => c)
+                        .Distinct()
+                        .Where(c => c.IdCategory == codeCategory || codeCategory == 0)
+                        .OrderBy(c => c.NomCategory)
+                        .ToList().FirstOrDefault();
+            CodeCategory = category.IdCategory;
+            NomCategory = category.NomCategory;
         }
         #endregion
     }
@@ -24,28 +38,19 @@ namespace VenteBouquin_DATA.Class_DATA
         #region Constructeur par deffault
         public LivreCategoryDatas()
         {
-
-        }
-        #endregion
-        #region Constructeur
-        public LivreCategoryDatas(int codeCategory)
-        {
             ListeCategory = new List<LivreCategoryData>();
-            //besoin contexte
-            var liste = context.LivreCategories
-                        .Select(c => c)
-                        .Distinct()
-                        .Where(c=> c.IdCategory == codeCategory || codeCategory == 0)
+            foreach (var item in context.LivreCategories
                         .OrderBy(c => c.NomCategory)
-                        .ToList();
-            foreach (var item in liste)
+                        .ToList())
             {
-                ListeCategory.Add(new LivreCategoryData {
+                ListeCategory.Add(new LivreCategoryData
+                {
                     CodeCategory = item.IdCategory,
                     NomCategory = item.NomCategory
                 });
             }
         }
         #endregion
+
     }
 }

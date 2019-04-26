@@ -12,13 +12,13 @@ namespace VenteBouquin_UIL.Views.Intranet
         #region constructeur par déffaut
         public ListePayeurViewModel()
         {
-
+            ListePayeurVM = new PayeurModels().ListePayeur;
         }
         #endregion
         #region constructeur par codePayeur
         public ListePayeurViewModel(int codePayeur)
         {
-            ListePayeurVM = new PayeurModels(codePayeur).ListePayeur;
+            ListePayeurVM.Add(new PayeurModel(codePayeur));
         }
         #endregion
     }

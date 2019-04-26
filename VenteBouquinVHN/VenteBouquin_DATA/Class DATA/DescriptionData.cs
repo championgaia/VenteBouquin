@@ -11,6 +11,15 @@ namespace VenteBouquin_DATA.Class_DATA
         public int CodeDescription { get; set; }
         public string CodeISBN { get; set; }
         public string Detail { get; set; }
+        #region  Constructeur par deffault
+        public DescriptionData() { }
+        #endregion
+        #region Constructeur par codeDescription
+        public DescriptionData(int codeDescription)
+        {
+            //besoin contexte
+        }
+        #endregion
     }
     internal class DescriptionDatas
     {
@@ -19,13 +28,6 @@ namespace VenteBouquin_DATA.Class_DATA
         public DescriptionDatas()
         {
 
-        }
-        #endregion
-        #region Constructeur
-        public DescriptionDatas(int codeDescription)
-        {
-            ListeDescription = new List<DescriptionData>();
-            //besoin contexte
         }
         #endregion
     }

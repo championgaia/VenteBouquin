@@ -64,7 +64,7 @@
 </div>
 <script>
     function validerPanier() {
-        location.href = '@Url.Action("CreateCommande", "VenteBouquin")';
+        location.href = '@Url.Action("CreateCommande", "VenteBouquin", new { mesCodeISBN = Model.MonChoixLivreVM.FirstOrDefault().CodeISBNM })';
     }
     function annulerPanier() {
         location.href = '@Url.Action("Index", "VenteBouquin")';

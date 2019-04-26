@@ -14,10 +14,11 @@ namespace VenteBouquin_DATA
         private LivreDatas livres;
         private PayeurDatas payeurs;
         #region GetLivreCategoryDTOsRepoData
-        public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoData(int codeCategory)
+        #region GetLivreCategoryDTOsRepoData all category
+        public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoData()
         {
             List<LivreCategoryDTO> livreCategoryDTOs = new List<LivreCategoryDTO>();
-            livreCategoryDatas = new LivreCategoryDatas(codeCategory);
+            livreCategoryDatas = new LivreCategoryDatas();
             foreach (var item in livreCategoryDatas.ListeCategory)
             {
                 livreCategoryDTOs.Add(new LivreCategoryDTO
@@ -28,7 +29,52 @@ namespace VenteBouquin_DATA
             }
             return livreCategoryDTOs;
         }
+        #endregion
+        #region GetLivreCategoryDTOsRepoData par codeCategory
+        public LivreCategoryDTO GetLivreCategoryDTOsRepoData(int codeCategory)
+        {
+            var livreCategoryData = new LivreCategoryData(codeCategory);
+            LivreCategoryDTO livreCategoryDTO = new LivreCategoryDTO
+            {
 
+                CodeCategoryDto = livreCategoryData.CodeCategory,
+                NomCategoryDto = livreCategoryData.NomCategory
+            };
+            return livreCategoryDTO;
+        }
+        #endregion
+        #endregion
+        #region Livre repoData
+        #region GetAllLivreDTORepoData
+        public List<LivreDTO> GetAllLivreDTORepoData()
+        {
+            var listeLivreDTO = new List<LivreDTO>();
+            livres = new LivreDatas();
+            foreach (var item in livres.ListeLivre)
+            {
+                listeLivreDTO.Add(new LivreDTO
+                {
+                    CodeISBNDto = item.CodeISBN,
+                    NomLivreDto = item.NomLivre,
+                    AuteurDto = item.Auteur,
+                    EditeurDto = item.Editeur,
+                    CoverImageDto = item.CoverImage,
+                    PrixDto = item.Prix,
+                    DescriptionDto = new DescriptionDTO
+                    {
+                        CodeDescriptionDto = item.Description.CodeDescription,
+                        CodeISBNDto = item.Description.CodeISBN,
+                        DetailDto = item.Description.Detail
+                    },
+                    LaCategoryDto = new LivreCategoryDTO
+                    {
+                        CodeCategoryDto = item.LaCategory.CodeCategory,
+                        NomCategoryDto = item.LaCategory.NomCategory
+                    }
+                });
+            }
+            return listeLivreDTO;
+        }
         #endregion
         #region GetLivreParCategoryDTORepoData
         public List<LivreDTO> GetLivreParCategoryDTORepoData(int codeCategory)
@@ -64,7 +110,7 @@ namespace VenteBouquin_DATA
         #region GetLivreParCodeISBNDTORepoData
         public LivreDTO GetLivreParCodeISBNDTORepoData(string codeISBN)
         {
-            var livre = new LivreDatas(codeISBN).ListeLivre.FirstOrDefault();
+            var livre = new LivreData(codeISBN);
             var livreDTO = new LivreDTO
             {
                 CodeISBNDto = livre.CodeISBN,
@@ -87,11 +133,55 @@ namespace VenteBouquin_DATA
             return livreDTO;
         }
         #endregion
+        #endregion
+        #region Payeur
         #region GetPayeurDTORepoData
-        public List<PayeurDTO> GetPayeurDTORepoData(int codePayeur)
+        public PayeurDTO GetPayeurDTORepoData(int codePayeur)
+        {
+            var payeur = new PayeurData(codePayeur);
+            PayeurDTO payeurDto = new PayeurDTO
+            {
+                CodePayeurDto = payeur.CodePayeur,
+                CodeUtilisateurDto = payeur.CodeUtilisateur,
+                PersonneDto = new PersonneDTO
+                {
+                    CodePersonneDto = payeur.Personne.CodePersonne,
+                    NomDto = payeur.Personne.Nom,
+                    PrenomDto = payeur.Personne.Prenom,
+                    DateNaissanceDto = payeur.Personne.DateNaissance
+                }
+            };
+
+            //manque liste d'adresse
+            return payeurDto;
+        }
+        #endregion
+        #region GetPayeurDTORepoData
+        public PayeurDTO GetPayeurDTORepoData(string codeUtilisateur)
+        {
+
+            var payeur = new PayeurData(codeUtilisateur);
+            PayeurDTO payeurDto = new PayeurDTO
+            {
+                CodePayeurDto = payeur.CodePayeur,
+                CodeUtilisateurDto = payeur.CodeUtilisateur,
+                PersonneDto = new PersonneDTO
+                {
+                    CodePersonneDto = payeur.Personne.CodePersonne,
+                    NomDto = payeur.Personne.Nom,
+                    PrenomDto = payeur.Personne.Prenom,
+                    DateNaissanceDto = payeur.Personne.DateNaissance
+                }
+            };
+            //manque liste d'adresse
+            return payeurDto;
+        }
+        #endregion
+        #region GetAllPayeurDTORepoData
+        public List<PayeurDTO> GetAllPayeurDTORepoData()
         {
             List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
-            payeurs = new PayeurDatas(codePayeur);
+            payeurs = new PayeurDatas();
             foreach (var item in payeurs.ListePayeur)
             {
                 monListePayeurDto.Add(new PayeurDTO()
@@ -108,7 +198,7 @@ namespace VenteBouquin_DATA
                 });
             }
             //manque liste d'adresse
-            return null;
+            return monListePayeurDto;
         }
         #endregion
         #region CreatePayeurRepoData
@@ -129,6 +219,8 @@ namespace VenteBouquin_DATA
             payeurdata.CreatePayeurData(payeurdata);
         }
         #endregion
+        #endregion
+
         #region GetCommandeDTORepoData
         #region GetCommandeDTORepoData par codeCommande
         public CommandeDTO GetCommandeDTORepoData(int codeCommande)
@@ -181,6 +273,33 @@ namespace VenteBouquin_DATA
         {
             List<CommandeDTO> maListe = new List<CommandeDTO>();
             foreach (var commande in new CommandeDatas(codePayeur).LesCommandes)
+            {
+                maListe.Add(new CommandeDTO
+                {
+                    CodeCommandeDto = commande.CodeCommande,
+                    PrixTotalDto = commande.PrixTotal,
+                    LePayeurDto = new PayeurDTO
+                    {
+                        CodePayeurDto = commande.LePayeur.CodePayeur,
+                        CodeUtilisateurDto = commande.LePayeur.CodeUtilisateur,
+                        PersonneDto = new PersonneDTO
+                        {
+                            CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
+                            NomDto = commande.LePayeur.Personne.Nom,
+                            PrenomDto = commande.LePayeur.Personne.Prenom,
+                            DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
+                        }
+                    }
+                });
+            }
+            return maListe;
+        }
+        #endregion
+        #region GetAllCommandeDTORepoData
+        public List<CommandeDTO> GetAllCommandeDTORepoData()
+        {
+            List<CommandeDTO> maListe = new List<CommandeDTO>();
+            foreach (var commande in new CommandeDatas().LesCommandes)
             {
                 maListe.Add(new CommandeDTO
                 {

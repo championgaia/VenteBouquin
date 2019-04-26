@@ -13,6 +13,15 @@ namespace VenteBouquin_BOL.Class_BOL
         public string Prenom { get; set; }
         public DateTime DateNaissance { get; set; }
         public List<AdresseBOL> ListeAdresse { get; set; }
+        #region Constructeur par deffault
+        public PersonneBOL() { }
+        #endregion
+        #region Constructeur
+        public PersonneBOL(int codePersonne)
+        {
+            /////////////////////////////
+        }
+        #endregion
     }
     internal class PersonneBOLs
     {
@@ -20,14 +29,8 @@ namespace VenteBouquin_BOL.Class_BOL
         #region Constructeur par deffault
         public PersonneBOLs()
         {
-
-        }
-        #endregion
-        #region Constructeur
-        public PersonneBOLs(int codePersonne)
-        {
             ListePersonne = new List<PersonneBOL>();
-            //besoin contexte
+            //besoin repo
         }
         #endregion
     }

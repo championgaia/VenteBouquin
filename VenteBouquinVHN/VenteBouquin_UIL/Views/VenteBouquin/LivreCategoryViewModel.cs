@@ -12,13 +12,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         #region constructeur par défault
         public LivreCategoryViewModel()
         {
-            
-        }
-        #endregion
-        #region constructeur
-        public LivreCategoryViewModel(int codeCategory)
-        {
-            LivreCategoryModels livreCategoryModels = new LivreCategoryModels(codeCategory);
+            LivreCategoryModels livreCategoryModels = new LivreCategoryModels();
             LivreCategoryVM = new List<LivreCategoryModel>();
             LivreCategoryVM = livreCategoryModels.ListeCategoryM;
         }

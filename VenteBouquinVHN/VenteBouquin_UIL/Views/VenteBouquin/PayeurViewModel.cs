@@ -18,7 +18,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         #region constructeur par codePayeur
         public PayeurViewModel(int codePayeur)
         {
-            PayeurVM = new PayeurModels(codePayeur).ListePayeur.FirstOrDefault();
+            PayeurVM = new PayeurModel(codePayeur);
         }
         #endregion
         #region constructeur par codeUtilisateur

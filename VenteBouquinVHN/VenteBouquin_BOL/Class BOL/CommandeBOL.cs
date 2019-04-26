@@ -56,7 +56,20 @@ namespace VenteBouquin_BOL.Class_BOL
         private RepoData repo = new RepoData();
         #region constructeur
         #region constructeur par deffaut
-        public CommandeBOLs() {}
+        public CommandeBOLs()
+        {
+            var lesCommande = repo.GetAllCommandeDTORepoData();
+            foreach (var leCommande in lesCommande)
+            {
+                LesCommandes.Add(new CommandeBOL
+                {
+                    CodeCommande = leCommande.CodeCommandeDto,
+                    PrixTotal = leCommande.PrixTotalDto,
+                    LePayeur = new PayeurBOL(leCommande.LePayeurDto.CodePayeurDto),
+                    LesLignes = new LigneDeCommandeBOLs(leCommande.CodeCommandeDto).ListeLigneCommande
+                });
+            }
+        }
         #endregion
         #region constructeur par codePayeur
         public CommandeBOLs(int codePayeur)
@@ -68,7 +81,7 @@ namespace VenteBouquin_BOL.Class_BOL
                 {
                     CodeCommande = leCommande.CodeCommandeDto,
                     PrixTotal = leCommande.PrixTotalDto,
-                    LePayeur = new PayeurBOLs(leCommande.LePayeurDto.CodePayeurDto).ListePayeur.FirstOrDefault(),
+                    LePayeur = new PayeurBOL(leCommande.LePayeurDto.CodePayeurDto),
                     LesLignes = new LigneDeCommandeBOLs(leCommande.CodeCommandeDto).ListeLigneCommande
                 });
             }

@@ -14,6 +14,39 @@ namespace VenteBouquin_BOL.Class_BOL
         public string CodeUtilisateur { get; set; }
         public PersonneBOL Personne { get; set; }
         private RepoData repo = new RepoData();
+        #region Constructeur par deffault
+        public PayeurBOL() { }
+        #endregion
+        #region Constructeur par codePayeur
+        public PayeurBOL(int codePayeur)
+        {
+            var payeur = repo.GetPayeurDTORepoData(codePayeur);
+            CodePayeur = payeur.CodePayeurDto;
+            CodeUtilisateur = payeur.CodeUtilisateurDto;
+            Personne = new PersonneBOL
+            {
+                CodePersonne = payeur.PersonneDto.CodePersonneDto,
+                Nom = payeur.PersonneDto.NomDto,
+                Prenom = payeur.PersonneDto.PrenomDto,
+                DateNaissance = payeur.PersonneDto.DateNaissanceDto,
+            };
+        }
+        #endregion
+        #region Constructeur par codeUtilisateur
+        public PayeurBOL(string codeUtilisateur)
+        {
+            var payeur = repo.GetPayeurDTORepoData(codeUtilisateur);
+            CodePayeur = payeur.CodePayeurDto;
+            CodeUtilisateur = payeur.CodeUtilisateurDto;
+            Personne = new PersonneBOL
+            {
+                CodePersonne = payeur.PersonneDto.CodePersonneDto,
+                Nom = payeur.PersonneDto.NomDto,
+                Prenom = payeur.PersonneDto.PrenomDto,
+                DateNaissance = payeur.PersonneDto.DateNaissanceDto,
+            };
+        }
+        #endregion
         #region CreatePayeurRepoBol
         public void CreatePayeurBol(PayeurBOL payeurBol)
         {
@@ -40,15 +73,9 @@ namespace VenteBouquin_BOL.Class_BOL
         #region Constructeur par deffault
         public PayeurBOLs()
         {
-
-        }
-        #endregion
-        #region Constructeur par codePayeur
-        public PayeurBOLs(int codePayeur)
-        {
             ListePayeur = new List<PayeurBOL>();
             //besoin repodata
-            foreach (var item in repo.GetPayeurDTORepoData(codePayeur))
+            foreach (var item in repo.GetAllPayeurDTORepoData())
             {
                 ListePayeur.Add(new PayeurBOL
                 {

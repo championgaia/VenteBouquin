@@ -51,7 +51,32 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         #region Constructeur par deffault
         public LivreModels()
         {
+            ListeLivreM = new List<LivreModel>();
+            //besoin repo
+            foreach (var item in repo.GetAllLivreDTORepoData())
+            {
+                ListeLivreM.Add(new LivreModel
+                {
+                    CodeISBNM = item.CodeISBNDto,
+                    NomLivreM = item.NomLivreDto,
+                    AuteurM = item.AuteurDto,
+                    EditeurM = item.EditeurDto,
+                    CoverImageM = item.CoverImageDto,
+                    PrixM = item.PrixDto,
+                    DescriptionM = new DescriptionModel
+                    {
+                        CodeDescriptionM = item.DescriptionDto.CodeDescriptionDto,
+                        CodeISBNM = item.DescriptionDto.CodeISBNDto,
+                        DetailM = item.DescriptionDto.DetailDto
+                    },
+                    LaCategoryM = new LivreCategoryModel
+                    {
+                        CodeCategoryM = item.LaCategoryDto.CodeCategoryDto,
+                        NomCategoryM = item.LaCategoryDto.NomCategoryDto
+                    }
 
+                });
+            }
         }
         #endregion
         #region Constructeur par codeCategory

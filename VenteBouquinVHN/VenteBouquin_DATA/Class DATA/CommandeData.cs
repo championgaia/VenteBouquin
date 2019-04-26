@@ -26,7 +26,7 @@ namespace VenteBouquin_DATA.Class_DATA
                                 .FirstOrDefault();
             CodeCommande = leCommande.IdCommande;
             PrixTotal = (double)leCommande.PrixTotal;
-            LePayeur = new PayeurDatas(leCommande.FkUtilisateur).ListePayeur.FirstOrDefault();
+            LePayeur = new PayeurData(leCommande.FkUtilisateur);
             LesLignes =  new List<LigneDeCommandeData>();
             foreach (var item in context.LigneDeCommandes
                                 .Where(c => c.FkCommande == codeCommande)
@@ -58,7 +58,7 @@ namespace VenteBouquin_DATA.Class_DATA
                 {
                     CodeCommande = leCommande.IdCommande,
                     PrixTotal = (double)leCommande.PrixTotal,
-                    LePayeur = new PayeurDatas(leCommande.FkUtilisateur).ListePayeur.FirstOrDefault(),
+                    LePayeur = new PayeurData(leCommande.FkUtilisateur),
                     LesLignes = new LigneDeCommandeDatas(leCommande.IdCommande).ListeLigneCommande
                 });
             }
