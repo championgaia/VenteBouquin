@@ -37,7 +37,8 @@ namespace VenteBouquin_DATA
             livres = new LivreDatas(codeCategory);
             foreach (var item in livres.ListeLivre)
             {
-                listeLivreDTO.Add(new LivreDTO {
+                listeLivreDTO.Add(new LivreDTO
+                {
                     CodeISBNDto = item.CodeISBN,
                     NomLivreDto = item.NomLivre,
                     AuteurDto = item.Auteur,
@@ -61,33 +62,29 @@ namespace VenteBouquin_DATA
         }
         #endregion
         #region GetLivreParCodeISBNDTORepoData
-        public List<LivreDTO> GetLivreParCodeISBNDTORepoData(string codeISBN)
+        public LivreDTO GetLivreParCodeISBNDTORepoData(string codeISBN)
         {
-            var listeLivreDTO = new List<LivreDTO>();
-            livres = new LivreDatas(codeISBN);
-            foreach (var item in livres.ListeLivre)
+            var livre = new LivreDatas(codeISBN).ListeLivre.FirstOrDefault();
+            var livreDTO = new LivreDTO
             {
-                listeLivreDTO.Add(new LivreDTO
+                CodeISBNDto = livre.CodeISBN,
+                NomLivreDto = livre.NomLivre,
+                AuteurDto = livre.Auteur,
+                EditeurDto = livre.Editeur,
+                PrixDto = livre.Prix,
+                DescriptionDto = new DescriptionDTO
                 {
-                    CodeISBNDto = item.CodeISBN,
-                    NomLivreDto = item.NomLivre,
-                    AuteurDto = item.Auteur,
-                    EditeurDto = item.Editeur,
-                    PrixDto = item.Prix,
-                    DescriptionDto = new DescriptionDTO
-                    {
-                        CodeDescriptionDto = item.Description.CodeDescription,
-                        CodeISBNDto = item.Description.CodeISBN,
-                        DetailDto = item.Description.Detail
-                    },
-                    LaCategoryDto = new LivreCategoryDTO
-                    {
-                        CodeCategoryDto = item.LaCategory.CodeCategory,
-                        NomCategoryDto = item.LaCategory.NomCategory
-                    }
-                });
-            }
-            return listeLivreDTO;
+                    CodeDescriptionDto = livre.Description.CodeDescription,
+                    CodeISBNDto = livre.Description.CodeISBN,
+                    DetailDto = livre.Description.Detail
+                },
+                LaCategoryDto = new LivreCategoryDTO
+                {
+                    CodeCategoryDto = livre.LaCategory.CodeCategory,
+                    NomCategoryDto = livre.LaCategory.NomCategory
+                }
+            };
+            return livreDTO;
         }
         #endregion
         #region GetPayeurDTORepoData
@@ -147,10 +144,10 @@ namespace VenteBouquin_DATA
                     CodeUtilisateurDto = commande.LePayeur.CodeUtilisateur,
                     PersonneDto = new PersonneDTO
                     {
-                       CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
-                       NomDto = commande.LePayeur.Personne.Nom,
-                       PrenomDto = commande.LePayeur.Personne.Prenom,
-                       DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
+                        CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
+                        NomDto = commande.LePayeur.Personne.Nom,
+                        PrenomDto = commande.LePayeur.Personne.Prenom,
+                        DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
                     }
                 }
             };
@@ -159,7 +156,21 @@ namespace VenteBouquin_DATA
                 commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
                 {
                     CodeLigneCommandeDto = ligneCommande.CodeLigneCommande,
-                    QuantiteDto = ligneCommande.Quantite
+                    QuantiteDto = ligneCommande.Quantite,
+                    LeLivreDto = new LivreDTO
+                    {
+                        CodeISBNDto = ligneCommande.LeLivre.CodeISBN,
+                        NomLivreDto = ligneCommande.LeLivre.NomLivre,
+                        AuteurDto = ligneCommande.LeLivre.Auteur,
+                        EditeurDto = ligneCommande.LeLivre.Editeur,
+                        PrixDto = ligneCommande.LeLivre.Prix,
+                        DescriptionDto = new DescriptionDTO
+                        {
+                            CodeDescriptionDto = ligneCommande.LeLivre.Description.CodeDescription,
+                            CodeISBNDto = ligneCommande.LeLivre.Description.CodeISBN,
+                            DetailDto = ligneCommande.LeLivre.Description.Detail
+                        }
+                    }
                 });
             }
             return commandeDto;

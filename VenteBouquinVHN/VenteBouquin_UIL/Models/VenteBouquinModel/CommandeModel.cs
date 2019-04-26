@@ -41,7 +41,8 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
                 LesLignesM.Add(new LigneDeCommandeModel
                 {
                     CodeLigneCommandeM = ligneCommande.CodeLigneCommandeDto,
-                    QuantiteM = ligneCommande.QuantiteDto
+                    QuantiteM = ligneCommande.QuantiteDto,
+                    LeLivreM = new LivreModel(ligneCommande.LeLivreDto.CodeISBNDto)
                 });
             }
         }

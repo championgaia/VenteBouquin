@@ -61,33 +61,29 @@ namespace VenteBouquin_BOL
         }
         #endregion
         #region GetLivreParCodeISBNDTORepoBol
-        public List<LivreDTO> GetLivreParCodeISBNDTORepoBol(string codeISBN)
+        public LivreDTO GetLivreParCodeISBNDTORepoBol(string codeISBN)
         {
-            var listeLivreDTO = new List<LivreDTO>();
-            livres = new LivreBOLs(codeISBN);
-            foreach (var item in livres.ListeLivre)
+            var livre = new LivreBOL(codeISBN);
+            var LivreDTO = new LivreDTO
             {
-                listeLivreDTO.Add(new LivreDTO
+                CodeISBNDto = livre.CodeISBN,
+                NomLivreDto = livre.NomLivre,
+                AuteurDto = livre.Auteur,
+                EditeurDto = livre.Editeur,
+                PrixDto = livre.Prix,
+                DescriptionDto = new DescriptionDTO
                 {
-                    CodeISBNDto = item.CodeISBN,
-                    NomLivreDto = item.NomLivre,
-                    AuteurDto = item.Auteur,
-                    EditeurDto = item.Editeur,
-                    PrixDto = item.Prix,
-                    DescriptionDto = new DescriptionDTO
-                    {
-                        CodeDescriptionDto = item.Description.CodeDescription,
-                        CodeISBNDto = item.Description.CodeISBN,
-                        DetailDto = item.Description.Detail
-                    },
-                    LaCategoryDto = new LivreCategoryDTO
-                    {
-                        CodeCategoryDto = item.LaCategory.CodeCategory,
-                        NomCategoryDto = item.LaCategory.NomCategory
-                    }
-                });
-            }
-            return listeLivreDTO;
+                    CodeDescriptionDto = livre.Description.CodeDescription,
+                    CodeISBNDto = livre.Description.CodeISBN,
+                    DetailDto = livre.Description.Detail
+                },
+                LaCategoryDto = new LivreCategoryDTO
+                {
+                    CodeCategoryDto = livre.LaCategory.CodeCategory,
+                    NomCategoryDto = livre.LaCategory.NomCategory
+                }
+            };
+            return LivreDTO;
         }
         #endregion
         #region GetPayeurDTORepoBol
@@ -159,7 +155,21 @@ namespace VenteBouquin_BOL
                 commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
                 {
                     CodeLigneCommandeDto = ligneCommande.CodeLigneCommande,
-                    QuantiteDto = ligneCommande.Quantite
+                    QuantiteDto = ligneCommande.Quantite,
+                    LeLivreDto = new LivreDTO
+                    {
+                        CodeISBNDto = ligneCommande.LeLivre.CodeISBN,
+                        NomLivreDto = ligneCommande.LeLivre.NomLivre,
+                        AuteurDto = ligneCommande.LeLivre.Auteur,
+                        EditeurDto = ligneCommande.LeLivre.Editeur,
+                        PrixDto = ligneCommande.LeLivre.Prix,
+                        DescriptionDto = new DescriptionDTO
+                        {
+                            CodeDescriptionDto = ligneCommande.LeLivre.Description.CodeDescription,
+                            CodeISBNDto = ligneCommande.LeLivre.Description.CodeISBN,
+                            DetailDto = ligneCommande.LeLivre.Description.Detail
+                        }
+                    }
                 });
             }
             return commandeDto;

@@ -18,8 +18,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         #region constructeur par codeISBN
         public LivreViewModel(string codeISBN)
         {
-            LivreVM = new LivreModel();
-            LivreVM = new LivreModels(codeISBN).ListeLivreM.FirstOrDefault();
+            LivreVM = new LivreModel(codeISBN);
         }
         #endregion
     }

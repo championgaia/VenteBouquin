@@ -27,7 +27,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
                MonChoixLivreVM = new List<LivreModel>();
             foreach (var codeISBN in mesCodeISBN)
             {
-                MonChoixLivreVM.Add(new LivreModels(codeISBN).ListeLivreM.FirstOrDefault());
+                MonChoixLivreVM.Add(new LivreModel(codeISBN));
             }
         }
         #endregion

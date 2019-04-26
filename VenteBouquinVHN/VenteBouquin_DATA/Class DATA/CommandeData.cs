@@ -32,11 +32,7 @@ namespace VenteBouquin_DATA.Class_DATA
                                 .Where(c => c.FkCommande == codeCommande)
                                 .ToList())
             {
-                LesLignes.Add(new LigneDeCommandeData
-                {
-                    CodeLigneCommande = item.IdLigneDeCommande,
-                    Quantite = item.Quantite
-                });
+                LesLignes.Add(new LigneDeCommandeData(item.IdLigneDeCommande));
             }
         }
         #endregion

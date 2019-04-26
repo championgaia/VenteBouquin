@@ -42,7 +42,7 @@ namespace VenteBouquin_UIL.Controllers
         public ActionResult CreatePayeur(PayeurViewModel payeurVM)
         {
             payeurVM.CreatePayeurViewModel(payeurVM);
-            return RedirectToAction("GetPayeur", new { codePayeur = 0 });
+            return RedirectToAction("GetPayeur", new { codePayeur = 0 });//a modifier
         }
         #endregion
         #endregion
@@ -67,6 +67,14 @@ namespace VenteBouquin_UIL.Controllers
         {
             CreateCommandeViewModel commande = new CreateCommandeViewModel(mesCodeISBN, codePayer);
             return View(commande);
+        }
+        #endregion
+        #region CreateCommande
+        [HttpPost]
+        public ActionResult CreateCommande(CreateCommandeViewModel createCommande)
+        {
+            createCommande.CreateCommande(createCommande);
+            return RedirectToAction("Index");
         }
         #endregion
         #endregion

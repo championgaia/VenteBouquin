@@ -12,6 +12,7 @@ namespace VenteBouquin_BOL.Class_BOL
         public int CodeLigneCommande { get; set; }
         public int Quantite { get; set; }
         public CommandeBOL LaCommande { get; set; }
+        public LivreBOL LeLivre { get; set; }
         public PromotionBOL LaPromo { get; set; }
         #region constructeur par deffaut
         public LigneDeCommandeBOL() { }

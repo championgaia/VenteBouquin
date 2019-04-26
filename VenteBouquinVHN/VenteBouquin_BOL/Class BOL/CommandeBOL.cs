@@ -42,7 +42,8 @@ namespace VenteBouquin_BOL.Class_BOL
                 LesLignes.Add(new LigneDeCommandeBOL
                 {
                     CodeLigneCommande = ligneCommande.CodeLigneCommandeDto,
-                    Quantite = ligneCommande.QuantiteDto
+                    Quantite = ligneCommande.QuantiteDto,
+                    LeLivre = new LivreBOL(ligneCommande.LeLivreDto.CodeISBNDto)
                 });
             }
         }
