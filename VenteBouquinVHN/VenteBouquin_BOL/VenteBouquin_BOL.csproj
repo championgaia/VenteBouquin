@@ -42,11 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class BOL\AdresseBOL.cs" />
+    <Compile Include="Class BOL\CommandeBOL.cs" />
     <Compile Include="Class BOL\DescriptionBOL.cs" />
+    <Compile Include="Class BOL\LigneDeCommandeBOL.cs" />
     <Compile Include="Class BOL\LivreCategoryBOL.cs" />
     <Compile Include="Class BOL\LivreBOL.cs" />
     <Compile Include="Class BOL\PayeurBOL.cs" />
     <Compile Include="Class BOL\PersonneBOL.cs" />
+    <Compile Include="Class BOL\PromotionBOL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepoBOL.cs" />
   </ItemGroup>

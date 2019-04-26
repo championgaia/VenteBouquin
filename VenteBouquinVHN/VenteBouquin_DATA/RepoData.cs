@@ -154,6 +154,14 @@ namespace VenteBouquin_DATA
                     }
                 }
             };
+            foreach (var ligneCommande in commande.LesLignes)
+            {
+                commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
+                {
+                    CodeLigneCommandeDto = ligneCommande.CodeLigneCommande,
+                    QuantiteDto = ligneCommande.Quantite
+                });
+            }
             return commandeDto;
         }
         #endregion

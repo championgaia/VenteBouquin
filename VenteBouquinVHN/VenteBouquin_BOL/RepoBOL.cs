@@ -132,5 +132,66 @@ namespace VenteBouquin_BOL
             payeurBol.CreatePayeurBol(payeurBol);
         }
         #endregion
+        #region GetCommandeDTORepoBol
+        #region GetCommandeDTORepoBol par codeCommande
+        public CommandeDTO GetCommandeDTORepoBol(int codeCommande)
+        {
+            CommandeBOL commande = new CommandeBOL(codeCommande);
+            CommandeDTO commandeDto = new CommandeDTO
+            {
+                CodeCommandeDto = commande.CodeCommande,
+                PrixTotalDto = commande.PrixTotal,
+                LePayeurDto = new PayeurDTO
+                {
+                    CodePayeurDto = commande.LePayeur.CodePayeur,
+                    CodeUtilisateurDto = commande.LePayeur.CodeUtilisateur,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
+                        NomDto = commande.LePayeur.Personne.Nom,
+                        PrenomDto = commande.LePayeur.Personne.Prenom,
+                        DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
+                    }
+                }
+            };
+            foreach (var ligneCommande in commande.LesLignes)
+            {
+                commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
+                {
+                    CodeLigneCommandeDto = ligneCommande.CodeLigneCommande,
+                    QuantiteDto = ligneCommande.Quantite
+                });
+            }
+            return commandeDto;
+        }
+        #endregion
+        #region GetListCommandeDTORepoBol par codePayeur
+        public List<CommandeDTO> GetListCommandeDTORepoBol(int codePayeur)
+        {
+            List<CommandeDTO> maListe = new List<CommandeDTO>();
+            foreach (var commande in new CommandeBOLs(codePayeur).LesCommandes)
+            {
+                maListe.Add(new CommandeDTO
+                {
+                    CodeCommandeDto = commande.CodeCommande,
+                    PrixTotalDto = commande.PrixTotal,
+                    LePayeurDto = new PayeurDTO
+                    {
+                        CodePayeurDto = commande.LePayeur.CodePayeur,
+                        CodeUtilisateurDto = commande.LePayeur.CodeUtilisateur,
+                        PersonneDto = new PersonneDTO
+                        {
+                            CodePersonneDto = commande.LePayeur.Personne.CodePersonne,
+                            NomDto = commande.LePayeur.Personne.Nom,
+                            PrenomDto = commande.LePayeur.Personne.Prenom,
+                            DateNaissanceDto = commande.LePayeur.Personne.DateNaissance
+                        }
+                    }
+                });
+            }
+            return maListe;
+        }
+        #endregion
+        #endregion
     }
 }

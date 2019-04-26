@@ -34,29 +34,13 @@ namespace VenteBouquin_DATA.Class_DATA
     internal class LigneDeCommandeDatas
     {
         public List<LigneDeCommandeData> ListeLigneCommande { get; set; }
-        private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur par deffaut
-        public LigneDeCommandeDatas()
-        {
-
-        }
+        public LigneDeCommandeDatas() { }
         #endregion
         #region constructeur par codeCommande
         public LigneDeCommandeDatas(int codeCommande)
         {
-            ListeLigneCommande = new List<LigneDeCommandeData>();
-            var lesLigne = context.LigneDeCommandes
-                                .Where(c => c.FkCommande == codeCommande)
-                                .ToList();
-            foreach (var item in lesLigne)
-            {
-                ListeLigneCommande.Add(new LigneDeCommandeData
-                {
-                    CodeLigneCommande = item.IdLigneDeCommande,
-                    Quantite = item.Quantite,
-                    LaCommande = new CommandeData(item.FkCommande)
-                });
-            }
+            ListeLigneCommande = new CommandeData(codeCommande).LesLignes;
         }
         #endregion
     }

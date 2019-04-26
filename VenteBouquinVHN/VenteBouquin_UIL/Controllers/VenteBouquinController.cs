@@ -45,7 +45,6 @@ namespace VenteBouquin_UIL.Controllers
             return RedirectToAction("GetPayeur", new { codePayeur = 0 });
         }
         #endregion
-
         #endregion
         //#region Commande
         //public ActionResult AddPanier(string codeISBN)

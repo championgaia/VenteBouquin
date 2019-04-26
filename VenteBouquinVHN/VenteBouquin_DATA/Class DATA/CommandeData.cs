@@ -14,10 +14,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public List<LigneDeCommandeData> LesLignes { get; set; }
         #region constructeur
         #region constructeur par deffaut
-        public CommandeData()
-        {
-
-        }
+        public CommandeData() { }
         #endregion
         #region constructeur par codeCommande
         public CommandeData(int codeCommande)
@@ -30,7 +27,17 @@ namespace VenteBouquin_DATA.Class_DATA
             CodeCommande = leCommande.IdCommande;
             PrixTotal = (double)leCommande.PrixTotal;
             LePayeur = new PayeurDatas(leCommande.FkUtilisateur).ListePayeur.FirstOrDefault();
-            LesLignes = new LigneDeCommandeDatas(leCommande.IdCommande).ListeLigneCommande;
+            LesLignes =  new List<LigneDeCommandeData>();
+            foreach (var item in context.LigneDeCommandes
+                                .Where(c => c.FkCommande == codeCommande)
+                                .ToList())
+            {
+                LesLignes.Add(new LigneDeCommandeData
+                {
+                    CodeLigneCommande = item.IdLigneDeCommande,
+                    Quantite = item.Quantite
+                });
+            }
         }
         #endregion
         #endregion
@@ -41,15 +48,11 @@ namespace VenteBouquin_DATA.Class_DATA
         private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur
         #region constructeur par deffaut
-        public CommandeDatas()
-        {
-
-        }
+        public CommandeDatas() { }
         #endregion
         #region constructeur par codePayeur
         public CommandeDatas(int codePayeur)
         {
-
             var lesCommande = context.Commandes
                                 .Where(c => c.FkUtilisateur == codePayeur)
                                 .ToList();

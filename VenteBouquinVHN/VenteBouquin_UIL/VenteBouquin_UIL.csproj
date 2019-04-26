@@ -178,8 +178,11 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\VenteBouquinModel\CommandeModel.cs" />
+    <Compile Include="Models\VenteBouquinModel\PromotionModel.cs" />
     <Compile Include="Models\VenteBouquinModel\AdresseModel.cs" />
     <Compile Include="Models\VenteBouquinModel\DescriptionModel.cs" />
+    <Compile Include="Models\VenteBouquinModel\LigneDeCommandeModel.cs" />
     <Compile Include="Models\VenteBouquinModel\PayeurModel.cs" />
     <Compile Include="Models\VenteBouquinModel\PersonneModel.cs" />
     <Compile Include="Views\VenteBouquin\CreateCommandeViewModel.cs" />
