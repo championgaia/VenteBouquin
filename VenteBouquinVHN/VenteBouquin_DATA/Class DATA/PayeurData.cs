@@ -11,6 +11,9 @@ namespace VenteBouquin_DATA.Class_DATA
     {
         public int CodePayeur { get; set; } //idPayeur
         public string CodeUtilisateur { get; set; } //string utilisateur dans la bdd local
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
         public PersonneData Personne { get; set; }
         private VenteBouquinContext context = new VenteBouquinContext();
         #region Constructeur par deffault
@@ -26,6 +29,9 @@ namespace VenteBouquin_DATA.Class_DATA
             {
                 CodePayeur = payeur.IdUtilisateur;
                 CodeUtilisateur = payeur.CodeUtilisateur;
+                Login = payeur.Login;
+                Password = payeur.Password;
+                Role = payeur.Role;
                 Personne = new PersonneData
                 {
                     CodePersonne = payeur.Personne.IdPersonne,
@@ -47,6 +53,9 @@ namespace VenteBouquin_DATA.Class_DATA
             {
                 CodePayeur = payeur.IdUtilisateur;
                 CodeUtilisateur = payeur.CodeUtilisateur;
+                Login = payeur.Login;
+                Password = payeur.Password;
+                Role = payeur.Role;
                 Personne = new PersonneData
                 {
                     CodePersonne = payeur.Personne.IdPersonne,
@@ -61,9 +70,7 @@ namespace VenteBouquin_DATA.Class_DATA
         #region CreatePayeurData
         public void CreatePayeurData(PayeurData payeurdata)
         {
-            //besoin db insert
             payeurdata.Personne.CreateNewPersonne(payeurdata.Personne);
-            //context = new VenteBouquinContext();
             var codePersonne = context.Personnes
                 .Where(c => c.DateNaissance == payeurdata.Personne.DateNaissance && c.Nom == payeurdata.Personne.Nom && c.Prenom == payeurdata.Personne.Prenom)
                 .ToList()
@@ -72,7 +79,10 @@ namespace VenteBouquin_DATA.Class_DATA
             context.Utilisateurs.AddOrUpdate(new Utilisateur
             {
                 CodeUtilisateur = payeurdata.CodeUtilisateur,
-                FkPersonne =  codePersonne
+                FkPersonne =  codePersonne,
+                Login = payeurdata.Login,
+                Password = payeurdata.Password,
+                Role = payeurdata.Role
             });
             context.SaveChanges();
         }
@@ -96,6 +106,9 @@ namespace VenteBouquin_DATA.Class_DATA
                 {
                     CodePayeur = item.IdUtilisateur,
                     CodeUtilisateur = item.CodeUtilisateur,
+                    Login = item.Login,
+                    Password = item.Password,
+                    Role = item.Role,
                     Personne = new PersonneData
                     {
                         CodePersonne = item.Personne.IdPersonne,

@@ -12,6 +12,9 @@ namespace VenteBouquin_BOL.Class_BOL
     {
         public int CodePayeur { get; set; }
         public string CodeUtilisateur { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
         public PersonneBOL Personne { get; set; }
         private RepoData repo = new RepoData();
         #region Constructeur par deffault
@@ -25,6 +28,9 @@ namespace VenteBouquin_BOL.Class_BOL
             {
                 CodePayeur = payeur.CodePayeurDto;
                 CodeUtilisateur = payeur.CodeUtilisateurDto;
+                Login = payeur.LoginDto;
+                Password = payeur.PasswordDto;
+                Role = payeur.RoleDto;
                 Personne = new PersonneBOL
                 {
                     CodePersonne = payeur.PersonneDto.CodePersonneDto,
@@ -43,6 +49,9 @@ namespace VenteBouquin_BOL.Class_BOL
             {
                 CodePayeur = payeur.CodePayeurDto;
                 CodeUtilisateur = payeur.CodeUtilisateurDto;
+                Login = payeur.LoginDto;
+                Password = payeur.PasswordDto;
+                Role = payeur.RoleDto;
                 Personne = new PersonneBOL
                 {
                     CodePersonne = payeur.PersonneDto.CodePersonneDto,
@@ -60,6 +69,9 @@ namespace VenteBouquin_BOL.Class_BOL
             {
                 CodePayeurDto = payeurBol.CodePayeur,
                 CodeUtilisateurDto = payeurBol.CodeUtilisateur,
+                LoginDto = payeurBol.Login,
+                PasswordDto = payeurBol.Password,
+                RoleDto = payeurBol.Role,
                 PersonneDto = new PersonneDTO()
                 {
                     CodePersonneDto = payeurBol.Personne.CodePersonne,
@@ -87,6 +99,9 @@ namespace VenteBouquin_BOL.Class_BOL
                 {
                     CodePayeur = item.CodePayeurDto,
                     CodeUtilisateur = item.CodeUtilisateurDto,
+                    Login = item.LoginDto,
+                    Password = item.PasswordDto,
+                    Role = item.RoleDto,
                     Personne = new PersonneBOL
                     {
                         CodePersonne = item.PersonneDto.CodePersonneDto,

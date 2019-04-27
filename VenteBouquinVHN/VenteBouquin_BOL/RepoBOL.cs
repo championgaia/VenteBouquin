@@ -129,6 +129,9 @@ namespace VenteBouquin_BOL
                 {
                     CodePayeurDto = item.CodePayeur,
                     CodeUtilisateurDto = item.CodeUtilisateur,
+                    LoginDto = item.Login,
+                    PasswordDto = item.Password,
+                    RoleDto = item.Role,
                     PersonneDto = new PersonneDTO
                     {
                         CodePersonneDto = item.Personne.CodePersonne,
@@ -152,6 +155,9 @@ namespace VenteBouquin_BOL
                 {
                     CodePayeurDto = payeur.CodePayeur,
                     CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    LoginDto = payeur.Login,
+                    PasswordDto = payeur.Password,
+                    RoleDto = payeur.Role,
                     PersonneDto = new PersonneDTO
                     {
                         CodePersonneDto = payeur.Personne.CodePersonne,
@@ -166,7 +172,7 @@ namespace VenteBouquin_BOL
             return null;
         }
         #endregion
-        #region GetPayeurDTORepoBol par codePacodeUtilisateuryeur
+        #region GetPayeurDTORepoBol par codeUtilisateur
         public PayeurDTO GetPayeurDTORepoBol(string codeUtilisateur)
         {
             var payeur = new PayeurBOL(codeUtilisateur);
@@ -176,6 +182,9 @@ namespace VenteBouquin_BOL
                 {
                     CodePayeurDto = payeur.CodePayeur,
                     CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    LoginDto = payeur.Login,
+                    PasswordDto = payeur.Password,
+                    RoleDto = payeur.Role,
                     PersonneDto = new PersonneDTO
                     {
                         CodePersonneDto = payeur.Personne.CodePersonne,
@@ -197,6 +206,9 @@ namespace VenteBouquin_BOL
             {
                 CodePayeur = payeurDto.CodePayeurDto,
                 CodeUtilisateur = payeurDto.CodeUtilisateurDto,
+                Login = payeurDto.LoginDto,
+                Password = payeurDto.PasswordDto,
+                Role = payeurDto.RoleDto,
                 Personne = new PersonneBOL()
                 {
                     CodePersonne = payeurDto.PersonneDto.CodePersonneDto,

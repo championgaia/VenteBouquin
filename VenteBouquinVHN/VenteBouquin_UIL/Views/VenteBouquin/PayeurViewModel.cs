@@ -32,7 +32,8 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         {
             PayeurVM = new PayeurModel
             {
-                CodeUtilisateurM = codeUtilisateur
+                CodeUtilisateurM = codeUtilisateur,
+                LoginM = email
             };
         }
         #endregion

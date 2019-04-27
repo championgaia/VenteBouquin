@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Web.Security;
 using VenteBouquin_UIL.Views.VenteBouquin;
 
 namespace VenteBouquin_UIL.Controllers
@@ -46,6 +46,16 @@ namespace VenteBouquin_UIL.Controllers
         [HttpPost]
         public ActionResult CreatePayeur(PayeurViewModel payeurVM2)
         {
+            payeurVM2.PayeurVM.LoginM = User.Identity.Name;
+            payeurVM2.PayeurVM.RoleM = Roles.GetRolesForUser(User.Identity.Name).FirstOrDefault() ?? "invidual account";
+            //This is a direct read from the enabled attribute of the roleManager element in the web.config:
+            //< configuration >
+            // < system.web >
+            //   < roleManager enabled = "true" />
+            //  </ system.web >
+            //</ configuration >
+            //<roleManager enabled="true" /> 
+            payeurVM2.PayeurVM.PasswordM = User.Identity.AuthenticationType;
             payeurVM2.CreatePayeurViewModel(payeurVM2);
             return RedirectToAction("Index");
         }
@@ -79,7 +89,7 @@ namespace VenteBouquin_UIL.Controllers
                 return View(commande);
             }
             else
-                return RedirectToAction("CreatePayeur", new {idClient = codeUtilisateur });
+                return RedirectToAction("CreatePayeur", new { idClient = codeUtilisateur });
         }
         #endregion
         #region CreateCommande

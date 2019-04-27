@@ -11,6 +11,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
     {
         public int CodePayeurM { get; set; }
         public string CodeUtilisateurM { get; set; }
+        public string LoginM { get; set; }
+        public string PasswordM { get; set; }
+        public string RoleM { get; set; }
         public PersonneModel PersonneM { get; set; }
         private RepoBOL repo = new RepoBOL();
         #region Constructeur par deffault
@@ -27,6 +30,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             {
                 CodePayeurM = payeur.CodePayeurDto;
                 CodeUtilisateurM = payeur.CodeUtilisateurDto;
+                LoginM = payeur.LoginDto;
+                PasswordM = payeur.PasswordDto;
+                RoleM = payeur.RoleDto;
                 PersonneM = new PersonneModel
                 {
                     CodePersonneM = payeur.PersonneDto.CodePersonneDto,
@@ -45,6 +51,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             {
                 CodePayeurM = payeur.CodePayeurDto;
                 CodeUtilisateurM = payeur.CodeUtilisateurDto;
+                LoginM = payeur.LoginDto;
+                PasswordM = payeur.PasswordDto;
+                RoleM = payeur.RoleDto;
                 PersonneM = new PersonneModel
                 {
                     CodePersonneM = payeur.PersonneDto.CodePersonneDto,
@@ -62,6 +71,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             {
                 CodePayeurDto = payeurM.CodePayeurM,
                 CodeUtilisateurDto = payeurM.CodeUtilisateurM,
+                LoginDto = payeurM.LoginM,
+                PasswordDto = payeurM.PasswordM,
+                RoleDto = payeurM.RoleM,
                 PersonneDto = new PersonneDTO()
                 {
                     CodePersonneDto = payeurM.PersonneM.CodePersonneM,
@@ -89,6 +101,9 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
                 {
                     CodePayeurM = item.CodePayeurDto,
                     CodeUtilisateurM = item.CodeUtilisateurDto,
+                    LoginM = item.LoginDto,
+                    PasswordM = item.PasswordDto,
+                    RoleM = item.RoleDto,
                     PersonneM = new PersonneModel
                     {
                         CodePersonneM = item.PersonneDto.CodePersonneDto,

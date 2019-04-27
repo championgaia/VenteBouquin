@@ -145,6 +145,9 @@ namespace VenteBouquin_DATA
                 {
                     CodePayeurDto = payeur.CodePayeur,
                     CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    LoginDto = payeur.Login,
+                    PasswordDto = payeur.Password,
+                    RoleDto = payeur.Role,
                     PersonneDto = new PersonneDTO
                     {
                         CodePersonneDto = payeur.Personne.CodePersonne,
@@ -169,6 +172,9 @@ namespace VenteBouquin_DATA
                 {
                     CodePayeurDto = payeur.CodePayeur,
                     CodeUtilisateurDto = payeur.CodeUtilisateur,
+                    LoginDto = payeur.Login,
+                    PasswordDto = payeur.Password,
+                    RoleDto = payeur.Role,
                     PersonneDto = new PersonneDTO
                     {
                         CodePersonneDto = payeur.Personne.CodePersonne,
@@ -194,6 +200,9 @@ namespace VenteBouquin_DATA
                 {
                     CodePayeurDto = item.CodePayeur,
                     CodeUtilisateurDto = item.CodeUtilisateur,
+                    LoginDto = item.Login,
+                    PasswordDto = item.Password,
+                    RoleDto = item.Role,
                     PersonneDto = new PersonneDTO
                     {
                         CodePersonneDto = item.Personne.CodePersonne,
@@ -214,6 +223,9 @@ namespace VenteBouquin_DATA
             {
                 CodePayeur = payeurDto.CodePayeurDto,
                 CodeUtilisateur = payeurDto.CodeUtilisateurDto,
+                Login = payeurDto.LoginDto,
+                Password = payeurDto.PasswordDto,
+                Role = payeurDto.RoleDto,
                 Personne = new PersonneData()
                 {
                     CodePersonne = payeurDto.PersonneDto.CodePersonneDto,

@@ -10,6 +10,9 @@ namespace VenteBouquin_DTO.class_dto
     {
         public int CodePayeurDto { get; set; }
         public string CodeUtilisateurDto { get; set; }
+        public string LoginDto { get; set; }
+        public string PasswordDto { get; set; }
+        public string RoleDto { get; set; }
         public PersonneDTO PersonneDto { get; set; }
     }
 }
