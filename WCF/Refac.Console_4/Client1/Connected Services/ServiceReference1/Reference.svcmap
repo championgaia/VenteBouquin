@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a5a89bb0-d3bf-43e4-bad4-f9d10082023e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8733/PartiePendu/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PartiePendu.wsdl" MetadataType="Wsdl" ID="bf0f4195-46c5-4d14-91c3-542fd6d93c51" SourceId="1" SourceUrl="http://localhost:8733/PartiePendu/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="fb863010-73ca-431e-b26c-66c2678ac2bd" SourceId="1" SourceUrl="http://localhost:8733/PartiePendu/?xsd=xsd0" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="5ef5bbea-5453-4f48-bcbc-dab21cff5ed3" SourceId="1" SourceUrl="http://localhost:8733/PartiePendu/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="46168283-8496-47a7-8f19-f7c46d65c921" SourceId="1" SourceUrl="http://localhost:8733/PartiePendu/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="3ff5b39b-fc17-4841-941a-0c9729e32d02" SourceId="1" SourceUrl="http://localhost:8733/PartiePendu/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
