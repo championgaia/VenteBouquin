@@ -340,6 +340,46 @@ namespace VenteBouquin_DATA
             return maListe;
         }
         #endregion
+        #region MyRegion
+
+
+        public void CreateCommande(CommandeDTO commandeDto)
+        {
+            //a ajouter
+            CommandeData commande = new CommandeData
+            {
+                CodeCommande = commandeDto.CodeCommandeDto,
+                PrixTotal = commandeDto.PrixTotalDto,
+                LePayeur = new PayeurData
+                {
+                    CodePayeur = commandeDto.LePayeurDto.CodePayeurDto,
+                    CodeUtilisateur = commandeDto.LePayeurDto.CodeUtilisateurDto,
+                    Personne = new PersonneData
+                    {
+                        CodePersonne = commandeDto.LePayeurDto.PersonneDto.CodePersonneDto,
+                        Nom = commandeDto.LePayeurDto.PersonneDto.NomDto,
+                        Prenom = commandeDto.LePayeurDto.PersonneDto.PrenomDto,
+                        DateNaissance = commandeDto.LePayeurDto.PersonneDto.DateNaissanceDto
+                    }
+                }
+            };
+            //manque liste de ligne de commande
+            commande.LesLignes = new List<LigneDeCommandeData>();
+            foreach (var ligneCommande in commandeDto.LesLignesDto)
+            {
+                commande.LesLignes.Add(new LigneDeCommandeData
+                {
+                    Quantite = ligneCommande.QuantiteDto,
+
+                    LeLivre = new LivreData
+                    {
+                        CodeISBN = ligneCommande.LeLivreDto.CodeISBNDto
+                    }
+                });
+            }
+            commande.CreateCommande(commande);
+        }
+        #endregion
         #endregion
     }
 }

@@ -322,6 +322,44 @@ namespace VenteBouquin_BOL
             return maListe;
         }
         #endregion
+        #region CreateCommande RepoBOL
+        public void CreateCommande(CommandeDTO commandeDto)
+        {
+            //a ajouter
+            CommandeBOL commande = new CommandeBOL
+            {
+                CodeCommande = commandeDto.CodeCommandeDto,
+                PrixTotal = commandeDto.PrixTotalDto,
+                LePayeur = new PayeurBOL
+                {
+                    CodePayeur = commandeDto.LePayeurDto.CodePayeurDto,
+                    CodeUtilisateur = commandeDto.LePayeurDto.CodeUtilisateurDto,
+                    Personne = new PersonneBOL
+                    {
+                        CodePersonne = commandeDto.LePayeurDto.PersonneDto.CodePersonneDto,
+                        Nom = commandeDto.LePayeurDto.PersonneDto.NomDto,
+                        Prenom = commandeDto.LePayeurDto.PersonneDto.PrenomDto,
+                        DateNaissance = commandeDto.LePayeurDto.PersonneDto.DateNaissanceDto
+                    }
+                }
+            };
+            //manque liste de ligne de commande
+            commande.LesLignes = new List<LigneDeCommandeBOL>();
+            foreach (var ligneCommande in commandeDto.LesLignesDto)
+            {
+                commande.LesLignes.Add(new LigneDeCommandeBOL
+                {
+                    Quantite = ligneCommande.QuantiteDto,
+
+                    LeLivre = new LivreBOL
+                    {
+                        CodeISBN = ligneCommande.LeLivreDto.CodeISBNDto
+                    }
+                });
+            }
+            commande.CreateCommande(commande);
+        }
+        #endregion
         #endregion
     }
 }

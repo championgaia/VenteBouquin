@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using VenteBouquin_BOL;
+using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_UIL.Models.VenteBouquinModel
 {
@@ -12,6 +13,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         public double PrixTotalM { get; set; }
         public PayeurModel LePayeurM { get; set; }
         public List<LigneDeCommandeModel> LesLignesM { get; set; }
+        private RepoBOL repo = new RepoBOL();
         #region constructeur
         #region constructeur par deffaut
         public CommandeModel() { }
@@ -19,7 +21,6 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         #region constructeur par codeCommande
         public CommandeModel(int codeCommande)
         {
-            RepoBOL repo = new RepoBOL();
             var leCommande = repo.GetCommandeDTORepoBol(codeCommande);
             CodeCommandeM = leCommande.CodeCommandeDto;
             PrixTotalM = leCommande.PrixTotalDto;
@@ -47,6 +48,43 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             }
         }
         #endregion
+        #endregion
+        #region MyRegion
+        public void CreateCommande(CommandeModel laCommande)
+        {
+            CommandeDTO commandeDto = new CommandeDTO
+            {
+                CodeCommandeDto = laCommande.CodeCommandeM,
+                PrixTotalDto = laCommande.PrixTotalM,
+                LePayeurDto = new PayeurDTO
+                {
+                    CodePayeurDto = laCommande.LePayeurM.CodePayeurM,
+                    CodeUtilisateurDto = laCommande.LePayeurM.CodeUtilisateurM,
+                    PersonneDto = new PersonneDTO
+                    {
+                        CodePersonneDto = laCommande.LePayeurM.PersonneM.CodePersonneM,
+                        NomDto = laCommande.LePayeurM.PersonneM.NomM,
+                        PrenomDto = laCommande.LePayeurM.PersonneM.PrenomM,
+                        DateNaissanceDto = laCommande.LePayeurM.PersonneM.DateNaissanceM
+                    }
+                }
+            };
+            //manque liste de ligne de commande
+            commandeDto.LesLignesDto = new List<LigneDeCommandeDTO>();
+            foreach (var ligneCommande in laCommande.LesLignesM)
+            {
+                commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
+                {
+                    QuantiteDto = ligneCommande.QuantiteM,
+                    
+                    LeLivreDto = new LivreDTO
+                    {
+                        CodeISBNDto = ligneCommande.LeLivreM.CodeISBNM
+                    }
+                });
+            }
+            repo.CreateCommande(commandeDto);
+        }
         #endregion
     }
     public class CommandeModels

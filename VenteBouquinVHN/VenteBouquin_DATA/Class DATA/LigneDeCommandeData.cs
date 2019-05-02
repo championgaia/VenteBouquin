@@ -13,6 +13,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public CommandeData LaCommande { get; set; }
         public LivreData LeLivre { get; set; }
         public PromotionData LaPromo { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur par deffaut
         public LigneDeCommandeData()
         {
@@ -22,7 +23,6 @@ namespace VenteBouquin_DATA.Class_DATA
         #region constructeur par codeCommande
         public LigneDeCommandeData(int codeLigneCommande)
         {
-            VenteBouquinContext context = new VenteBouquinContext();
             var laLigne = context.LigneDeCommandes
                                 .Where(c => c.IdLigneDeCommande == codeLigneCommande)
                                 .ToList()
@@ -30,6 +30,22 @@ namespace VenteBouquin_DATA.Class_DATA
             CodeLigneCommande = laLigne.IdLigneDeCommande;
             Quantite = laLigne.Quantite;
             LeLivre = new LivreData(laLigne.Livre.CodeISBN);
+        }
+        #endregion
+        #region CreateCommande Data
+        public void CreateCommande(CommandeData commande)
+        {
+            //create new command in db
+            //create new ligneDeCommande in db
+            throw new NotImplementedException();
+        }
+        #endregion
+        #region CreateLesLigneCommande Data
+        public void CreateLesLigneCommande(List<LigneDeCommandeData> lesLigne)
+        {
+            //chercher  codeCommand in db
+            //create les ligneDeCommande in db
+            throw new NotImplementedException();
         }
         #endregion
     }

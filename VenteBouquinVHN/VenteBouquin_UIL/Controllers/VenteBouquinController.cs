@@ -92,7 +92,7 @@ namespace VenteBouquin_UIL.Controllers
                 return RedirectToAction("CreatePayeur", new { idClient = codeUtilisateur });
         }
         #endregion
-        #region CreateCommande
+        #region CreateCommande post
         [HttpPost]
         public ActionResult CreateCommande(CreateCommandeViewModel createCommande)
         {

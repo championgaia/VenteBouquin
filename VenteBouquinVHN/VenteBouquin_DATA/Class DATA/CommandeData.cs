@@ -12,6 +12,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public double PrixTotal { get; set; }
         public PayeurData LePayeur { get; set; }
         public List<LigneDeCommandeData> LesLignes { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur
         #region constructeur par deffaut
         public CommandeData() { }
@@ -19,7 +20,6 @@ namespace VenteBouquin_DATA.Class_DATA
         #region constructeur par codeCommande
         public CommandeData(int codeCommande)
         {
-            VenteBouquinContext context = new VenteBouquinContext();
             var leCommande = context.Commandes
                                 .Where(c => c.IdCommande == codeCommande)
                                 .ToList()
@@ -36,6 +36,25 @@ namespace VenteBouquin_DATA.Class_DATA
             }
         }
         #endregion
+        #endregion
+        #region CreateCommande Data
+        public void CreateCommande(CommandeData commande)
+        {
+            var c = new Commande
+            {
+                PrixTotal = (decimal)commande.PrixTotal,
+                FkUtilisateur = commande.LePayeur.CodePayeur
+            };
+            foreach (var item in commande.LesLignes)
+            {
+                c.LigneDeCommandes.Add(new LigneDeCommande
+                {
+                    FkLivre = item.LeLivre.
+                });
+            }
+            context.Commandes.Add(c);
+            context.SaveChanges();
+        }
         #endregion
     }
     internal class CommandeDatas

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VenteBouquin_DATA.Class_DATA
 {
-    internal class LivreData
+    internal class LivreData //manque CodeBouquin
     {
         public string CodeISBN { get; set; }
         public string NomLivre { get; set; }
