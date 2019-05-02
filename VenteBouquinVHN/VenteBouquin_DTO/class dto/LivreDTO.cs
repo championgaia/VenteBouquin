@@ -8,6 +8,7 @@ namespace VenteBouquin_DTO.class_dto
 {
     public class LivreDTO
     {
+        public int CodeLivreDto { get; set; }
         public string CodeISBNDto { get; set; }
         public string NomLivreDto { get; set; }
         public string AuteurDto { get; set; }

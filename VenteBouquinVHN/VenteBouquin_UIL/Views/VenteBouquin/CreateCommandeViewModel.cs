@@ -34,7 +34,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         #region CreateCommande
         public void CreateCommande(CreateCommandeViewModel createCommande)
         {
-            throw new NotImplementedException();
+            createCommande.LaCommandeVM.CreateCommande(createCommande.LaCommandeVM);
         }
         #endregion
     }

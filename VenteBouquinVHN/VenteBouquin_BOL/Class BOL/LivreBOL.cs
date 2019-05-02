@@ -9,6 +9,7 @@ namespace VenteBouquin_BOL.Class_BOL
 {
     internal class LivreBOL
     {
+        public int CodeLivre { get; set; }
         public string CodeISBN { get; set; }
         public string NomLivre { get; set; }
         public string Auteur { get; set; }
@@ -25,6 +26,7 @@ namespace VenteBouquin_BOL.Class_BOL
         public LivreBOL(string codeISBN)
         {
             var livreDto = repo.GetLivreParCodeISBNDTORepoData(codeISBN);
+            CodeLivre = livreDto.CodeLivreDto;
             CodeISBN = livreDto.CodeISBNDto;
             NomLivre = livreDto.NomLivreDto;
             Auteur = livreDto.AuteurDto;
@@ -57,6 +59,7 @@ namespace VenteBouquin_BOL.Class_BOL
             {
                 ListeLivre.Add(new LivreBOL
                 {
+                    CodeLivre = item.CodeLivreDto,
                     CodeISBN = item.CodeISBNDto,
                     NomLivre = item.NomLivreDto,
                     Auteur = item.AuteurDto,

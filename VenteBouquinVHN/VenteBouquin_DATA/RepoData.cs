@@ -54,6 +54,7 @@ namespace VenteBouquin_DATA
             {
                 listeLivreDTO.Add(new LivreDTO
                 {
+                    CodeLivreDto = item.CodeLivre,
                     CodeISBNDto = item.CodeISBN,
                     NomLivreDto = item.NomLivre,
                     AuteurDto = item.Auteur,
@@ -85,6 +86,7 @@ namespace VenteBouquin_DATA
             {
                 listeLivreDTO.Add(new LivreDTO
                 {
+                    CodeLivreDto = item.CodeLivre,
                     CodeISBNDto = item.CodeISBN,
                     NomLivreDto = item.NomLivre,
                     AuteurDto = item.Auteur,
@@ -113,6 +115,7 @@ namespace VenteBouquin_DATA
             var livre = new LivreData(codeISBN);
             var livreDTO = new LivreDTO
             {
+                CodeLivreDto = livre.CodeLivre,
                 CodeISBNDto = livre.CodeISBN,
                 NomLivreDto = livre.NomLivre,
                 AuteurDto = livre.Auteur,
@@ -269,6 +272,7 @@ namespace VenteBouquin_DATA
                     QuantiteDto = ligneCommande.Quantite,
                     LeLivreDto = new LivreDTO
                     {
+                        CodeLivreDto = ligneCommande.LeLivre.CodeLivre,
                         CodeISBNDto = ligneCommande.LeLivre.CodeISBN,
                         NomLivreDto = ligneCommande.LeLivre.NomLivre,
                         AuteurDto = ligneCommande.LeLivre.Auteur,
@@ -338,6 +342,45 @@ namespace VenteBouquin_DATA
                 });
             }
             return maListe;
+        }
+        #endregion
+        #region MyRegion
+        public void CreateCommande(CommandeDTO commandeDto)
+        {
+            //a ajouter
+            CommandeData commande = new CommandeData
+            {
+                CodeCommande = commandeDto.CodeCommandeDto,
+                PrixTotal = commandeDto.PrixTotalDto,
+                LePayeur = new PayeurData
+                {
+                    CodePayeur = commandeDto.LePayeurDto.CodePayeurDto,
+                    CodeUtilisateur = commandeDto.LePayeurDto.CodeUtilisateurDto,
+                    Personne = new PersonneData
+                    {
+                        CodePersonne = commandeDto.LePayeurDto.PersonneDto.CodePersonneDto,
+                        Nom = commandeDto.LePayeurDto.PersonneDto.NomDto,
+                        Prenom = commandeDto.LePayeurDto.PersonneDto.PrenomDto,
+                        DateNaissance = commandeDto.LePayeurDto.PersonneDto.DateNaissanceDto
+                    }
+                }
+            };
+            //manque liste de ligne de commande
+            commande.LesLignes = new List<LigneDeCommandeData>();
+            foreach (var ligneCommande in commandeDto.LesLignesDto)
+            {
+                commande.LesLignes.Add(new LigneDeCommandeData
+                {
+                    Quantite = ligneCommande.QuantiteDto,
+
+                    LeLivre = new LivreData
+                    {
+                        CodeLivre = ligneCommande.LeLivreDto.CodeLivreDto,
+                        CodeISBN = ligneCommande.LeLivreDto.CodeISBNDto
+                    }
+                });
+            }
+            commande.CreateCommande(commande);
         }
         #endregion
         #endregion

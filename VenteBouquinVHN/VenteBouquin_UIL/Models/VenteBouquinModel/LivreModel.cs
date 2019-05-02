@@ -8,6 +8,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
 {
     public class LivreModel
     {
+        public int CodeLivreM { get; set; }
         public string CodeISBNM { get; set; }
         public string NomLivreM { get; set; }
         public string AuteurM { get; set; }
@@ -24,6 +25,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         public LivreModel(string codeISBN)
         {
             var livreDto = repo.GetLivreParCodeISBNDTORepoBol(codeISBN);
+            CodeLivreM = livreDto.CodeLivreDto;
             CodeISBNM = livreDto.CodeISBNDto;
             NomLivreM = livreDto.NomLivreDto;
             AuteurM = livreDto.AuteurDto;
@@ -57,6 +59,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             {
                 ListeLivreM.Add(new LivreModel
                 {
+                    CodeLivreM = item.CodeLivreDto,
                     CodeISBNM = item.CodeISBNDto,
                     NomLivreM = item.NomLivreDto,
                     AuteurM = item.AuteurDto,
@@ -88,6 +91,7 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             {
                 ListeLivreM.Add(new LivreModel
                 {
+                    CodeLivreM = item.CodeLivreDto,
                     CodeISBNM = item.CodeISBNDto,
                     NomLivreM = item.NomLivreDto,
                     AuteurM = item.AuteurDto,

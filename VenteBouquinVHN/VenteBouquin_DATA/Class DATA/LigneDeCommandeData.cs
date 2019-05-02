@@ -13,6 +13,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public CommandeData LaCommande { get; set; }
         public LivreData LeLivre { get; set; }
         public PromotionData LaPromo { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur par deffaut
         public LigneDeCommandeData()
         {
@@ -22,7 +23,6 @@ namespace VenteBouquin_DATA.Class_DATA
         #region constructeur par codeCommande
         public LigneDeCommandeData(int codeLigneCommande)
         {
-            VenteBouquinContext context = new VenteBouquinContext();
             var laLigne = context.LigneDeCommandes
                                 .Where(c => c.IdLigneDeCommande == codeLigneCommande)
                                 .ToList()

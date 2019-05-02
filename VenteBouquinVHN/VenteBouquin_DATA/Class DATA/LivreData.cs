@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace VenteBouquin_DATA.Class_DATA
 {
-    internal class LivreData
+    internal class LivreData //manque CodeBouquin
     {
+        public int CodeLivre { get; set; }
         public string CodeISBN { get; set; }
         public string NomLivre { get; set; }
         public string Auteur { get; set; }
@@ -28,6 +29,7 @@ namespace VenteBouquin_DATA.Class_DATA
             var livre = context.Livres
                 .Where(c => c.CodeISBN == codeISBN)
                 .ToList().FirstOrDefault();
+            CodeLivre = livre.IdLivre;
             CodeISBN = livre.CodeISBN;
             NomLivre = livre.NomLivre;
             Auteur = livre.Auteur;
@@ -66,6 +68,7 @@ namespace VenteBouquin_DATA.Class_DATA
             {
                 ListeLivre.Add(new LivreData
                 {
+                    CodeLivre = livre.IdLivre,
                     CodeISBN = livre.CodeISBN,
                     NomLivre = livre.NomLivre,
                     Auteur = livre.Auteur,
@@ -89,7 +92,6 @@ namespace VenteBouquin_DATA.Class_DATA
             #endregion
         }
         #endregion
-        
         #region Constructeur par codeCategory
         public LivreDatas(int codeCategory)
         {
@@ -102,6 +104,7 @@ namespace VenteBouquin_DATA.Class_DATA
             {
                 ListeLivre.Add(new LivreData
                 {
+                    CodeLivre = livre.IdLivre,
                     CodeISBN = livre.CodeISBN,
                     NomLivre = livre.NomLivre,
                     Auteur = livre.Auteur,
@@ -124,6 +127,5 @@ namespace VenteBouquin_DATA.Class_DATA
             #endregion
         }
         #endregion
-
     }
 }
