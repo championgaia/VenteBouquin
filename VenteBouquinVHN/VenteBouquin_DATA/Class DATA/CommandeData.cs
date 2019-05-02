@@ -51,7 +51,7 @@ namespace VenteBouquin_DATA.Class_DATA
                 {
                     FkLivre = item.LeLivre.CodeLivre,
                     Quantite = item.Quantite,
-
+                    FkPromotion = 1 //
                 });
             }
             context.Commandes.Add(c);

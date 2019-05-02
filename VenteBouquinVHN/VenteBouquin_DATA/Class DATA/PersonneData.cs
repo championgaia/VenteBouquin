@@ -24,19 +24,6 @@ namespace VenteBouquin_DATA.Class_DATA
             //////////////////////////////////////////////
         }
         #endregion
-        #region CreateNewPersonne
-        public void CreateNewPersonne(PersonneData personne)
-        {
-            context.Personnes.AddOrUpdate(new Personne
-            {
-                Nom = personne.Nom,
-                Prenom = personne.Prenom,
-                DateNaissance = personne.DateNaissance,
-                FkAdresse = 2 //entre en dur
-            });
-            context.SaveChanges();
-        }
-        #endregion
     }
     internal class PersonneDatas
     {

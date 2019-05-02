@@ -79,7 +79,7 @@ namespace VenteBouquin_BOL.Class_BOL
                     QuantiteDto = ligneCommande.Quantite,
                     LeLivreDto = new LivreDTO
                     {
-                        CodeLivreDto = ligneCommande.LeLivreM.CodeLivreM,
+                        CodeLivreDto = ligneCommande.LeLivre.CodeLivre,
                         CodeISBNDto = ligneCommande.LeLivre.CodeISBN
                     }
                 });

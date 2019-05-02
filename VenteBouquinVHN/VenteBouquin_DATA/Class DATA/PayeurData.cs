@@ -70,20 +70,23 @@ namespace VenteBouquin_DATA.Class_DATA
         #region CreatePayeurData
         public void CreatePayeurData(PayeurData payeurdata)
         {
-            payeurdata.Personne.CreateNewPersonne(payeurdata.Personne);
-            var codePersonne = context.Personnes
-                .Where(c => c.DateNaissance == payeurdata.Personne.DateNaissance && c.Nom == payeurdata.Personne.Nom && c.Prenom == payeurdata.Personne.Prenom)
-                .ToList()
-                .FirstOrDefault()
-                .IdPersonne;
-            context.Utilisateurs.AddOrUpdate(new Utilisateur
+            #region Version 1
+            var payeur = new Utilisateur
             {
                 CodeUtilisateur = payeurdata.CodeUtilisateur,
-                FkPersonne =  codePersonne,
                 Login = payeurdata.Login,
                 Password = payeurdata.Password,
                 Role = payeurdata.Role
-            });
+            };
+            payeur.Personne = new Personne
+            {
+                Nom = payeurdata.Personne.Nom,
+                Prenom = payeurdata.Personne.Prenom,
+                DateNaissance = payeurdata.Personne.DateNaissance,
+                FkAdresse = 2
+            };
+            #endregion
+            context.Utilisateurs.Add(payeur);
             context.SaveChanges();
         }
         #endregion
