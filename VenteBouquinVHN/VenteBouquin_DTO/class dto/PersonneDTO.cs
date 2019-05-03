@@ -12,6 +12,6 @@ namespace VenteBouquin_DTO.class_dto
         public string NomDto { get; set; }
         public string PrenomDto { get; set; }
         public DateTime DateNaissanceDto { get; set; }
-        public List<AdresseDTO> ListeAdresseDto { get; set; }
+        public AdresseDTO AdresseDto { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenteBouquin_UIL", "VenteBouquin_UIL\VenteBouquin_UIL.csproj", "{6B02E22E-9808-4CB9-8418-3825DFD73AE3}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenteBouquin_DATA", "VenteBouquin_DATA\VenteBouquin_DATA.csproj", "{27F43EEF-B92F-41B6-9BE1-687EB39BEB6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenteBouquin_DTO", "VenteBouquin_DTO\VenteBouquin_DTO.csproj", "{F6D971F4-B59B-4A0E-B57A-C1868C07DD9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VenteBouquin_BOL.Tests", "VenteBouquin_BOL.Tests\VenteBouquin_BOL.Tests.csproj", "{4C984B4D-DDD7-4882-819F-4F16705D6675}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F6D971F4-B59B-4A0E-B57A-C1868C07DD9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6D971F4-B59B-4A0E-B57A-C1868C07DD9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6D971F4-B59B-4A0E-B57A-C1868C07DD9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C984B4D-DDD7-4882-819F-4F16705D6675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C984B4D-DDD7-4882-819F-4F16705D6675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C984B4D-DDD7-4882-819F-4F16705D6675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C984B4D-DDD7-4882-819F-4F16705D6675}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

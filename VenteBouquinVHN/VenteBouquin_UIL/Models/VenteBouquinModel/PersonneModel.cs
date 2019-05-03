@@ -12,6 +12,6 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime DateNaissanceM { get; set; }
-        public List<AdresseModel> ListeAdresseM { get; set; }
+        public AdresseModel AdresseM { get; set; }
     }
 }

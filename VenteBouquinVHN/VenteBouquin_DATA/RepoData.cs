@@ -241,7 +241,6 @@ namespace VenteBouquin_DATA
         }
         #endregion
         #endregion
-
         #region GetCommandeDTORepoData
         #region GetCommandeDTORepoData par codeCommande
         public CommandeDTO GetCommandeDTORepoData(int codeCommande)

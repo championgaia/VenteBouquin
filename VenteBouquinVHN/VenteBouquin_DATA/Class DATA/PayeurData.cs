@@ -83,7 +83,7 @@ namespace VenteBouquin_DATA.Class_DATA
                 Nom = Personne.Nom,
                 Prenom = Personne.Prenom,
                 DateNaissance = Personne.DateNaissance,
-                FkAdresse = 2
+                FkAdresse = 2//a changer
             };
             #endregion
             context.Utilisateurs.Add(payeur);

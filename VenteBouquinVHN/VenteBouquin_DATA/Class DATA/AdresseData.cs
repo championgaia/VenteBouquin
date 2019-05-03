@@ -15,28 +15,50 @@ namespace VenteBouquin_DATA.Class_DATA
         public string NomVille { get; set; }
         public string CodePostale { get; set; }
         public string NomPays { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region constructeur par déffaut
-        public AdresseData()
-        {
-
-        }
+        public AdresseData() { }
         #endregion
         #region Constructeur
         public AdresseData(int codeAdresse)
         {
             //context besoin
+            var addresse = context.Adresses.First(c => c.IdAdresse == codeAdresse);
+            if (addresse != null)
+            {
+                CodeAdresse = addresse.IdAdresse;
+                NomRue = addresse.NomRue;
+                NumeroRue = addresse.NumeroRue;
+                AdresseComplementaire = addresse.AdresseComplementaire;
+                NomVille = addresse.NomVille;
+                CodePostale = addresse.CodePostal;
+                NomPays = addresse.NomPays;
+            }
         }
         #endregion
     }
     internal class AddresseDataPlus
     {
         public List<AdresseData> ListeAdresse { get; set; }
+        private VenteBouquinContext context = new VenteBouquinContext();
         #region Constructeur par déffault
         public AddresseDataPlus()
         {
             ListeAdresse = new List<AdresseData>();
+            foreach (var addresse in context.Adresses.ToList())
+            {
+                ListeAdresse.Add(new AdresseData
+                {
+                    CodeAdresse = addresse.IdAdresse,
+                    NomRue = addresse.NomRue,
+                    NumeroRue = addresse.NumeroRue,
+                    AdresseComplementaire = addresse.AdresseComplementaire,
+                    NomVille = addresse.NomVille,
+                    CodePostale = addresse.CodePostal,
+                    NomPays = addresse.NomPays
+                });
+            }
         }
         #endregion
-        
     }
 }
