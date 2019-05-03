@@ -84,6 +84,9 @@ CREATE TABLE Personne(
     CONSTRAINT cle_P_Personne PRIMARY KEY (IdPersonne),
     CONSTRAINT Cle_F_Personne_Adresse FOREIGN KEY (FkAdresse) REFERENCES Adresse(IdAdresse)
 )
+GO
+CREATE UNIQUE INDEX index_Personne ON Personne (Nom, Prenom, DateNaissance)
+GO
 -------------------------------------------------------------------------------
 --------------------------Create table Utilisateur-------------------------
 -------------------------------------------------------------------------------

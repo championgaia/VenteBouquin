@@ -237,7 +237,7 @@ namespace VenteBouquin_DATA
                     DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
                 }
             };
-            payeurdata.CreatePayeurData(payeurdata);
+            payeurdata.CreatePayeurData();
         }
         #endregion
         #endregion
@@ -344,7 +344,7 @@ namespace VenteBouquin_DATA
             return maListe;
         }
         #endregion
-        #region MyRegion
+        #region CreateCommande repoData
         public void CreateCommande(CommandeDTO commandeDto)
         {
             //a ajouter
@@ -380,7 +380,7 @@ namespace VenteBouquin_DATA
                     }
                 });
             }
-            commande.CreateCommande(commande);
+            commande.CreateCommande();
         }
         #endregion
         #endregion

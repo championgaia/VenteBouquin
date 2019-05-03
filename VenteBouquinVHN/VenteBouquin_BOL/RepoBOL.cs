@@ -220,7 +220,7 @@ namespace VenteBouquin_BOL
                     DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
                 }
             };
-            payeurBol.CreatePayeurBol(payeurBol);
+            payeurBol.CreatePayeurBol();
         }
         #endregion
         #endregion
@@ -361,7 +361,7 @@ namespace VenteBouquin_BOL
                     }
                 });
             }
-            commande.CreateCommande(commande);
+            commande.CreateCommande();
         }
         #endregion
         #endregion

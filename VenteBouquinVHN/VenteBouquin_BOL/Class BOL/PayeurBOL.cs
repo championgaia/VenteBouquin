@@ -63,21 +63,21 @@ namespace VenteBouquin_BOL.Class_BOL
         }
         #endregion
         #region CreatePayeurRepoBol
-        public void CreatePayeurBol(PayeurBOL payeurBol)
+        public void CreatePayeurBol()
         {
             var payeurDto = new PayeurDTO()
             {
-                CodePayeurDto = payeurBol.CodePayeur,
-                CodeUtilisateurDto = payeurBol.CodeUtilisateur,
-                LoginDto = payeurBol.Login,
-                PasswordDto = payeurBol.Password,
-                RoleDto = payeurBol.Role,
+                CodePayeurDto = CodePayeur,
+                CodeUtilisateurDto = CodeUtilisateur,
+                LoginDto = Login,
+                PasswordDto = Password,
+                RoleDto = Role,
                 PersonneDto = new PersonneDTO()
                 {
-                    CodePersonneDto = payeurBol.Personne.CodePersonne,
-                    NomDto = payeurBol.Personne.Nom,
-                    PrenomDto = payeurBol.Personne.Prenom,
-                    DateNaissanceDto = payeurBol.Personne.DateNaissance
+                    CodePersonneDto = Personne.CodePersonne,
+                    NomDto = Personne.Nom,
+                    PrenomDto = Personne.Prenom,
+                    DateNaissanceDto = Personne.DateNaissance
                 }
             };
             repo.CreatePayeurRepoData(payeurDto);

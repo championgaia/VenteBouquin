@@ -65,21 +65,21 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         }
         #endregion
         #region CreatePayeurModel
-        public void CreatePayeurModel(PayeurModel payeurM)
+        public void CreatePayeurModel()
         {
             var payeurDto = new PayeurDTO()
             {
-                CodePayeurDto = payeurM.CodePayeurM,
-                CodeUtilisateurDto = payeurM.CodeUtilisateurM,
-                LoginDto = payeurM.LoginM,
-                PasswordDto = payeurM.PasswordM,
-                RoleDto = payeurM.RoleM,
+                CodePayeurDto = CodePayeurM,
+                CodeUtilisateurDto = CodeUtilisateurM,
+                LoginDto = LoginM,
+                PasswordDto = PasswordM,
+                RoleDto = RoleM,
                 PersonneDto = new PersonneDTO()
                 {
-                    CodePersonneDto = payeurM.PersonneM.CodePersonneM,
-                    NomDto = payeurM.PersonneM.NomM,
-                    PrenomDto = payeurM.PersonneM.PrenomM,
-                    DateNaissanceDto = payeurM.PersonneM.DateNaissanceM
+                    CodePersonneDto = PersonneM.CodePersonneM,
+                    NomDto = PersonneM.NomM,
+                    PrenomDto = PersonneM.PrenomM,
+                    DateNaissanceDto = PersonneM.DateNaissanceM
                 }
             };
             repo.CreatePayeurRepoBol(payeurDto);

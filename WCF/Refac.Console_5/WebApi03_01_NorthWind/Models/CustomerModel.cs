@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassDto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,27 @@ namespace WebApi03_01_NorthWind.Models
         public string IdM { get; set; }
         public string NomM { get; set; }
         public string CompagnyM { get; set; }
+        private RepoData repo = new RepoData();
+
+        public void CreateCustomer()
+        {
+            CustomerDTO cusDto = new CustomerDTO
+            {
+                IdDto = IdM,
+                NomDto = NomM,
+                CompagnyDto = CompagnyM
+            };
+            repo.CreateCustomer(cusDto);
+        }
+
+        public void DeleteCustomer(string id)
+        {
+            CustomerDTO cusDto = new CustomerDTO
+            {
+                IdDto = id
+            };
+            repo.DeleteCustomer(cusDto);
+        }
     }
     public class CustomerModels
     {

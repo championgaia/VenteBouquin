@@ -61,13 +61,13 @@ namespace VenteBouquin_UIL.Controllers
         }
         #endregion
         #endregion
-        //#region Commande
+        #region Commande
         //public ActionResult AddPanier(string codeISBN)
         //{
         //    PanierViewModel panier = new PanierViewModel(codeISBN);
         //    return View(panier);
         //}
-        //#endregion
+        #endregion
         #region Commande
         #region Panier
         public ActionResult AddPanier(List<string> mesCodeISBN)

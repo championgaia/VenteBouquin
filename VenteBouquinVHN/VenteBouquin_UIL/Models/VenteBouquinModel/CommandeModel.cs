@@ -50,28 +50,28 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
         #endregion
         #endregion
         #region CreateCommande CommandeModel
-        public void CreateCommande(CommandeModel laCommande)
+        public void CreateCommande()
         {
             CommandeDTO commandeDto = new CommandeDTO
             {
-                CodeCommandeDto = laCommande.CodeCommandeM,
-                PrixTotalDto = laCommande.PrixTotalM,
+                CodeCommandeDto = CodeCommandeM,
+                PrixTotalDto = PrixTotalM,
                 LePayeurDto = new PayeurDTO
                 {
-                    CodePayeurDto = laCommande.LePayeurM.CodePayeurM,
-                    CodeUtilisateurDto = laCommande.LePayeurM.CodeUtilisateurM,
+                    CodePayeurDto = LePayeurM.CodePayeurM,
+                    CodeUtilisateurDto = LePayeurM.CodeUtilisateurM,
                     PersonneDto = new PersonneDTO
                     {
-                        CodePersonneDto = laCommande.LePayeurM.PersonneM.CodePersonneM,
-                        NomDto = laCommande.LePayeurM.PersonneM.NomM,
-                        PrenomDto = laCommande.LePayeurM.PersonneM.PrenomM,
-                        DateNaissanceDto = laCommande.LePayeurM.PersonneM.DateNaissanceM
+                        CodePersonneDto = LePayeurM.PersonneM.CodePersonneM,
+                        NomDto = LePayeurM.PersonneM.NomM,
+                        PrenomDto = LePayeurM.PersonneM.PrenomM,
+                        DateNaissanceDto = LePayeurM.PersonneM.DateNaissanceM
                     }
                 }
             };
             //manque liste de ligne de commande
             commandeDto.LesLignesDto = new List<LigneDeCommandeDTO>();
-            foreach (var ligneCommande in laCommande.LesLignesM)
+            foreach (var ligneCommande in LesLignesM)
             {
                 commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
                 {

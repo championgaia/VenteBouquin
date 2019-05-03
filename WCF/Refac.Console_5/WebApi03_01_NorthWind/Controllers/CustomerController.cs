@@ -35,5 +35,41 @@ namespace WebApi03_01_NorthWind.Controllers
                 .ToList()
                 .FirstOrDefault() ;
         }
+        public HttpResponseMessage Post(CustomerModel model)
+        {
+            //list customerID
+            try
+            {
+                if (model == null || string.IsNullOrEmpty(model.IdM) || string.IsNullOrEmpty(model.CompagnyM))
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "probleme de donnees");
+                }
+                model.CreateCustomer();
+                return Request.CreateResponse(model);
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+            
+        }
+        public HttpResponseMessage Delete(string id)
+        {
+            //list customerID
+            try
+            {
+                if (string.IsNullOrEmpty(id))
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "probleme de donnees");
+                }
+                new CustomerModel().DeleteCustomer(id);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, e);
+            }
+
+        }
     }
 }

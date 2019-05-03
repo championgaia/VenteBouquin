@@ -13,6 +13,27 @@ namespace WebApi03_01_Data.ClassData
         public string Compagny { get; set; }
         private NorthWindContext context = new NorthWindContext();
 
+        public void CreateCustomer()
+        {
+            Customer cus = new Customer
+            {
+                CustomerID = Id,
+                ContactName = Nom,
+                CompanyName = Compagny
+            };
+            context.Customers.Add(cus);
+            context.SaveChanges();
+        }
+
+        public void DeleteCustomer(string id)
+        {
+            List<Customer> maList = new List<Customer>
+            {
+                context.Customers.FirstOrDefault(c=>c.CustomerID == id)
+            };
+            context.Customers.RemoveRange(maList);
+            context.SaveChanges();
+        }
     }
     internal class CustomerDatas
     {

@@ -1,0 +1,30 @@
+1. A quoi sert le routage ?
+
+Pour rendre le URL plus friendly et meilleur référencier par moteur de recherche (google)
+
+2. Quelle est la différence fondamentale entre un site web et un webservice WebAPI ?
+WebAPI envoie/recois JSON ou XML
+Site Web html, interprete JSON et XML
+3. Quelles sont les différences entre POST et GET ?
+Get: information passé par le URL, recuperer les données
+Post: information passé dans le Body, mis a jour les données
+4. WCF : quels sont les 3 composantes d’un service ?
+Addresse, binding, contrat
+
+5. WCF est il possible pour un même contrat de service de mettre ce service à disposition sur TCP et HTTP et NamedPipes en même temps ?
+oui, il suffit de créer 3 bindings différentte
+ 
+6. Dans quel protocole par défaut les messages WCF sont il envoyés ?
+basicHttpBinding
+
+7.Web API : Dans quel format (XML,JSON, texte) les données sont elles renvoyées ? 
+XML ou JSON
+
+8. Quelles sont les principales différences entre REST et SOAP ?
+REST: protocole Http, sans état, XML, JSON
+SOAP : plusieur protocoles, machine à état , XML
+
+9. Est il possible d’implémenter une machine à état avec un service WebAPi ?
+Pourquoi ?
+non car WebAPI est sans-état
+

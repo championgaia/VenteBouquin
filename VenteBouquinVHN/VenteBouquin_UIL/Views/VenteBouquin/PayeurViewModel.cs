@@ -40,7 +40,7 @@ namespace VenteBouquin_UIL.Views.VenteBouquin
         #region CreatePayeur
         public void CreatePayeurViewModel(PayeurViewModel payeurVM)
         {
-            payeurVM.PayeurVM.CreatePayeurModel(payeurVM.PayeurVM);
+            payeurVM.PayeurVM.CreatePayeurModel();
         }
         #endregion
     }

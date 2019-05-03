@@ -25,5 +25,21 @@ namespace WebApi03_01_Data
                 }
                 return myList;
         }
+
+        public void CreateCustomer(CustomerDTO cusDto)
+        {
+            CustomerData cus = new CustomerData
+            {
+                Id = cusDto.IdDto,
+                Nom = cusDto.NomDto,
+                Compagny = cusDto.CompagnyDto
+            };
+            cus.CreateCustomer();
+        }
+
+        public void DeleteCustomer(CustomerDTO cusDto)
+        {
+            new CustomerData().DeleteCustomer(cusDto.IdDto);
+        }
     }
 }

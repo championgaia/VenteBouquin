@@ -51,28 +51,28 @@ namespace VenteBouquin_BOL.Class_BOL
         #endregion
         #endregion
         #region CreateCommande BOL
-        public void CreateCommande(CommandeBOL laCommande)
+        public void CreateCommande()
         {
             CommandeDTO commandeDto = new CommandeDTO
             {
-                CodeCommandeDto = laCommande.CodeCommande,
-                PrixTotalDto = laCommande.PrixTotal,
+                CodeCommandeDto = CodeCommande,
+                PrixTotalDto = PrixTotal,
                 LePayeurDto = new PayeurDTO
                 {
-                    CodePayeurDto = laCommande.LePayeur.CodePayeur,
-                    CodeUtilisateurDto = laCommande.LePayeur.CodeUtilisateur,
+                    CodePayeurDto = LePayeur.CodePayeur,
+                    CodeUtilisateurDto = LePayeur.CodeUtilisateur,
                     PersonneDto = new PersonneDTO
                     {
-                        CodePersonneDto = laCommande.LePayeur.Personne.CodePersonne,
-                        NomDto = laCommande.LePayeur.Personne.Nom,
-                        PrenomDto = laCommande.LePayeur.Personne.Prenom,
-                        DateNaissanceDto = laCommande.LePayeur.Personne.DateNaissance
+                        CodePersonneDto = LePayeur.Personne.CodePersonne,
+                        NomDto = LePayeur.Personne.Nom,
+                        PrenomDto = LePayeur.Personne.Prenom,
+                        DateNaissanceDto = LePayeur.Personne.DateNaissance
                     }
                 }
             };
             //manque liste de ligne de commande
             commandeDto.LesLignesDto = new List<LigneDeCommandeDTO>();
-            foreach (var ligneCommande in laCommande.LesLignes)
+            foreach (var ligneCommande in LesLignes)
             {
                 commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
                 {

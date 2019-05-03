@@ -68,21 +68,21 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
         #region CreatePayeurData
-        public void CreatePayeurData(PayeurData payeurdata)
+        public void CreatePayeurData()
         {
             #region Version 1
             var payeur = new Utilisateur
             {
-                CodeUtilisateur = payeurdata.CodeUtilisateur,
-                Login = payeurdata.Login,
-                Password = payeurdata.Password,
-                Role = payeurdata.Role
+                CodeUtilisateur = CodeUtilisateur,
+                Login = Login,
+                Password = Password,
+                Role = Role
             };
             payeur.Personne = new Personne
             {
-                Nom = payeurdata.Personne.Nom,
-                Prenom = payeurdata.Personne.Prenom,
-                DateNaissance = payeurdata.Personne.DateNaissance,
+                Nom = Personne.Nom,
+                Prenom = Personne.Prenom,
+                DateNaissance = Personne.DateNaissance,
                 FkAdresse = 2
             };
             #endregion

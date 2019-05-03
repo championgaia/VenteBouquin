@@ -38,14 +38,14 @@ namespace VenteBouquin_DATA.Class_DATA
         #endregion
         #endregion
         #region CreateCommande Data
-        public void CreateCommande(CommandeData commande)
+        public void CreateCommande()
         {
             var c = new Commande
             {
-                PrixTotal = (decimal)commande.PrixTotal,
-                FkUtilisateur = commande.LePayeur.CodePayeur
+                PrixTotal = (decimal)PrixTotal,
+                FkUtilisateur = LePayeur.CodePayeur
             };
-            foreach (var item in commande.LesLignes)
+            foreach (var item in LesLignes)
             {
                 c.LigneDeCommandes.Add(new LigneDeCommande
                 {
