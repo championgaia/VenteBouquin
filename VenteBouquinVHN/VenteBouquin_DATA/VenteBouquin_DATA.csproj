@@ -62,6 +62,9 @@
     <Compile Include="Class DATA\PayeurData.cs" />
     <Compile Include="Class DATA\PersonneData.cs" />
     <Compile Include="Class DATA\PromotionData.cs" />
+    <Compile Include="Class_Control_DATA\GestionCatalogueData.cs" />
+    <Compile Include="Class_Control_DATA\GestionCommandeData.cs" />
+    <Compile Include="Class_Control_DATA\GestionUtilisateurData.cs" />
     <Compile Include="Commande.cs">
       <DependentUpon>ModelVenteBouquin.tt</DependentUpon>
     </Compile>

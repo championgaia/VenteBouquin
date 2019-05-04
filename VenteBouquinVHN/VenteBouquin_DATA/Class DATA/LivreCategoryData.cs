@@ -21,11 +21,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public LivreCategoryData(int codeCategory)
         {
             var category = context.LivreCategories
-                        .Select(c => c)
-                        .Distinct()
-                        .Where(c => c.IdCategory == codeCategory || codeCategory == 0)
-                        .OrderBy(c => c.NomCategory)
-                        .ToList().FirstOrDefault();
+                        .FirstOrDefault(c => c.IdCategory == codeCategory);
             CodeCategory = category.IdCategory;
             NomCategory = category.NomCategory;
         }

@@ -21,9 +21,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public CommandeData(int codeCommande)
         {
             var leCommande = context.Commandes
-                                .Where(c => c.IdCommande == codeCommande)
-                                .ToList()
-                                .FirstOrDefault();
+                                .FirstOrDefault(c => c.IdCommande == codeCommande);
             CodeCommande = leCommande.IdCommande;
             PrixTotal = (double)leCommande.PrixTotal;
             LePayeur = new PayeurData(leCommande.FkUtilisateur);

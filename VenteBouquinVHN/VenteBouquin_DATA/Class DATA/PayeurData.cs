@@ -23,8 +23,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public PayeurData(int codePayeur)
         {
             var payeur = context.Utilisateurs
-                .Where(c => c.IdUtilisateur == codePayeur)
-                .ToList().FirstOrDefault();
+                .FirstOrDefault(c => c.IdUtilisateur == codePayeur);
             if (payeur != null)
             {
                 CodePayeur = payeur.IdUtilisateur;
@@ -47,8 +46,7 @@ namespace VenteBouquin_DATA.Class_DATA
         public PayeurData(string codeUtilisateur)
         {
             var payeur = context.Utilisateurs
-                .Where(c => c.CodeUtilisateur == codeUtilisateur)
-                .ToList().FirstOrDefault();
+                .FirstOrDefault(c => c.CodeUtilisateur == codeUtilisateur);
             if (payeur != null)
             {
                 CodePayeur = payeur.IdUtilisateur;

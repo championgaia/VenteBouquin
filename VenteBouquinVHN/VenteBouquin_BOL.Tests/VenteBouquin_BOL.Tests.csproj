@@ -56,8 +56,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="GetLivreCategoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GetLivreParCategoryTest.cs" />
+    <Compile Include="GetLivreParCodeISBNTest.cs" />
+    <Compile Include="GetPayeurTest.cs" />
+    <Compile Include="GetCommandeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

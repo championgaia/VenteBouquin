@@ -7,33 +7,19 @@ using VenteBouquin_DTO.class_dto;
 namespace VenteBouquin_BOL.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class GetLivreCategoryTest
     {
-        
-        public RepoBOL repo = new RepoBOL();
+        private RepoBOL repo = new RepoBOL();
         [TestMethod]
-        public void TestMethod1()
-        {
-        }
-
-        [TestMethod]
-        public void GetLivreCategoryDTOsRepoBolTest()
+        public void GetLivreCategoryTestType()
         {
             var liste = repo.GetLivreCategoryDTOsRepoBol();
             Assert.AreEqual(typeof(List<LivreCategoryDTO>), liste.GetType());
         }
-
-        [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void GetLivreCategoryDTOsRepoBolTest1()//a faire
+        public void GetLivreCategoryTestNull()//a faire
         {
             var liste = repo.GetLivreCategoryDTOsRepoBol();
-        }
-
-        [TestMethod]
-        public void GetLivreCategoryDTOsRepoBolTest2()
-        {
-
         }
     }
 }
