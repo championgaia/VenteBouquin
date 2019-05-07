@@ -1,0 +1,42 @@
+﻿<Window x:Class="TpBinding_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TpBinding_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <!-- Changer AncestorLevel=2 vers AncestorLevel=1 et regarder ce qui se passe. 
+        Changer le type d'ancestor de Border vers Canvas et voir ce qui se passe.-->
+
+        <Canvas Name="Parent0">
+            <Canvas Name="Parent1"
+                 Width="{Binding RelativeSource={RelativeSource Self},
+                 Path=Parent.ActualWidth}"
+                 Height="{Binding RelativeSource={RelativeSource Self},
+                 Path=Parent.ActualHeight}">
+                <Canvas Name="Parent2">
+                    <Border Name="Parent3"
+                Width="{Binding RelativeSource={RelativeSource Self},
+               Path=Parent.ActualWidth}"
+               Height="{Binding RelativeSource={RelativeSource Self},
+                  Path=Parent.ActualHeight}">
+                        <Canvas Name="Parent4">
+                            <TextBlock FontSize="16" 
+                   Margin="5" Text="Display the name of the ancestor"/>
+                            <TextBlock FontSize="16" 
+                     Margin="50" 
+                Text="{Binding RelativeSource={RelativeSource  
+                           FindAncestor,
+                           AncestorType={x:Type Canvas}, 
+                           AncestorLevel=2},Path=Name}" 
+                           Width="200"/>
+                        </Canvas>
+                    </Border>
+                </Canvas>
+            </Canvas>
+        </Canvas>
+    </Grid>
+</Window>
