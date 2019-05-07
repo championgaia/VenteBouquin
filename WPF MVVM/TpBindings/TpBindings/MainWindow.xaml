@@ -18,15 +18,14 @@
         <Rectangle Height="150" 
                    Stroke="Black"
                    Fill="Red"
-                   Name="rectangle2" 
                    />
 
-         <Rectangle Grid.Column="1"  Name="rectangle" 
+            <Rectangle Grid.Column="1"  Name="rectangle" 
                     Height="100" Stroke="Black" 
                     Canvas.Top="100" Canvas.Left="100"
                     Width="{Binding ElementName=rectangle,
                     Path=Height}"
-                    Fill="{Binding ElementName=rectangle2,
+                    Fill="{Binding ElementName=rectangle,
                     Path=Fill}"/>
     </Grid>
 
