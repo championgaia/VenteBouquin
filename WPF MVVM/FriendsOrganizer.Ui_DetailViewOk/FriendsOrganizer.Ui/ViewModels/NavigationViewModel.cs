@@ -29,7 +29,6 @@ namespace FriendsOrganizer.Ui.ViewModels
             SaveCommande = new DelegateCommand(OnSaveExecute, CanExecuteMethod);
             Load();
         }
-
         private bool CanExecuteMethod()
         {
             return true;
