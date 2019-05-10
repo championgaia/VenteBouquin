@@ -26,9 +26,5 @@ namespace DataAccess
 
         }
 
-        public void Save(Friend f)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

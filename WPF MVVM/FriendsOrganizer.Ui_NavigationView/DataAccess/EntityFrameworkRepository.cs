@@ -12,7 +12,7 @@ namespace DataAccess
         {
             using (var context = new FriendOrganizerDbEntities())
             {
-               return context.Friend.ToList();
+               return context.Friends.ToList();
             }
         }
     }

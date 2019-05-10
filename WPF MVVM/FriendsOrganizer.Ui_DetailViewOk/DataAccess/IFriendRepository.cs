@@ -9,6 +9,5 @@ namespace DataAccess
     {   
         List<Friend> GetFriends();
         Friend GetFriend(int friendId);
-        void Save(Friend f);
     }
 }

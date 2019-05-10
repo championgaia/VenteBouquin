@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +12,7 @@ namespace DataAccess
         {
             using (var context = new FriendOrganizerDbEntities())
             {
-                return context.Friend.FirstOrDefault(f=>f.Id == friendId);
+                return context.Friends.FirstOrDefault(f=>f.Id == friendId);
             }
         }
 
@@ -21,28 +20,8 @@ namespace DataAccess
         {
             using (var context = new FriendOrganizerDbEntities())
             {
-               return context.Friend.ToList();
+               return context.Friends.ToList();
             }
-        }
-
-        public void Save(Friend f)
-        {
-            if (f!=null)
-            {
-                using (var context = new FriendOrganizerDbEntities())
-                {
-                    //var friendAModif = GetFriend(f.Id);
-                    //friendAModif.FirstName = f.FirstName;
-                    //friendAModif.LastName = f.LastName;
-
-                    //friendAModif.Email = f.Email;
-                    context.Friend.AddOrUpdate(f);
-                    //context.Friend.Attach(f);
-                    //context.Entry(f).State = System.Data.Entity.EntityState.Modified;
-                    context.SaveChanges();
-                }
-            }
-            
         }
     }
 }

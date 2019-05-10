@@ -14,7 +14,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Margin="2">FirstName</Label>
@@ -23,6 +22,5 @@
         <TextBox Grid.Row="3" Text="{Binding CurrentFriend.LastName}" Margin="5"></TextBox>
         <Label Grid.Row="4" Margin="2">Email</Label>
         <TextBox Grid.Row="5" Text="{Binding CurrentFriend.Email}" Margin="5"></TextBox>
-        <Button Grid.Row="6" Content="Save" Command="{Binding SaveCommande}"></Button>
     </Grid>
 </UserControl>

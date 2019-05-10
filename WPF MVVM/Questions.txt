@@ -1,0 +1,19 @@
+1)Qu'est ce que la séparation of concerns ?
+
+2)Pourquoi est ce important ?
+
+3)Qu'est ce que l'injection de dépendances ?
+
+4)Quelles sont les grandes étapes pour l'implémenter dans votre solution ?
+
+5)Qu'est ce que l'inversion of control ?
+
+6)Quelles sont les responsabilités des 3 composants de MVVM ?
+
+7)Quelles est l'equation fondamentale de MVVM en WPF ?
+
+8)Comment communiquer entre viewmodels ?
+
+9)Quels sont les 2 types de bindings ? ( autrement dit je peux binder sur quoi ?)
+
+10)Quelles sont les grandes étapes pour créer une commande en WPF ?

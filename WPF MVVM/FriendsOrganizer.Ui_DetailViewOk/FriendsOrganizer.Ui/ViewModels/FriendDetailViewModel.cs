@@ -1,6 +1,5 @@
 ﻿using DataAccess;
 using FriendsOrganizer.Ui.Events;
-using Prism.Commands;
 using Prism.Events;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace FriendsOrganizer.Ui.ViewModels
 {
@@ -18,22 +16,11 @@ namespace FriendsOrganizer.Ui.ViewModels
         Friend _currentFriend;
         IFriendRepository _repository { get; set; }
         IEventAggregator _aggregator;
-        public ICommand SaveCommande { get; set; }
         public FriendDetailViewModel(IFriendRepository repo, IEventAggregator agg)
         {
             _repository = repo;
             _aggregator = agg;
-            _aggregator.GetEvent<OpenFriendDetailViewEvent>().Subscribe(OnOpenFriendDetailView);
-            SaveCommande = new DelegateCommand(OnSaveExecute, CanExecuteMethod);
-        }
-        private bool CanExecuteMethod()
-        {
-            return true;
-        }
-        private void OnSaveExecute()
-        {
-            _repository.Save(_currentFriend);
-            _aggregator.GetEvent<MajFriendDetailViewEvent>().Publish();
+            _aggregator.GetEvent<OpenFriendDetailViewEvent>().Subscribe(OnOpenFriend);
         }
         public Friend CurrentFriend
         {
@@ -43,13 +30,15 @@ namespace FriendsOrganizer.Ui.ViewModels
                 OnPropertyChanged();
             }
         }
-        private void OnOpenFriendDetailView(int friendId)
+        private void OnOpenFriend(int friendId)
         {
             Load(friendId);
         }
+
         public void Load(int friendId)
         {
             CurrentFriend= _repository.GetFriend(friendId);
         }
+
     }
 }
