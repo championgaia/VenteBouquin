@@ -40,7 +40,6 @@ namespace VenteBouquin_UIL
                 url : "vente-bouquin/livre-par-category/{codeCategory}",
                 defaults: new { controller = "VenteBouquin", action = "GetLivreParCategory"}
             );
-
             routes.MapRoute(
                 name: "Default",
                 url: "{cont" +

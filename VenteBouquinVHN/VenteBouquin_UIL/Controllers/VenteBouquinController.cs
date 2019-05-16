@@ -62,13 +62,6 @@ namespace VenteBouquin_UIL.Controllers
         #endregion
         #endregion
         #region Commande
-        //public ActionResult AddPanier(string codeISBN)
-        //{
-        //    PanierViewModel panier = new PanierViewModel(codeISBN);
-        //    return View(panier);
-        //}
-        #endregion
-        #region Commande
         #region Panier
         public ActionResult AddPanier(List<string> mesCodeISBN)
         {
@@ -76,6 +69,13 @@ namespace VenteBouquin_UIL.Controllers
             PanierViewModel panier = new PanierViewModel(mesCodeISBN);
             return View(panier);
         }
+        #endregion
+        #region Commande addPanier
+        //public ActionResult AddPanier(string codeISBN)
+        //{
+        //    PanierViewModel panier = new PanierViewModel(codeISBN);
+        //    return View(panier);
+        //}
         #endregion
         #region CreateCommande
         [Authorize]

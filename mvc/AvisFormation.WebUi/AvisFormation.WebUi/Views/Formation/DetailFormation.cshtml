@@ -1,0 +1,22 @@
+﻿@model Data.Formation
+@{
+    ViewBag.Title = "DetailFormation";
+
+}
+<h2>@Model.Nom</h2>
+
+@Html.ActionLink("Laissez un avis sur cette formation", "LaissezUnAvis", "Avis", new { idFormation = Model.Id }, null)
+
+<p>@Model.Description</p>
+
+@if(Model.Avis.Count == 0 )
+{
+    <p>Aucun avis pour cette formation</p>
+}
+
+@foreach (var avis in Model.Avis)
+{
+    <p>@avis.Nom </p>
+    <p>@avis.Note/5</p>
+    <p>@avis.Description</p>
+}

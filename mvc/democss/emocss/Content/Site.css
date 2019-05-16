@@ -1,0 +1,19 @@
+﻿body {
+    background-color:white;
+}
+p{
+    color:maroon;
+}
+
+.blue
+{
+    color:blue;
+}
+
+#green {
+    color: forestgreen;
+}
+
+.mydiv .blue{
+    color:aqua;
+}

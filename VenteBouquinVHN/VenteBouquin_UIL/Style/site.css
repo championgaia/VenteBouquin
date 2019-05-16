@@ -29,13 +29,16 @@ th {
     color: white;
 }
 
-p {
+div {
     text-decoration-style: inherit;
     text-align: justify;
-    font-style: italic;
     font-size: large;
-    line-height: 2.5;
-    text-indent: 50px;
+    
+    /*line-height: 2.5;
+    text-indent: 50px;*/
+}
+.divList {
+    border: 1px solid black;
 }
 .padding30{
     padding: 30px;
@@ -58,4 +61,7 @@ p {
 .bigPercent{
     font-size: 3em;
     font-weight:bold;
+}
+.class2{
+    color: red;
 }

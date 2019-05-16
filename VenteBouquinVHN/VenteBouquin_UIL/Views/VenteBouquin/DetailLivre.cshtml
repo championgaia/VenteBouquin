@@ -67,6 +67,38 @@
         </p>
     </div>
 </div>
+<div class="container text-center padding30">
+    <h3 class="jumbotron">@Html.DisplayFor(modelItem => Model.LivreVM.NomLivreM)</h3>
+    
+    <div class="row ">
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            <div>
+                @Html.DisplayFor(modelItem => Model.LivreVM.CoverImageM)
+            </div>
+        </div>
+        <div class="col-lg-9 col-md-9 ">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6  col-sm-12">
+                    @Html.DisplayFor(modelItem => Model.LivreVM.AuteurM)
+                </div>
+                <div class="col-lg-6 col-md-6  col-sm-12">
+                    @Html.DisplayFor(modelItem => Model.LivreVM.EditeurM)
+                </div>
+                <div class="col-lg-6 col-md-6  col-sm-12">
+                    @Html.DisplayFor(modelItem => Model.LivreVM.CodeISBNM)
+                </div>
+                <div class="col-lg-6 col-md-6  col-sm-12">
+                    @Html.DisplayFor(modelItem => Model.LivreVM.PrixM)
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12  col-sm-12">
+            @Html.DisplayFor(modelItem => Model.LivreVM.DescriptionM.DetailM)
+        </div>
+    </div>
+</div>
+
 <p>
     <button id="btnAddPanier" class="btn-success" onclick="myFunction(Model.LivreVM.CodeISBNM);">Ajouter au panier</button>|
     @Html.ActionLink("Voir panier", "AddPanier", new { mesCodeISBN = Model.LivreVM.CodeISBNM, codeUtilisateur = User.Identity.Name })|

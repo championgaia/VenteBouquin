@@ -2,41 +2,35 @@
 
 @{
     ViewBag.Title = "GetLivreParCategory";
+    int countPage = 0;
 }
 <link href="~/Style/site.css" rel="stylesheet" />
-<h2>GetLivreParCategory</h2>
+<div class="jumbotron text-center">
+    <h2>GetLivreParCategory</h2>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table-bordered table-hover table-striped table-condensed  table-responsive">
+
+<table class="table-bordered  table-striped table-condensed  table-responsive">
     <tr>
         <th>
-            @Html.DisplayName("CodeISBNM")
+            @Html.DisplayName("Cover")
         </th>
         <th>
-            @Html.DisplayName("NomLivreM")
+            @Html.DisplayName("Nom")
         </th>
         <th>
-            @Html.DisplayName("AuteurM")
-        </th>                 
-        <th>                  
-            @Html.DisplayName("EditeurM")
-        </th>                 
-        <th>                  
-            @Html.DisplayName("CoverImageM")
-        </th>                 
-        <th>                  
-            @Html.DisplayName("PrixM")
-        </th>                 
-        <th></th>
+            @Html.DisplayName("Auteur")
+        </th>
+        <th>
+            @Html.DisplayName("Choix")
+        </th>
     </tr>
 
     @foreach (var item in Model.ListeLivreVM)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodeISBNM)
+                @Html.DisplayFor(modelItem => item.CoverImageM)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NomLivreM)
@@ -45,19 +39,66 @@
                 @Html.DisplayFor(modelItem => item.AuteurM)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EditeurM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CoverImageM)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrixM)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "DetailLivre", new { codeISBN = item.CodeISBNM })|
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Details", "DetailLivre", new { codeISBN = item.CodeISBNM })
+
             </td>
         </tr>
     }
 
 </table>
+<div>
+    <p>
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+<div class="container text-center  padding30">
+    <h3 class="jumbotron">Choisir votre livre</h3>
+    @foreach (var item in Model.ListeLivreVM)
+    {
+        <div class="row widget-bottom divList">
+            <div class="col-lg-3 col-sm-6 ">
+                @Html.DisplayFor(modelItem => item.CoverImageM)
+            </div>
+            <div class="col-lg-3 col-sm-6 ">
+                @Html.DisplayFor(modelItem => item.NomLivreM)
+            </div>
+            <div class="col-lg-3 col-sm-6 ">
+                @Html.DisplayFor(modelItem => item.AuteurM)
+            </div>
+            <div class="col-lg-3 col-sm-6 ">
+                @Html.ActionLink("Details", "DetailLivre", new { codeISBN = item.CodeISBNM })
+            </div>
+        </div>
+    }
+</div>
+<div class="container text-center padding30">
+    <h3 class="jumbotron">Choisir votre livre</h3>
+    @foreach (var item in Model.ListeLivreVM)
+    {
+<div class="row @(countPage % 2 == 0 ? "class1" : "class2") ">
+    <div class="col-lg-3 col-md-3 col-sm-3">
+        <div>
+            @Html.DisplayFor(modelItem => item.CoverImageM)
+        </div>
+    </div>
+    <div hidden="hidden">
+        @{countPage++;}
+    </div>
+    
+    <div class="col-lg-9 col-md-9 ">
+        <div class="row">
+            <div class="col-lg-4 col-md-4  col-sm-4">
+                @Html.DisplayFor(modelItem => item.NomLivreM)
+            </div>
+            <div class="col-lg-4 col-md-4  col-sm-4">
+                @Html.DisplayFor(modelItem => item.AuteurM)
+            </div>
+            <div class="col-lg-4 col-md-4  col-sm-4">
+                @Html.ActionLink("Details", "DetailLivre", new { codeISBN = item.CodeISBNM })
+            </div>
+        </div>
+    </div>
+</div>
+                
+ }
+</div>
