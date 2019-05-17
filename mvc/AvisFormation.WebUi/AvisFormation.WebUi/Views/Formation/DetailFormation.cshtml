@@ -1,20 +1,25 @@
-﻿@model Data.Formation
+﻿@model AvisFormation.WebUi.Models.DetailFormationViewModel
 @{
-    ViewBag.Title = "DetailFormation";
-
+    ViewBag.Title = Model.FormationInstance.Nom;
 }
-<h2>@Model.Nom</h2>
+<h2>@Model.FormationInstance.Nom</h2>
 
-@Html.ActionLink("Laissez un avis sur cette formation", "LaissezUnAvis", "Avis", new { idFormation = Model.Id }, null)
+@Html.ActionLink("Laissez un avis sur cette formation", "LaissezUnAvis", "Avis", new { idFormation = Model.FormationInstance.Id }, null)
 
-<p>@Model.Description</p>
+<p>@Model.FormationInstance.Description</p>
+<br />
 
-@if(Model.Avis.Count == 0 )
+@if (Model.FormationInstance.Avis.Count == 0)
 {
     <p>Aucun avis pour cette formation</p>
 }
+else
+{
+    <p>La note moyenne de cette formation est de : @Model.NoteMoyenne /5 </p>
+}
 
-@foreach (var avis in Model.Avis)
+
+@foreach (var avis in Model.FormationInstance.Avis)
 {
     <p>@avis.Nom </p>
     <p>@avis.Note/5</p>

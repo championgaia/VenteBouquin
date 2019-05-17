@@ -9,12 +9,13 @@ using AvisFormation.WebUi.Models;
 
 namespace AvisFormation.WebUi.Controllers
 {
-
+    [Authorize]
     public class AvisController : Controller
     {
         // GET: Avis
         public ActionResult LaissezUnAvis(int idFormation)
         {
+            
             return View(idFormation);
         }
         [HttpPost]

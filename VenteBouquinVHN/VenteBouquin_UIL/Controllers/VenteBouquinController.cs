@@ -8,7 +8,7 @@ using System.Web.Security;
 using VenteBouquin_UIL.Views.VenteBouquin;
 
 namespace VenteBouquin_UIL.Controllers
-{
+{   
     public class VenteBouquinController : Controller
     {
         #region Livre

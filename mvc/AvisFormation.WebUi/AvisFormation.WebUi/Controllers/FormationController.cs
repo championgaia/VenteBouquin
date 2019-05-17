@@ -21,7 +21,7 @@ namespace AvisFormation.WebUi.Controllers
 
             var vm = new ToutesLesFormationsViewModel();
             vm.Formations = repository.GetFormations();
-            vm.Ville = "Rouen";
+            vm.Ville = "Rouen"; 
 
             return View(vm);
         }
@@ -34,7 +34,13 @@ namespace AvisFormation.WebUi.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View(formation);
+            var noteMoyenne = Math.Round(formation.Avis.Select(f=>f.Note).DefaultIfEmpty(0).Average(),2);
+
+            var vm = new DetailFormationViewModel();
+            vm.FormationInstance = formation;
+            vm.NoteMoyenne = noteMoyenne;
+
+            return View(vm);
         }
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="GetLivreParCodeISBNTest.cs" />
     <Compile Include="GetPayeurTest.cs" />
     <Compile Include="GetCommandeTest.cs" />
+    <Compile Include="GetAllPayeurTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

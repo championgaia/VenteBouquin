@@ -1,0 +1,9 @@
+git init
+git config --global user.email "championgaia@gmail.com"
+git remote add origin https://github.com/championgaia/VenteBouquin.git
+git pull origin master
+
+
+rm -rf .git
+git config --global --unset-all user.name
+git config --global --remove-section user
