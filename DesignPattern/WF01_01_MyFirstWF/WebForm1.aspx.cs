@@ -14,6 +14,7 @@ namespace WF01_01_MyFirstWF
         {
             if (!Page.IsPostBack)
                 Session["MyEvents"] = new List<MyEvent>();
+           
         }
 
         protected void btnEvent_Click(object sender, EventArgs e)

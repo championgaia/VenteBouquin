@@ -1,0 +1,612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VenteBouquinModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adresse">
+          <Key>
+            <PropertyRef Name="IdAdresse" />
+          </Key>
+          <Property Name="IdAdresse" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroRue" Type="int" Nullable="false" />
+          <Property Name="NomRue" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdresseComplementaire" Type="nvarchar" MaxLength="250" />
+          <Property Name="NomVille" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodePostal" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NomPays" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrixTotal" Type="decimal" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="FkUtilisateur" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="IdDescription" />
+          </Key>
+          <Property Name="IdDescription" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeISBN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Detail" Type="text" />
+        </EntityType>
+        <EntityType Name="LigneDeCommande">
+          <Key>
+            <PropertyRef Name="IdLigneDeCommande" />
+          </Key>
+          <Property Name="IdLigneDeCommande" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Quantite" Type="int" Nullable="false" />
+          <Property Name="FkPromotion" Type="int" Nullable="false" />
+          <Property Name="FkLivre" Type="int" Nullable="false" />
+          <Property Name="FkCommande" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Livre">
+          <Key>
+            <PropertyRef Name="IdLivre" />
+          </Key>
+          <Property Name="IdLivre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeISBN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NomLivre" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Auteur" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Editeur" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoverImage" Type="nvarchar" MaxLength="250" />
+          <Property Name="Prix" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FkDescription" Type="int" />
+          <Property Name="FkLivreCategory" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LivreCategory">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NomCategory" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personne">
+          <Key>
+            <PropertyRef Name="IdPersonne" />
+          </Key>
+          <Property Name="IdPersonne" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateNaissance" Type="date" Nullable="false" />
+          <Property Name="FkAdresse" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="IdPromotion" />
+          </Key>
+          <Property Name="IdPromotion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PourcentagePromo" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="DateDebut" Type="date" Nullable="false" />
+          <Property Name="DateFin" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeUtilisateur" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FkPersonne" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Cle_F_Commande_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="FkUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_LigneDeCommande_Commande">
+          <End Role="Commande" Type="Self.Commande" Multiplicity="1" />
+          <End Role="LigneDeCommande" Type="Self.LigneDeCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commande">
+              <PropertyRef Name="IdCommande" />
+            </Principal>
+            <Dependent Role="LigneDeCommande">
+              <PropertyRef Name="FkCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_LigneDeCommande_Livre">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1" />
+          <End Role="LigneDeCommande" Type="Self.LigneDeCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="IdLivre" />
+            </Principal>
+            <Dependent Role="LigneDeCommande">
+              <PropertyRef Name="FkLivre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_LigneDeCommande_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="LigneDeCommande" Type="Self.LigneDeCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="IdPromotion" />
+            </Principal>
+            <Dependent Role="LigneDeCommande">
+              <PropertyRef Name="FkPromotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_Livre_Adresse">
+          <End Role="LivreCategory" Type="Self.LivreCategory" Multiplicity="1" />
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LivreCategory">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Livre">
+              <PropertyRef Name="FkLivreCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cle_F_Livre_Description">
+          <End Role="Description" Type="Self.Description" Multiplicity="0..1" />
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="IdDescription" />
+            </Principal>
+            <Dependent Role="Livre">
+              <PropertyRef Name="FkDescription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_Personne_Adresse">
+          <End Role="Adresse" Type="Self.Adresse" Multiplicity="1" />
+          <End Role="Personne" Type="Self.Personne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresse">
+              <PropertyRef Name="IdAdresse" />
+            </Principal>
+            <Dependent Role="Personne">
+              <PropertyRef Name="FkAdresse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_Utilisateur_Personne">
+          <End Role="Personne" Type="Self.Personne" Multiplicity="1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personne">
+              <PropertyRef Name="IdPersonne" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="FkPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VenteBouquinModelStoreContainer">
+          <EntitySet Name="Adresse" EntityType="Self.Adresse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Commande" EntityType="Self.Commande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Description" EntityType="Self.Description" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LigneDeCommande" EntityType="Self.LigneDeCommande" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livre" EntityType="Self.Livre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LivreCategory" EntityType="Self.LivreCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personne" EntityType="Self.Personne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotion" EntityType="Self.Promotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Cle_F_Commande_Utilisateur" Association="Self.Cle_F_Commande_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+            <End Role="Commande" EntitySet="Commande" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_LigneDeCommande_Commande" Association="Self.Cle_F_LigneDeCommande_Commande">
+            <End Role="Commande" EntitySet="Commande" />
+            <End Role="LigneDeCommande" EntitySet="LigneDeCommande" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_LigneDeCommande_Livre" Association="Self.Cle_F_LigneDeCommande_Livre">
+            <End Role="Livre" EntitySet="Livre" />
+            <End Role="LigneDeCommande" EntitySet="LigneDeCommande" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_LigneDeCommande_Promotion" Association="Self.Cle_F_LigneDeCommande_Promotion">
+            <End Role="Promotion" EntitySet="Promotion" />
+            <End Role="LigneDeCommande" EntitySet="LigneDeCommande" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_Livre_Adresse" Association="Self.Cle_F_Livre_Adresse">
+            <End Role="LivreCategory" EntitySet="LivreCategory" />
+            <End Role="Livre" EntitySet="Livre" />
+          </AssociationSet>
+          <AssociationSet Name="cle_F_Livre_Description" Association="Self.cle_F_Livre_Description">
+            <End Role="Description" EntitySet="Description" />
+            <End Role="Livre" EntitySet="Livre" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_Personne_Adresse" Association="Self.Cle_F_Personne_Adresse">
+            <End Role="Adresse" EntitySet="Adresse" />
+            <End Role="Personne" EntitySet="Personne" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_Utilisateur_Personne" Association="Self.Cle_F_Utilisateur_Personne">
+            <End Role="Personne" EntitySet="Personne" />
+            <End Role="Utilisateur" EntitySet="Utilisateur" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VenteBouquinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adresse">
+          <Key>
+            <PropertyRef Name="IdAdresse" />
+          </Key>
+          <Property Name="IdAdresse" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroRue" Type="Int32" Nullable="false" />
+          <Property Name="NomRue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdresseComplementaire" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NomVille" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomPays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personnes" Relationship="Self.Cle_F_Personne_Adresse" FromRole="Adresse" ToRole="Personne" />
+        </EntityType>
+        <EntityType Name="Commande">
+          <Key>
+            <PropertyRef Name="IdCommande" />
+          </Key>
+          <Property Name="IdCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrixTotal" Type="Decimal" Precision="20" Scale="2" Nullable="false" />
+          <Property Name="FkUtilisateur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Utilisateur" Relationship="Self.Cle_F_Commande_Utilisateur" FromRole="Commande" ToRole="Utilisateur" />
+          <NavigationProperty Name="LigneDeCommandes" Relationship="Self.Cle_F_LigneDeCommande_Commande" FromRole="Commande" ToRole="LigneDeCommande" />
+        </EntityType>
+        <EntityType Name="Description">
+          <Key>
+            <PropertyRef Name="IdDescription" />
+          </Key>
+          <Property Name="IdDescription" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Livres" Relationship="Self.cle_F_Livre_Description" FromRole="Description" ToRole="Livre" />
+        </EntityType>
+        <EntityType Name="LigneDeCommande">
+          <Key>
+            <PropertyRef Name="IdLigneDeCommande" />
+          </Key>
+          <Property Name="IdLigneDeCommande" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Quantite" Type="Int32" Nullable="false" />
+          <Property Name="FkPromotion" Type="Int32" Nullable="false" />
+          <Property Name="FkLivre" Type="Int32" Nullable="false" />
+          <Property Name="FkCommande" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Commande" Relationship="Self.Cle_F_LigneDeCommande_Commande" FromRole="LigneDeCommande" ToRole="Commande" />
+          <NavigationProperty Name="Livre" Relationship="Self.Cle_F_LigneDeCommande_Livre" FromRole="LigneDeCommande" ToRole="Livre" />
+          <NavigationProperty Name="Promotion" Relationship="Self.Cle_F_LigneDeCommande_Promotion" FromRole="LigneDeCommande" ToRole="Promotion" />
+        </EntityType>
+        <EntityType Name="Livre">
+          <Key>
+            <PropertyRef Name="IdLivre" />
+          </Key>
+          <Property Name="IdLivre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomLivre" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Auteur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Editeur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CoverImage" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Prix" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="FkDescription" Type="Int32" />
+          <Property Name="FkLivreCategory" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Description" Relationship="Self.cle_F_Livre_Description" FromRole="Livre" ToRole="Description" />
+          <NavigationProperty Name="LigneDeCommandes" Relationship="Self.Cle_F_LigneDeCommande_Livre" FromRole="Livre" ToRole="LigneDeCommande" />
+          <NavigationProperty Name="LivreCategory" Relationship="Self.Cle_F_Livre_Adresse" FromRole="Livre" ToRole="LivreCategory" />
+        </EntityType>
+        <EntityType Name="LivreCategory">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NomCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Livres" Relationship="Self.Cle_F_Livre_Adresse" FromRole="LivreCategory" ToRole="Livre" />
+        </EntityType>
+        <EntityType Name="Personne">
+          <Key>
+            <PropertyRef Name="IdPersonne" />
+          </Key>
+          <Property Name="IdPersonne" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateNaissance" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FkAdresse" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Adresse" Relationship="Self.Cle_F_Personne_Adresse" FromRole="Personne" ToRole="Adresse" />
+          <NavigationProperty Name="Utilisateurs" Relationship="Self.Cle_F_Utilisateur_Personne" FromRole="Personne" ToRole="Utilisateur" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="IdPromotion" />
+          </Key>
+          <Property Name="IdPromotion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PourcentagePromo" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="DateDebut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFin" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="LigneDeCommandes" Relationship="Self.Cle_F_LigneDeCommande_Promotion" FromRole="Promotion" ToRole="LigneDeCommande" />
+        </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeUtilisateur" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FkPersonne" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Commandes" Relationship="Self.Cle_F_Commande_Utilisateur" FromRole="Utilisateur" ToRole="Commande" />
+          <NavigationProperty Name="Personne" Relationship="Self.Cle_F_Utilisateur_Personne" FromRole="Utilisateur" ToRole="Personne" />
+        </EntityType>
+        <Association Name="Cle_F_Personne_Adresse">
+          <End Role="Adresse" Type="Self.Adresse" Multiplicity="1" />
+          <End Role="Personne" Type="Self.Personne" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresse">
+              <PropertyRef Name="IdAdresse" />
+            </Principal>
+            <Dependent Role="Personne">
+              <PropertyRef Name="FkAdresse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_Commande_Utilisateur">
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="1" />
+          <End Role="Commande" Type="Self.Commande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Utilisateur">
+              <PropertyRef Name="IdUtilisateur" />
+            </Principal>
+            <Dependent Role="Commande">
+              <PropertyRef Name="FkUtilisateur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_LigneDeCommande_Commande">
+          <End Role="Commande" Type="Self.Commande" Multiplicity="1" />
+          <End Role="LigneDeCommande" Type="Self.LigneDeCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Commande">
+              <PropertyRef Name="IdCommande" />
+            </Principal>
+            <Dependent Role="LigneDeCommande">
+              <PropertyRef Name="FkCommande" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cle_F_Livre_Description">
+          <End Role="Description" Type="Self.Description" Multiplicity="0..1" />
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Description">
+              <PropertyRef Name="IdDescription" />
+            </Principal>
+            <Dependent Role="Livre">
+              <PropertyRef Name="FkDescription" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_LigneDeCommande_Livre">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1" />
+          <End Role="LigneDeCommande" Type="Self.LigneDeCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="IdLivre" />
+            </Principal>
+            <Dependent Role="LigneDeCommande">
+              <PropertyRef Name="FkLivre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_LigneDeCommande_Promotion">
+          <End Role="Promotion" Type="Self.Promotion" Multiplicity="1" />
+          <End Role="LigneDeCommande" Type="Self.LigneDeCommande" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Promotion">
+              <PropertyRef Name="IdPromotion" />
+            </Principal>
+            <Dependent Role="LigneDeCommande">
+              <PropertyRef Name="FkPromotion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_Livre_Adresse">
+          <End Role="LivreCategory" Type="Self.LivreCategory" Multiplicity="1" />
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LivreCategory">
+              <PropertyRef Name="IdCategory" />
+            </Principal>
+            <Dependent Role="Livre">
+              <PropertyRef Name="FkLivreCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Cle_F_Utilisateur_Personne">
+          <End Role="Personne" Type="Self.Personne" Multiplicity="1" />
+          <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personne">
+              <PropertyRef Name="IdPersonne" />
+            </Principal>
+            <Dependent Role="Utilisateur">
+              <PropertyRef Name="FkPersonne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VenteBouquinContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adresses" EntityType="Self.Adresse" />
+          <EntitySet Name="Commandes" EntityType="Self.Commande" />
+          <EntitySet Name="Descriptions" EntityType="Self.Description" />
+          <EntitySet Name="LigneDeCommandes" EntityType="Self.LigneDeCommande" />
+          <EntitySet Name="Livres" EntityType="Self.Livre" />
+          <EntitySet Name="LivreCategories" EntityType="Self.LivreCategory" />
+          <EntitySet Name="Personnes" EntityType="Self.Personne" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotion" />
+          <EntitySet Name="Utilisateurs" EntityType="Self.Utilisateur" />
+          <AssociationSet Name="Cle_F_Personne_Adresse" Association="Self.Cle_F_Personne_Adresse">
+            <End Role="Adresse" EntitySet="Adresses" />
+            <End Role="Personne" EntitySet="Personnes" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_Commande_Utilisateur" Association="Self.Cle_F_Commande_Utilisateur">
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+            <End Role="Commande" EntitySet="Commandes" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_LigneDeCommande_Commande" Association="Self.Cle_F_LigneDeCommande_Commande">
+            <End Role="Commande" EntitySet="Commandes" />
+            <End Role="LigneDeCommande" EntitySet="LigneDeCommandes" />
+          </AssociationSet>
+          <AssociationSet Name="cle_F_Livre_Description" Association="Self.cle_F_Livre_Description">
+            <End Role="Description" EntitySet="Descriptions" />
+            <End Role="Livre" EntitySet="Livres" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_LigneDeCommande_Livre" Association="Self.Cle_F_LigneDeCommande_Livre">
+            <End Role="Livre" EntitySet="Livres" />
+            <End Role="LigneDeCommande" EntitySet="LigneDeCommandes" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_LigneDeCommande_Promotion" Association="Self.Cle_F_LigneDeCommande_Promotion">
+            <End Role="Promotion" EntitySet="Promotions" />
+            <End Role="LigneDeCommande" EntitySet="LigneDeCommandes" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_Livre_Adresse" Association="Self.Cle_F_Livre_Adresse">
+            <End Role="LivreCategory" EntitySet="LivreCategories" />
+            <End Role="Livre" EntitySet="Livres" />
+          </AssociationSet>
+          <AssociationSet Name="Cle_F_Utilisateur_Personne" Association="Self.Cle_F_Utilisateur_Personne">
+            <End Role="Personne" EntitySet="Personnes" />
+            <End Role="Utilisateur" EntitySet="Utilisateurs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VenteBouquinModelStoreContainer" CdmEntityContainer="VenteBouquinContext">
+          <EntitySetMapping Name="Adresses">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Adresse">
+              <MappingFragment StoreEntitySet="Adresse">
+                <ScalarProperty Name="IdAdresse" ColumnName="IdAdresse" />
+                <ScalarProperty Name="NumeroRue" ColumnName="NumeroRue" />
+                <ScalarProperty Name="NomRue" ColumnName="NomRue" />
+                <ScalarProperty Name="AdresseComplementaire" ColumnName="AdresseComplementaire" />
+                <ScalarProperty Name="NomVille" ColumnName="NomVille" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NomPays" ColumnName="NomPays" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Commandes">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Commande">
+              <MappingFragment StoreEntitySet="Commande">
+                <ScalarProperty Name="IdCommande" ColumnName="IdCommande" />
+                <ScalarProperty Name="PrixTotal" ColumnName="PrixTotal" />
+                <ScalarProperty Name="FkUtilisateur" ColumnName="FkUtilisateur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Descriptions">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Description">
+              <MappingFragment StoreEntitySet="Description">
+                <ScalarProperty Name="IdDescription" ColumnName="IdDescription" />
+                <ScalarProperty Name="CodeISBN" ColumnName="CodeISBN" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LigneDeCommandes">
+            <EntityTypeMapping TypeName="VenteBouquinModel.LigneDeCommande">
+              <MappingFragment StoreEntitySet="LigneDeCommande">
+                <ScalarProperty Name="IdLigneDeCommande" ColumnName="IdLigneDeCommande" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+                <ScalarProperty Name="FkPromotion" ColumnName="FkPromotion" />
+                <ScalarProperty Name="FkLivre" ColumnName="FkLivre" />
+                <ScalarProperty Name="FkCommande" ColumnName="FkCommande" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livres">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Livre">
+              <MappingFragment StoreEntitySet="Livre">
+                <ScalarProperty Name="IdLivre" ColumnName="IdLivre" />
+                <ScalarProperty Name="CodeISBN" ColumnName="CodeISBN" />
+                <ScalarProperty Name="NomLivre" ColumnName="NomLivre" />
+                <ScalarProperty Name="Auteur" ColumnName="Auteur" />
+                <ScalarProperty Name="Editeur" ColumnName="Editeur" />
+                <ScalarProperty Name="CoverImage" ColumnName="CoverImage" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="FkDescription" ColumnName="FkDescription" />
+                <ScalarProperty Name="FkLivreCategory" ColumnName="FkLivreCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LivreCategories">
+            <EntityTypeMapping TypeName="VenteBouquinModel.LivreCategory">
+              <MappingFragment StoreEntitySet="LivreCategory">
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+                <ScalarProperty Name="NomCategory" ColumnName="NomCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnes">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Personne">
+              <MappingFragment StoreEntitySet="Personne">
+                <ScalarProperty Name="IdPersonne" ColumnName="IdPersonne" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="DateNaissance" ColumnName="DateNaissance" />
+                <ScalarProperty Name="FkAdresse" ColumnName="FkAdresse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotion">
+                <ScalarProperty Name="IdPromotion" ColumnName="IdPromotion" />
+                <ScalarProperty Name="PourcentagePromo" ColumnName="PourcentagePromo" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateurs">
+            <EntityTypeMapping TypeName="VenteBouquinModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
+                <ScalarProperty Name="CodeUtilisateur" ColumnName="CodeUtilisateur" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="FkPersonne" ColumnName="FkPersonne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
