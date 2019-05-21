@@ -17,3 +17,10 @@ https://docs.oracle.com/database/121/ARPLS/d_output.htm#ARPLS67311
 https://mahapps.com/     --template pour WPF
 
 http://codemen.com/creating-first-asp-net-mvc-6-application-using-c-scratch/ __mvc 6
+
+https://monoskop.org/Library_Genesis
+
+ http://gen.lib.rus.ec/
+ http://libgen.io/
+ http://b-ok.org/
+ http://bookfi.net/

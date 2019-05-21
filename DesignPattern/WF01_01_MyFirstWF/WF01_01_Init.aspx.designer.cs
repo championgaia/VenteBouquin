@@ -103,12 +103,21 @@ namespace WF01_01_MyFirstWF {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// Contrôle rptEvents.
+        /// Contrôle ddlPersonne.
         /// </summary>
         /// <remarks>
         /// Champ généré automatiquement.
         /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptEvents;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPersonne;
+        
+        /// <summary>
+        /// Contrôle lvPersonne.
+        /// </summary>
+        /// <remarks>
+        /// Champ généré automatiquement.
+        /// Pour modifier, déplacez la déclaration de champ du fichier de concepteur dans le fichier code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView lvPersonne;
     }
 }

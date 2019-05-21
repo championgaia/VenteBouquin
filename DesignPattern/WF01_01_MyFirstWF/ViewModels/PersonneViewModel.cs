@@ -1,4 +1,5 @@
-﻿using Data;
+﻿using ClassDto.ClassDTO;
+using Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,15 @@ namespace WF01_01_MyFirstWF.ViewModels
                     DateNaissanceM = personne.DateNaissanceDto
                 });
             }
+        }
+        public void CreatePersonne(PersonneModel personneM)
+        {
+            repo.CreatePersonne(new PersonneDto
+            {
+                NomDto = personneM.NomM,
+                PrenomDto = personneM.PrenomM,
+                DateNaissanceDto = personneM.DateNaissanceM
+            });
         }
     }
 }

@@ -229,3 +229,14 @@ C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.
 C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.csproj.CopyComplete
 C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.dll
 C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.pdb
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\ClassDto.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\Data.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\EntityFramework.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\EntityFramework.SqlServer.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\ClassDto.pdb
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\Data.pdb
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\Data.dll.config
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\EntityFramework.xml
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\EntityFramework.SqlServer.xml
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\fr\EntityFramework.resources.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF\bin\fr\EntityFramework.SqlServer.resources.dll

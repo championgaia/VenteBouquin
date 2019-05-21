@@ -15,5 +15,10 @@ namespace Data
         {
             return perso.GetAllPeople();
         }
+
+        public void CreatePersonne(PersonneDto personneDto)
+        {
+            perso.CreatePersonne(personneDto);
+        }
     }
 }

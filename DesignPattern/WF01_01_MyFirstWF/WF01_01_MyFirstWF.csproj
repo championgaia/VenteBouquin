@@ -118,8 +118,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="base.html" />
-    <Content Include="base.js" />
+    <Content Include="html js\base.html" />
+    <Content Include="html js\base.js" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
