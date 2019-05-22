@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Bases du JS</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    
     <style>
         h1 {
             text-align: center;
@@ -14,13 +17,42 @@
             background: #000000;
             color: #fff;
         }
+
+        div {
+            position: relative;
+            height: 100px;
+            width: 100px;
+            border: 1px solid grey;
+        }
+        img { width: 100%; height: 100%; }
+			#galerie { height: 300px;  border: none;}
+			#galerie img { height: 100px; }
+			#violet { background: violet; }
+			.rouge {color: red;}
+			.bleu {background: cyan; width: 300px;}
+			.hide {display: none;}
     </style>
 
-    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+
 </head>
 <body>
     <select id="ddlBox"></select>
-    
+    <input type="button" id="btnTest" class="btn btn-block btn-success" />
+    <div id="vert" style="background-color:green"></div>
+    <div id="bleu" style="background-color:blue"></div>
+    <div id="rouge" style="background-color:red"></div>
+    <p class="texte"></p>
+    <p class="texte"></p>
+    <p id="survol">Ce texte va changer de couleur au survol</p>
+    <button id="classBleu">Ajoute ou retire la classe "bleu"</button>
+
+    <h2>la méthode each()</h2>
+    <h4>...</h4>
+    <h4>...</h4>
+    <h4>...</h4>
+    <h4>...</h4>
+
+
     <script src="base.js"></script>
 </body>
 </html>

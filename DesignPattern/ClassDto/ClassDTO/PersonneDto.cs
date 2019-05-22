@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace ClassDto.ClassDTO
 {
-    public class PersonneDto
+    public class PersonneDTO
     {
+        public int CodePersonneDto { get; set; }
         public string NomDto { get; set; }
         public string PrenomDto { get; set; }
         public string DateNaissanceDto { get; set; }
+        
+        public AdresseDTO AdresseDto { get; set; }
     }
 }

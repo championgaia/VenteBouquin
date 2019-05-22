@@ -67,16 +67,53 @@ var monObjet = {
     amis: ["ABC","CDE","EDF"],
     myFunction: function () { alert('ok');}
 }
-document.write(monObjet.nom + '<br>');
-document.write(monObjet['animal'] + '<br>');
-monObjet.nom = "milou";
-monObjet['animal'] = "milou";
-document.write(monObjet.nom + '<br>');
-document.write(monObjet.amis[1] + '<br>');
-document.write(monObjet['amis'][1] + '<br>');
-for (var c in monObjet) {
-    document.write(monObjet[c] + '<br>');
-} 
-for (var c of monObjet) {
-    document.write(monObjet.c + '<br>');
-} 
+//document.write(monObjet.nom + '<br>');
+//document.write(monObjet['animal'] + '<br>');
+//monObjet.nom = "milou";
+//monObjet['animal'] = "milou";
+//document.write(monObjet.nom + '<br>');
+//document.write(monObjet.amis[1] + '<br>');
+//document.write(monObjet['amis'][1] + '<br>');
+//for (var c in monObjet) {
+//    document.write(monObjet[c] + '<br>');
+//} 
+//for (var c of monObjet) {
+//    document.write(monObjet.c + '<br>');
+//} 
+$('#vert').hover(function () {
+    alert('in');
+    $('#rouge').css({
+        width:'200px',
+        background:'yellow'
+    });
+}, function () {
+        alert('out');
+        $('#bleu').css({
+            width:'200px',
+            background:'red'
+        });
+    });
+$('#btnTest').click(function () {
+    alert('ok');
+});
+$('.texte').eq(0).html('<span>insert with html()</span>');
+$('.texte').eq(1).text('<span>insert with text()</span>');
+$('#survol').mouseenter(function () {
+    $(this).addClass('rouge');
+
+});
+$('#survol').mouseleave(function () {
+    $(this).removeClass('rouge');
+
+});
+$('#classBleu').click(function () {
+    $('#survol').toggleClass('bleu');
+});
+$('h4').each(function (indice, element) {
+    $(element).text('ce <h4> a pour indice' + indice);
+    if (indice % 2 === 0) {
+        $(this).addClass('rouge');
+    }
+    else
+        $(this).addClass('bleu');
+});

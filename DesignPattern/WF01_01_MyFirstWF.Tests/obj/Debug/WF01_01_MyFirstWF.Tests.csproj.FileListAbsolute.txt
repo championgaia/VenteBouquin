@@ -59,3 +59,8 @@ C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\obj\Debug\WF01_01_MyFi
 C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\obj\Debug\WF01_01_MyFirstWF.Tests.csproj.CopyComplete
 C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\obj\Debug\WF01_01_MyFirstWF.Tests.dll
 C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\obj\Debug\WF01_01_MyFirstWF.Tests.pdb
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\bin\Debug\Data.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\bin\Debug\ClassDto.dll
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\bin\Debug\Data.pdb
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\bin\Debug\Data.dll.config
+C:\VHN\ventebouquin\DesignPattern\WF01_01_MyFirstWF.Tests\bin\Debug\ClassDto.pdb

@@ -27,7 +27,7 @@ namespace WF01_01_MyFirstWF.ViewModels
         }
         public void CreatePersonne(PersonneModel personneM)
         {
-            repo.CreatePersonne(new PersonneDto
+            repo.CreatePersonne(new PersonneDTO
             {
                 NomDto = personneM.NomM,
                 PrenomDto = personneM.PrenomM,

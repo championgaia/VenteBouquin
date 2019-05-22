@@ -10,15 +10,44 @@ namespace Data
 {
     public class RepoData
     {
-        PersonneData perso = new PersonneData();
-        public List<PersonneDto> GetAllPeople()
+        GestionUtilisateurData gestionUtilisateur = new GestionUtilisateurData();
+        GestionCatalogueData gestionCatalogue = new GestionCatalogueData();
+        GestionCommandeData gestionCommande = new GestionCommandeData();
+        #region gestionUtilisateur RepoDdata
+        public List<PersonneDTO> GetAllPeople()
         {
-            return perso.GetAllPeople();
+            return gestionUtilisateur.GetAllPeople();
         }
-
-        public void CreatePersonne(PersonneDto personneDto)
+        public PayeurDTO GetPeopleById(string codeUtilisateur)
         {
-            perso.CreatePersonne(personneDto);
+            return gestionUtilisateur.GetPayeurDTO(codeUtilisateur);
         }
+        public PayeurDTO GetPeopleById(int idPayeur)
+        {
+            return gestionUtilisateur.GetPayeurDTO(idPayeur);
+        }
+        public List<PayeurDTO> GetAllPayer()
+        {
+            return gestionUtilisateur.GetAllPayeurDTO();
+        }
+        public void CreatePersonne(PersonneDTO personneDto)
+        {
+            gestionUtilisateur.CreatePersonne(personneDto);
+        }
+        public void CreatePayer(PayeurDTO payeurDto)
+        {
+            gestionUtilisateur.CreatePayeur(payeurDto);
+        }
+        #endregion
+        #region gestionCatalogue RepoData
+        public List<LivreDTO> GetAllLivre()
+        {
+            return gestionCatalogue.GetAllLivreDTO();
+        }
+        public LivreDTO GetLivreByCodeISBN(string codeISBN)
+        {
+            return gestionCatalogue.GetLivreParCodeISBNDTO(codeISBN);
+        }
+        #endregion
     }
 }
