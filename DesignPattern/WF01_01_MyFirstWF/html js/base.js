@@ -6,18 +6,26 @@ document.write('<h1>les balises</h1>');
 //confirm('');//boite avec bouton ok oi anuller
 //prompt('hello');//boite avec champs a remplir
 
-var age = prompt('enter your age');
-if (age < 18)
-    document.write('vous etes mineur');
-else 
-    document.write('vous repondu avoir' + age + ' ans');
-var i = 0;
-while (i <= 3) {
-    document.write(i === 3 ? i : i + '---');
-    i++;
+//var age = prompt('enter your age');
+//if (age < 18)
+//    document.write('vous etes mineur');
+//else 
+//    document.write('vous repondu avoir' + age + ' ans');
+//var i = 0;
+//while (i <= 3) {
+//    document.write(i === 3 ? i : i + '---');
+//    i++;
     
-}
+//}
 
+function finAnim() {
+    alert('animation termine'); 
+}
+$('#fadein').click(function () {
+    $('#rouge').fadeIn();
+    $('#bleu').fadeIn(2000).delay(1000).fadeOut(1000, finAnim);
+
+})
 function meteo (saison, temperature) {
     document.write('nous sommes ' +
         saison === 'printemps' ? 'au ' + saison : 'en ' +
@@ -81,13 +89,11 @@ var monObjet = {
 //    document.write(monObjet.c + '<br>');
 //} 
 $('#vert').hover(function () {
-    alert('in');
     $('#rouge').css({
         width:'200px',
         background:'yellow'
     });
 }, function () {
-        alert('out');
         $('#bleu').css({
             width:'200px',
             background:'red'

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Installer jQuery</title>
+
+	<!-- 
+	jQuery est ce qu'on appelle une bibliotèque JavaScript, ou encore appelé "librarie" en anglais.
+
+	Cette bibliothèque regroupe un ensemble de fonctions qui permettent de faciliter l'utilisation de JavaScript, en particulier pour faire des animations en quelques lignes de code (contre des dizaines en JS), ou pour simplifier les échanges en AJAX. 
+	-->
+
+	<!-- Deux façons d'implémenter jQuery : -->
+	<!-- 1° On peut télécharger la bibliothèque sur jquery.com et mettre le fichier dans un dossier de votre site en local, et faire un lien vers celui-ci : -->
+	<!--<script src="jquery.js"></script>-->
+
+	<!-- 2° En phase de production, on recommande de faire un lien vers un CDN (= Content Delivery Network) qui n'est pas plus lent qu'une bibliothèque hébergée en local : -->
+	<script
+	  src="https://code.jquery.com/jquery-3.4.1.min.js"
+	  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	  crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+	<p>La bibliothèque jQuery ne marche pas !</p>
+	<script>
+		
+		$('p').html('La bibliothèque fonctionne !'); // on sélectionne la balise <p> dans lequel on met le html suivant : 'La bibliothèque fonctionne !'
+
+	</script>
+
+
+</body>
+</html>
