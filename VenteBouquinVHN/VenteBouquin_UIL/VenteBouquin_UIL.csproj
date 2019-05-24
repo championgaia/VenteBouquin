@@ -269,11 +269,11 @@
     <Content Include="Views\Intranet\Index.cshtml" />
     <Content Include="Views\VenteBouquin\razor ref\DetailLivre - Copier.cshtml" />
     <Content Include="Views\VenteBouquin\razor ref\AddPanier ref.cshtml" />
-    <Content Include="Views\VenteBouquin\AddPanier.cshtml" />
     <Content Include="Views\VenteBouquin\razor ref\CreateCommande ref.cshtml" />
     <Content Include="Views\VenteBouquin\CreateCommande.cshtml" />
     <Content Include="Views\VenteBouquin\razor ref\EditPayeur ref.cshtml" />
     <Content Include="Views\VenteBouquin\CreatePayeur.cshtml" />
+    <Content Include="Views\VenteBouquin\AddPanier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
