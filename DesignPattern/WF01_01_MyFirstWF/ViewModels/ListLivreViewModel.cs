@@ -9,14 +9,15 @@ namespace WF01_01_MyFirstWF.ViewModels
 {
     public class ListLivreViewModel
     {
-        public List<LivreModel> ListBook { get; set; }
+        public List<LivreModel> ListBookVM { get; set; }
+        public double TotalPrixVM { get; set; }
         private RepoData repo = new RepoData();
         public ListLivreViewModel()
         {
-            ListBook = new List<LivreModel>();
+            ListBookVM = new List<LivreModel>();
             foreach (var livre in repo.GetAllLivre())
             {
-                ListBook.Add(new LivreModel
+                ListBookVM.Add(new LivreModel
                 {
                     CodeLivreM = livre.CodeLivreDto,
                     CodeISBNM = livre.CodeISBNDto,
@@ -37,7 +38,12 @@ namespace WF01_01_MyFirstWF.ViewModels
                     }
                 });
             }
+            //TotalPrixVM = ListBookVM.Select(c => c.PrixM).Sum();
         }
-        
+        public ListLivreViewModel(double prix)
+        {
+            TotalPrixVM += prix;
+            ListBookVM = new ListLivreViewModel().ListBookVM;
+        }
     }
 }

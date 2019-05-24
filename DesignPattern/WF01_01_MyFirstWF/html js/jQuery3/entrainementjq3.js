@@ -31,13 +31,37 @@ $(function () {
         $('.on').removeClass('on').addClass('off');
         //$(this).parent().children('div').removeClass('on').addClass('off');
         $(this).next().removeClass('off').addClass('on');
-        //$(this).next().removeClass('off').addClass('on');
-        //$(this).next().next('div').removeClass('on').addClass('off');
-        //$(this).next().next().next('div').removeClass('on').addClass('off');
-        //$(this).prev('div').removeClass('on').addClass('off');
-        //$(this).prev().prev('div').removeClass('on').addClass('off');
-        //$(this).parent().children('div').removeClass('on').addClass('off');
     });
+    //Scroll automatique au clic sur un élément
+    $('.top').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
+    //Exercice "scroll vers exercice 1"
+    $('.top2').click(function () {
+        var positionExo1 = $('#accordion').offset().top;
+        //var positionExo1 = $('#accordion').position().top;
+        $('html, body').animate({ scrollTop: positionExo1 }, 'slow');
+    });
+    //Déclencher une action au scroll
+    var tailleWindow = $(window).height();
+    $(document).scroll(function () {
+        //var positionScrolls = $('.scrolls').offset().top;
+        //var tailleWindow = $(window).height();
 
-
+        //if ($(document).scrollTop() >= positionScrolls - tailleWindow) {
+        //    $('.scroll').fadeIn(1000);
+        //}
+        //else {
+        //    $('.scroll').fadeOut(1000);
+        //}
+        $('.scroll').each(function () {
+            var positionScroll = $(this).parent().offset().top;
+            if ($(document).scrollTop() >= (positionScroll - tailleWindow/2)) {
+                $(this).fadeIn(1000);
+            }
+            else {
+                $(this).fadeOut(1000);
+            }
+        });
+    });
 });//fin du document ready

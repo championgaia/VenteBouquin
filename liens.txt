@@ -24,3 +24,4 @@ https://monoskop.org/Library_Genesis
  http://libgen.io/
  http://b-ok.org/
  http://bookfi.net/
+https://jqueryui.com/

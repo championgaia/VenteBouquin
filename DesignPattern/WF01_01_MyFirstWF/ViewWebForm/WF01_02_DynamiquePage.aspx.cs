@@ -15,34 +15,67 @@ namespace WF01_01_MyFirstWF.ViewWebForm
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
+            {
                 Session["MyBook"] = new ListLivreViewModel();
-            PersonneBinding();
+            }
+            LivreBinding();
         }
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        #region LivreBinding
+        private void LivreBinding()
         {
-            AddPersonne();
-            PersonneBinding();
-        }
-        private void PersonneBinding()
-        {
-            NotreLivres = new ListLivreViewModel ();
+            NotreLivres = new ListLivreViewModel();
             #region ListView
-            lvBook.DataSource = NotreLivres.ListBook;
+            lvBook.DataSource = NotreLivres.ListBookVM;
             lvBook.DataBind();
             #endregion
+            #region textbox
+            txbTotal.Text = NotreLivres.TotalPrixVM.ToString();
+            txbTotal.DataBind();
+            #endregion
         }
-        private void AddPersonne()
+        #endregion
+        #region AddLivre
+        private void AddLivre()
         {
             if (Session["MyBook"] != null)
                 NotreLivres = (ListLivreViewModel)Session["MyBook"];
             else
                 NotreLivres = new ListLivreViewModel();
         }
-
+        #endregion
+        #region btnLivre_Click
         protected void btnLivre_Click(object sender, EventArgs e)
         {
             Button btnLivre = (Button)sender;
             var codeISBN = btnLivre.CommandArgument;
         }
+        #endregion
+        #region btnSubmit_Click
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            AddLivre();
+            LivreBinding();
+        }
+        #endregion
+        #region btnPanier_Click
+        protected void btnPanier_Click(object sender, EventArgs e)
+        {
+            Button btnPanier = (Button)sender;
+            //btnPanier.Attributes.Add("AutoPostback", "true");
+            var prix = btnPanier.CommandArgument;
+            NotreLivres.TotalPrixVM += double.Parse(prix);
+            AddPanier(NotreLivres.TotalPrixVM);
+            LivreBinding();
+        }
+
+        private void AddPanier(double totalPrixVM)
+        {
+            if (Session["MyBook"] != null)
+                NotreLivres = (ListLivreViewModel)Session["MyBook"];
+            else
+                NotreLivres = new ListLivreViewModel(totalPrixVM);
+        }
+        #endregion
+
     }
 }

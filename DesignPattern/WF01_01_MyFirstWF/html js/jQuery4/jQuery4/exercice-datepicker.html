@@ -1,0 +1,60 @@
+﻿<!--
+Exercice : 1- Vous implémentez un calendrier (datepicker jQuery UI) dans l'input donnée dans le HTML ci-dessous
+           2- La date choisie est affichée au format dd-mm-yy dans l'input.
+           3- Quand on choisit une nouvelle date dans le calendrier (événement "change"), on affiche celle-ci dans un alert.
+           4- Bonus : mettre le calendrier au format français.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI - Datepicker</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!--<script src="../../../Scripts/jquery-3.3.1.min.js"></script>
+    <script src="../../../Scripts/jquery-ui-1.12.1.min.js"></script>-->
+</head>
+
+<body>
+
+    <p><label>Choisissez une date :</label> <input type="text" id="myInput"></p>
+
+    <script>
+        $(function () {
+            //$('#myInput').datepicker();
+            //$.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+            $("#myInput").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                altField: "#myInput",
+                closeText: 'Fermer',
+                prevText: 'Précédent',
+                nextText: 'Suivant',
+                currentText: 'Aujourd\'hui',
+                monthNames: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                monthNamesShort: ['Janv.', 'Févr.', 'Mars', 'Avril', 'Mai', 'Juin', 'Juil.', 'Août', 'Sept.', 'Oct.', 'Nov.', 'Déc.'],
+                dayNames: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
+                dayNamesShort: ['Dim.', 'Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.'],
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                weekHeader: 'Sem.',
+                dateFormat: 'dd-mm-yy'
+            });
+            //$("#myInput").datepicker({
+            //changeMonth: true,
+            //    changeYear: true,
+            //    altField: "#datepicker",
+            //    closeText: 'Fermer',
+            //    firstDay: 1,
+            //    dateFormat: 'dd-mm-yy'
+            //}); $.datepicker.setDefaults($.datepicker.regional["fr"]);
+            $("#myInput").on('change', function () {
+                alert($(this).val());
+            });
+        });
+
+    </script>
+</body>
+</html>

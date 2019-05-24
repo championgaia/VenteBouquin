@@ -39,18 +39,29 @@
                                 <a><%# DataBinder.Eval(Container.DataItem, "PrixM")%></a>&nbsp;
                             </td>
                             <td>
-                                <asp:Button runat="server" ID="btnLivre"  
+                                <asp:Button runat="server" ID="btnLivre" text="Detail" 
                                     OnClick="btnLivre_Click" 
                                     CommandName="thisClick" 
                                     CommandArgument=<%# DataBinder.Eval(Container.DataItem, "CodeISBNM")%>
                                     />
                             </td>
+                            <td>
+                                <asp:Button runat="server" ID="btnPanier" text="addPanier"
+                                    OnClick="btnPanier_Click" ValidateRequestMode="Disabled"
+                                    CommandName="thisPanier" 
+                                    CommandArgument=<%# DataBinder.Eval(Container.DataItem, "PrixM")%>
+                                    />
+                            </td>
+                            
                         </tr>
                     </table>
                     </p>
                 </td>
             </ItemTemplate>
         </asp:ListView>
-
+        
+    </div>
+    <div>
+        <asp:Literal ID="txbTotal" Text="text" runat="server" />
     </div>
 </asp:Content>
