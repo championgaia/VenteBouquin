@@ -38,10 +38,7 @@
         <asp:Button runat="server" ID="btnSubmit" CssClass="btn btn-success" Text="Submit" OnClick="btnSubmit_Click" />
     </div>
     </div>
-
     <br />
-
-    
     <div>
         <%--<asp:Repeater ID="rptEvents" runat="server">
             <ItemTemplate>
@@ -86,6 +83,5 @@
                 </td>
             </ItemTemplate>
         </asp:ListView>
-
     </div>
 </asp:Content>

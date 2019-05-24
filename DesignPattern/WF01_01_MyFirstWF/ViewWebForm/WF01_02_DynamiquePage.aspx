@@ -52,14 +52,12 @@
                                     CommandArgument=<%# DataBinder.Eval(Container.DataItem, "PrixM")%>
                                     />
                             </td>
-                            
                         </tr>
                     </table>
                     </p>
                 </td>
             </ItemTemplate>
         </asp:ListView>
-        
     </div>
     <div>
         <asp:Literal ID="txbTotal" Text="text" runat="server" />

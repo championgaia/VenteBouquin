@@ -1,7 +1,0 @@
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\bin\Debug\ConsoleApp4.exe.config
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\bin\Debug\ConsoleApp4.exe
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\bin\Debug\ConsoleApp4.pdb
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\obj\Debug\ConsoleApp4.csprojAssemblyReference.cache
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\obj\Debug\ConsoleApp4.csproj.CoreCompileInputs.cache
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\obj\Debug\ConsoleApp4.exe
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\ConsoleApp4\obj\Debug\ConsoleApp4.pdb

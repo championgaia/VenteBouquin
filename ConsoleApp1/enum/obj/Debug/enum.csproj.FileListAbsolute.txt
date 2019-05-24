@@ -1,7 +1,0 @@
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\bin\Debug\@enum.exe.config
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\bin\Debug\@enum.exe
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\bin\Debug\@enum.pdb
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\obj\Debug\enum.csproj.CoreCompileInputs.cache
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\obj\Debug\@enum.exe
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\obj\Debug\@enum.pdb
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\enum\obj\Debug\enum.csprojAssemblyReference.cache

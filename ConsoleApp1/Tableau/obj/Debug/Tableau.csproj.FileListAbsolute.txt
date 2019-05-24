@@ -1,7 +1,0 @@
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\bin\Debug\Tableau.exe.config
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\bin\Debug\Tableau.exe
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\bin\Debug\Tableau.pdb
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\obj\Debug\Tableau.csprojAssemblyReference.cache
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\obj\Debug\Tableau.csproj.CoreCompileInputs.cache
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\obj\Debug\Tableau.exe
-C:\VHN\Projet\ProjetVenteBouquin\ConsoleApp1\Tableau\obj\Debug\Tableau.pdb
