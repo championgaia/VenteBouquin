@@ -7,7 +7,7 @@ using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_DATA.Class_Control_DATA
 {
-    internal class GestionCatalogueData
+    internal class GestionCatalogueData: IGestionCatalogue
     {
         private VenteBouquinContext context = new VenteBouquinContext();
         #region GetAllLivreCategory    GestionCatalogueData

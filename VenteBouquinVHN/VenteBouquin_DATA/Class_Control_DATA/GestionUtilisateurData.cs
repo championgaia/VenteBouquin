@@ -8,7 +8,7 @@ using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_DATA.Class_Control_DATA
 {
-    internal class GestionUtilisateurData
+    internal class GestionUtilisateurData: IGestionUtilisateur
     {
         private VenteBouquinContext context = new VenteBouquinContext();
         #region GetPayeurDTO par codePayeur     GestionUtilisateurData
@@ -16,7 +16,7 @@ namespace VenteBouquin_DATA.Class_Control_DATA
         {
             var payeur = context.Utilisateurs
                 .FirstOrDefault(c => c.IdUtilisateur == codePayeur);
-            if (payeur.CodeUtilisateur != null)
+            if (payeur != null)
             {
                 PayeurDTO payeurDto = new PayeurDTO
                 {

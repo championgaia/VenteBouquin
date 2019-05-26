@@ -212,6 +212,7 @@
     <Content Include="html js\jQuery4\jQuery4\exercice-galerie\draggable.html" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="ViewWebForm\A faire.txt" />
     <Content Include="ViewWebForm\WebForm1.aspx" />
     <Content Include="ViewWebForm\WF01_01_Init.aspx" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />

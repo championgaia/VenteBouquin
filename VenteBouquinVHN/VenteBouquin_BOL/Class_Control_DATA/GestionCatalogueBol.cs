@@ -7,7 +7,7 @@ using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_DATA.Class_Control_BOL
 {
-    internal class GestionCatalogueBol
+    internal class GestionCatalogueBol: IGestionCatalogue
     {
         private RepoData repo = new RepoData();
         #region GetAllLivreCategory    GestionCatalogueData

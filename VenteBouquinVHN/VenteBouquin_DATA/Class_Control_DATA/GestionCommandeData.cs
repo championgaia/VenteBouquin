@@ -8,7 +8,7 @@ using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_DATA.Class_Control_DATA
 {
-    internal class GestionCommandeData
+    internal class GestionCommandeData: IGestionCommande
     {
         private VenteBouquinContext context = new VenteBouquinContext();
         #region GetCommandeDTO par codeCommande     GestionCommandeData
