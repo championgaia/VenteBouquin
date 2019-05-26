@@ -27,24 +27,4 @@ namespace VenteBouquin_BOL.Class_BOL
         }
         #endregion
     }
-    internal class LivreCategoryBOLs
-    {
-        public List<LivreCategoryBOL> ListeCategory { get; set; }
-        private RepoData repo = new RepoData();
-        #region Constructeur par deffault
-        public LivreCategoryBOLs()
-        {
-            ListeCategory = new List<LivreCategoryBOL>();
-            //besoin repo
-            foreach (var item in repo.GetLivreCategoryDTOsRepoData())
-            {
-                ListeCategory.Add(new LivreCategoryBOL
-                {
-                    CodeCategory = item.CodeCategoryDto,
-                    NomCategory = item.NomCategoryDto
-                });
-            }
-        }
-        #endregion
-    }
 }

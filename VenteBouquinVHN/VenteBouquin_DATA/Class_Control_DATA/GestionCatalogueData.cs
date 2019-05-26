@@ -10,8 +10,8 @@ namespace VenteBouquin_DATA.Class_Control_DATA
     internal class GestionCatalogueData
     {
         private VenteBouquinContext context = new VenteBouquinContext();
-        #region GetAllLivreCategoryDTOs    GestionCatalogueData
-        public List<LivreCategoryDTO> GetAllLivreCategoryDTOs()
+        #region GetAllLivreCategory    GestionCatalogueData
+        public List<LivreCategoryDTO> GetAllLivreCategory()
         {
             List<LivreCategoryDTO> livreCategoryDTOs = new List<LivreCategoryDTO>();
             foreach (var item in context.LivreCategories

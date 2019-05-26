@@ -27,26 +27,4 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
     }
-    internal class LivreCategoryDatas
-    {
-        private VenteBouquinContext context = new VenteBouquinContext();
-        public List<LivreCategoryData> ListeCategory { get; set; }
-        #region Constructeur par deffault
-        public LivreCategoryDatas()
-        {
-            ListeCategory = new List<LivreCategoryData>();
-            foreach (var item in context.LivreCategories
-                        .OrderBy(c => c.NomCategory)
-                        .ToList())
-            {
-                ListeCategory.Add(new LivreCategoryData
-                {
-                    CodeCategory = item.IdCategory,
-                    NomCategory = item.NomCategory
-                });
-            }
-        }
-        #endregion
-
-    }
 }

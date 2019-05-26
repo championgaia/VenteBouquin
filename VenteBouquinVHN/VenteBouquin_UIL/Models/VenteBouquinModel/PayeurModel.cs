@@ -115,6 +115,5 @@ namespace VenteBouquin_UIL.Models.VenteBouquinModel
             }
         }
         #endregion
-        
     }
 }

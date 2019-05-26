@@ -62,56 +62,5 @@ namespace VenteBouquin_BOL.Class_BOL
             }
         }
         #endregion
-        #region CreatePayeurRepoBol
-        public void CreatePayeurBol()
-        {
-            var payeurDto = new PayeurDTO()
-            {
-                CodePayeurDto = CodePayeur,
-                CodeUtilisateurDto = CodeUtilisateur,
-                LoginDto = Login,
-                PasswordDto = Password,
-                RoleDto = Role,
-                PersonneDto = new PersonneDTO()
-                {
-                    CodePersonneDto = Personne.CodePersonne,
-                    NomDto = Personne.Nom,
-                    PrenomDto = Personne.Prenom,
-                    DateNaissanceDto = Personne.DateNaissance
-                }
-            };
-            repo.CreatePayeurRepoData(payeurDto);
-        }
-        #endregion
-    }
-    internal class PayeurBOLs
-    {
-        public List<PayeurBOL> ListePayeur { get; set; }
-        private RepoData repo = new RepoData();
-        #region Constructeur par deffault
-        public PayeurBOLs()
-        {
-            ListePayeur = new List<PayeurBOL>();
-            //besoin repodata
-            foreach (var item in repo.GetAllPayeurDTORepoData())
-            {
-                ListePayeur.Add(new PayeurBOL
-                {
-                    CodePayeur = item.CodePayeurDto,
-                    CodeUtilisateur = item.CodeUtilisateurDto,
-                    Login = item.LoginDto,
-                    Password = item.PasswordDto,
-                    Role = item.RoleDto,
-                    Personne = new PersonneBOL
-                    {
-                        CodePersonne = item.PersonneDto.CodePersonneDto,
-                        Nom = item.PersonneDto.NomDto,
-                        Prenom = item.PersonneDto.PrenomDto,
-                        DateNaissance = item.PersonneDto.DateNaissanceDto
-                    }
-                });
-            }
-        }
-        #endregion
     }
 }

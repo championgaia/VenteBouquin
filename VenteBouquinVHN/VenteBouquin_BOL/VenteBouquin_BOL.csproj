@@ -50,6 +50,9 @@
     <Compile Include="Class BOL\PayeurBOL.cs" />
     <Compile Include="Class BOL\PersonneBOL.cs" />
     <Compile Include="Class BOL\PromotionBOL.cs" />
+    <Compile Include="Class_Control_DATA\GestionCatalogueBol.cs" />
+    <Compile Include="Class_Control_DATA\GestionCommandeBol.cs" />
+    <Compile Include="Class_Control_DATA\GestionUtilisateurBol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepoBOL.cs" />
   </ItemGroup>

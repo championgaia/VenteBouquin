@@ -33,28 +33,4 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
     }
-    internal class PersonneDatas
-    {
-        public List<PersonneData> ListePersonne { get; set; }
-        private VenteBouquinContext context = new VenteBouquinContext();
-        #region Constructeur par deffault
-        public PersonneDatas()
-        {
-            ListePersonne = new List<PersonneData>();
-            //besoin contexte
-            foreach (var item in context.Personnes)
-            {
-                ListePersonne.Add(new PersonneData
-                {
-                    CodePersonne = item.IdPersonne,
-                    Nom = item.Nom,
-                    Prenom = item.Prenom,
-                    DateNaissance = item.DateNaissance,
-                    Adresse = new AdresseData(item.Adresse.IdAdresse)
-                });
-            }
-        }
-        #endregion
-        
-    }
 }

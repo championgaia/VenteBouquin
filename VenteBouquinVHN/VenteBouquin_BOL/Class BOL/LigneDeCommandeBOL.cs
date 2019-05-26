@@ -18,17 +18,4 @@ namespace VenteBouquin_BOL.Class_BOL
         public LigneDeCommandeBOL() { }
         #endregion
     }
-    internal class LigneDeCommandeBOLs
-    {
-        public List<LigneDeCommandeBOL> ListeLigneCommande { get; set; }
-        #region constructeur par deffaut
-        public LigneDeCommandeBOLs() {}
-        #endregion
-        #region constructeur par codeCommande
-        public LigneDeCommandeBOLs(int codeCommande)
-        {
-            ListeLigneCommande = new CommandeBOL(codeCommande).LesLignes;
-        }
-        #endregion
-    }
 }

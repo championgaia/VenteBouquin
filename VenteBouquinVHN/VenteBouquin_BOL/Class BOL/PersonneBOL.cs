@@ -23,15 +23,4 @@ namespace VenteBouquin_BOL.Class_BOL
         }
         #endregion
     }
-    internal class PersonneBOLs
-    {
-        public List<PersonneBOL> ListePersonne { get; set; }
-        #region Constructeur par deffault
-        public PersonneBOLs()
-        {
-            ListePersonne = new List<PersonneBOL>();
-            //besoin repo
-        }
-        #endregion
-    }
 }

@@ -21,15 +21,4 @@ namespace VenteBouquin_BOL.Class_BOL
         }
         #endregion
     }
-    internal class DescriptionBOLs
-    {
-        public List<DescriptionBOL> ListeDescription { get; set; }
-        #region Constructeur par deffault
-        public DescriptionBOLs()
-        {
-            ListeDescription = new List<DescriptionBOL>();
-            //besoin repo
-        }
-        #endregion
-    }
 }

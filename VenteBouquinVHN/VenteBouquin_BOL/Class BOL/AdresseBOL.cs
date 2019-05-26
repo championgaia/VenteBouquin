@@ -28,15 +28,4 @@ namespace VenteBouquin_BOL.Class_BOL
         }
         #endregion
     }
-    internal class AdresseBOLPlus
-    {
-        public List<AdresseBOL> ListeAdresse { get; set; }
-        #region Constructeur par déffault
-        public AdresseBOLPlus()
-        {
-            ListeAdresse = new List<AdresseBOL>();
-            //context besoin
-        }
-        #endregion
-    }
 }

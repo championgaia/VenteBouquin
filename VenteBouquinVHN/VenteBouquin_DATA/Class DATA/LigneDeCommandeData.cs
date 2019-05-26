@@ -33,17 +33,4 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
     }
-    internal class LigneDeCommandeDatas
-    {
-        public List<LigneDeCommandeData> ListeLigneCommande { get; set; }
-        #region constructeur par deffaut
-        public LigneDeCommandeDatas() { }
-        #endregion
-        #region constructeur par codeCommande
-        public LigneDeCommandeDatas(int codeCommande)
-        {
-            ListeLigneCommande = new CommandeData(codeCommande).LesLignes;
-        }
-        #endregion
-    }
 }

@@ -21,14 +21,4 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
     }
-    internal class DescriptionDatas
-    {
-        public List<DescriptionData> ListeDescription { get; set; }
-        #region Constructeur par deffault
-        public DescriptionDatas()
-        {
-
-        }
-        #endregion
-    }
 }

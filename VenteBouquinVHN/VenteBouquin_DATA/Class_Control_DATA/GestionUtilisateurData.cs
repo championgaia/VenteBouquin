@@ -44,7 +44,7 @@ namespace VenteBouquin_DATA.Class_Control_DATA
         {
             var payeur = context.Utilisateurs
                 .FirstOrDefault(c => c.CodeUtilisateur == codeUtilisateur);
-            if (payeur.CodeUtilisateur != null)
+            if (payeur != null)
             {
                 PayeurDTO payeurDto = new PayeurDTO
                 {
@@ -94,7 +94,8 @@ namespace VenteBouquin_DATA.Class_Control_DATA
                     IdPersonne = payeurDto.PersonneDto.CodePersonneDto,
                     Nom = payeurDto.PersonneDto.NomDto,
                     Prenom = payeurDto.PersonneDto.PrenomDto,
-                    DateNaissance = payeurDto.PersonneDto.DateNaissanceDto
+                    DateNaissance = payeurDto.PersonneDto.DateNaissanceDto,
+                    FkAdresse = new Random().Next(1, 7)//////////////////////////////////////////////
                 }
             };
             context.Utilisateurs.AddOrUpdate(payeur);

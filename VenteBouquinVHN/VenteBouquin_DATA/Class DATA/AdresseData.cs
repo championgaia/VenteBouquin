@@ -37,28 +37,4 @@ namespace VenteBouquin_DATA.Class_DATA
         }
         #endregion
     }
-    internal class AddresseDataPlus
-    {
-        public List<AdresseData> ListeAdresse { get; set; }
-        private VenteBouquinContext context = new VenteBouquinContext();
-        #region Constructeur par déffault
-        public AddresseDataPlus()
-        {
-            ListeAdresse = new List<AdresseData>();
-            foreach (var addresse in context.Adresses.ToList())
-            {
-                ListeAdresse.Add(new AdresseData
-                {
-                    CodeAdresse = addresse.IdAdresse,
-                    NomRue = addresse.NomRue,
-                    NumeroRue = addresse.NumeroRue,
-                    AdresseComplementaire = addresse.AdresseComplementaire,
-                    NomVille = addresse.NomVille,
-                    CodePostale = addresse.CodePostal,
-                    NomPays = addresse.NomPays
-                });
-            }
-        }
-        #endregion
-    }
 }
