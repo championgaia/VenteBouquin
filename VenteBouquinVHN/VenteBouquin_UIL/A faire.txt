@@ -1,0 +1,4 @@
+﻿creat a panier partial vue
+addPanier
+Valider Panier
+annuler Panier
