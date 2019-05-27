@@ -181,6 +181,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="html js\JavaScript\bases.html" />
     <Content Include="html js\JavaScript\bases.js" />
+    <Content Include="html js\jeu tekken 2\IHM.html" />
+    <Content Include="html js\jeu tekken 2\site.js" />
     <Content Include="html js\jQuery1\entrainementjq1.html" />
     <Content Include="html js\jQuery1\entrainementjq1.js" />
     <Content Include="html js\jQuery1\exercices-sujets.html" />

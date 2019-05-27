@@ -12,3 +12,10 @@ C:\wamp64\www\vhn\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.cs
 C:\wamp64\www\vhn\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.csproj.CoreCompileInputs.cache
 C:\wamp64\www\vhn\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.exe
 C:\wamp64\www\vhn\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.pdb
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\bin\Debug\DP01_01_Singleton.exe.config
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\bin\Debug\DP01_01_Singleton.exe
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\bin\Debug\DP01_01_Singleton.pdb
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.csprojAssemblyReference.cache
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.csproj.CoreCompileInputs.cache
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.exe
+C:\VHN\ventebouquin\DesignPattern\DP01_01_Singleton\obj\Debug\DP01_01_Singleton.pdb
