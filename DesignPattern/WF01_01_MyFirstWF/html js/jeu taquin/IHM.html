@@ -4,21 +4,34 @@
     <meta charset="utf-8" />
     <title></title>
 
-    <script src="../../Scripts/jquery-3.3.1.min.js"></script>
-    <script src="../../Scripts/bootstrap.min.js"></script>
+
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="bootstrap.min.js"></script>
     <script src="site.js"></script>
     <style>
         .btn {
             height: 100px;
             width: 100px;
+            font-size: 30px;
+        }
+
+        .btnJeu {
+            background-color: black;
+            color: orange;
+        }
+
+        .btnVide {
+            background-color: gray;
+            color: gray;
         }
     </style>
 </head>
 <body>
     <div class="text-center">
         <button class="active btnStart">Start</button>
-        <button class="btn-danger">Undo</button>
-
+        <button class="btn-danger btnUndo">Undo</button>
+        <button class="btn-success btnRestart">Restart</button>
     </div>
     <br />
     <div class="myDiv table text-center">

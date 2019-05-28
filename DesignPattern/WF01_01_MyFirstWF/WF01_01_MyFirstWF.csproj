@@ -179,10 +179,14 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="html js\JavascriptAvance\HtmlPage1.html" />
+    <Content Include="html js\JavascriptAvance\JavaScript.js" />
     <Content Include="html js\JavaScript\bases.html" />
     <Content Include="html js\JavaScript\bases.js" />
-    <Content Include="html js\jeu tekken 2\IHM.html" />
-    <Content Include="html js\jeu tekken 2\site.js" />
+    <Content Include="html js\jeu taquin\bootstrap.min.js" />
+    <Content Include="html js\jeu taquin\IHM.html" />
+    <Content Include="html js\jeu taquin\jquery-3.3.1.min.js" />
+    <Content Include="html js\jeu taquin\site.js" />
     <Content Include="html js\jQuery1\entrainementjq1.html" />
     <Content Include="html js\jQuery1\entrainementjq1.js" />
     <Content Include="html js\jQuery1\exercices-sujets.html" />
@@ -217,6 +221,7 @@
     <Content Include="ViewWebForm\A faire.txt" />
     <Content Include="ViewWebForm\WebForm1.aspx" />
     <Content Include="ViewWebForm\WF01_01_Init.aspx" />
+    <Content Include="html js\JavascriptAvance\FicherBabel.babelrc" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
