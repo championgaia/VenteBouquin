@@ -58,8 +58,17 @@ $(function () {
     $('.btnRestart').click(function () {
         $('.btnVide').removeClass('btnVide');
         remplirTableau(monTable);
-        
         $('.btnUndo').attr('value', '0');
+        if (isGagner(tableBut)) {
+            alert('vous etes gagne');
+        }
+    });
+    $('.btnHint').click(function () {
+        isCliquable();
+    });
+    $('.btnSolve').click(function () {
+        remplirTableau(tableBut);
+        
         if (isGagner(tableBut)) {
             alert('vous etes gagne');
         }
@@ -85,7 +94,7 @@ function remplirTableau(array) {
 }
 //hide la case vide
 function hiddenCase(chain) {
-    if ($(chain).html() == 'X') {
+    if ($(chain).html() === 'X') {
         $('.btnVide').removeClass('btnVide');
         $(chain).addClass('btnVide');
         buttonVideId = $(chain).attr('id');
@@ -110,4 +119,19 @@ function isGagner(array) {
             gagne = true;
     }
     return gagne;
+}
+//chercher button cliquable
+function isCliquable() {
+    for (var i = 0; i < monTable.length; i++) {
+        var coordinateButtonVide = $('#' + buttonVideId).attr('value').split("_");
+        var coordinateButton = $('#btn' + (i + 1)).attr('value').split("_");
+        var differentRow = Math.abs(coordinateButtonVide[0] - coordinateButton[0]);
+        var differentColonne = Math.abs(coordinateButtonVide[1] - coordinateButton[1]);
+        //check si valable le button cliqué
+        if ((differentColonne * differentRow) === 0 && (differentRow + differentColonne) === 1) {
+            $('#btn' + (i + 1)).addClass('buttonCliquable');
+        }
+        setTimeout(() => $('.buttonCliquable').removeClass('buttonCliquable'), 2000);
+        //$('.buttonCliquable').delay(5000).removeClass('buttonCliquable');
+    }
 }

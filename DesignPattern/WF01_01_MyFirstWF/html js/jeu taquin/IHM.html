@@ -11,9 +11,9 @@
     <script src="site.js"></script>
     <style>
         .btn {
-            height: 100px;
-            width: 100px;
-            font-size: 30px;
+            height: 150px;
+            width: 150px;
+            font-size: 40px;
         }
 
         .btnJeu {
@@ -25,19 +25,37 @@
             background-color: gray;
             color: gray;
         }
+        .divButton{
+            left: 400px;
+            position: center;
+            text-align: center;
+        }
+        .buttonCliquable{
+            background-color:red;
+        }
+        .divButton button{
+            height: 40px;
+            width: 120px;
+            font-size: 20px;
+        }
+        .myDiv{
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <div class="text-center">
-        <button class="active btnStart">Start</button>
+    <div class="text-center divButton">
+        <button class="active btnStart ">New-game</button>
         <button class="btn-danger btnUndo">Undo</button>
         <button class="btn-success btnRestart">Restart</button>
+        <button class="btn-success btnHint">Hint</button>
+        <button class="btn-success btnSolve">Solve</button>
     </div>
     <br />
     <div class="myDiv table text-center">
         <div class="myDiv row1">
             <button class="btn btn-block btnJeu" id="btn1" value="1_1"></button>
-            <button class="btn btn-block btnJeu" id="btn2"value="1_2"></button>
+            <button class="btn btn-block btnJeu" id="btn2" value="1_2"></button>
             <button class="btn btn-block btnJeu" id="btn3" value="1_3"></button>
             <button class="btn btn-block btnJeu" id="btn4" value="1_4"></button>
         </div>

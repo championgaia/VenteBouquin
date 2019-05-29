@@ -34,5 +34,6 @@ namespace Data
         public virtual DbSet<Personne> Personnes { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
+        //public DbSet<CartItem> ShoppingCartItems { get; set; }
     }
 }
