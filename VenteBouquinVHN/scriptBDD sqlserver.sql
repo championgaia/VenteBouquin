@@ -266,9 +266,34 @@ INSERT INTO Livre(CodeISBN, NomLivre, Auteur, Editeur, Prix, FkDescription, FkLi
     ('9782070612901', 'Le Seigneur des Anneaux Tome 3 - Le Retour du Roi', 'J. R. R. Tolkien', 'Gallimard Jeunesse', 8.7, 10, 12),
     ('9782070645138','Le comte de Monte-Cristo', 'Alexandre Dumas', 'Gallimard Jeunesse', 7.9, 11, 20)
     ;
-
-
-
+-------------------------------------------------------------------------------
+--------------------------PS GetCategory---------------------------------------
+-------------------------------------------------------------------------------
+IF (OBJECT_ID('GetCategory') IS NOT NULL) 
+DROP PROC GetCategory 
+GO
+CREATE PROC GetCategory(@idCategory int = 0)
+AS
+	SELECT IdCategory, NomCategory 
+	FROM LivreCategory
+	WHERE IdCategory = @idCategory or @idCategory = 0
+GO
+-------------------------------------------------------------------------------
+--------------------------PS GetLivre---------------------------------------
+-------------------------------------------------------------------------------
+IF (OBJECT_ID('GetLivre') IS NOT NULL) 
+DROP PROC GetLivre 
+GO
+CREATE PROC GetLivre(@idCategory int = 0, @codeISBN nvarchar(50)='0')
+AS
+	SELECT lc.IdCategory, lc.NomCategory,
+		l.Auteur, l.CodeISBN, l.CoverImage, l.Editeur, l.IdLivre, l.NomLivre, l.Prix,
+		d.IdDescription, d.Detail 
+	FROM LivreCategory lc
+	inner join Livre l on l.FkLivreCategory = lc.IdCategory
+	inner join Description d on d.IdDescription = l.FkDescription
+	WHERE l.CodeISBN = @codeISBN or (IdCategory = @idCategory and @codeISBN = 0)  or @idCategory = 0
+GO
 
 
 

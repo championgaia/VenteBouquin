@@ -219,6 +219,7 @@
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="ViewWebForm\A faire.txt" />
+    <Content Include="ViewWebForm\ErrorPage.aspx" />
     <Content Include="ViewWebForm\WebForm1.aspx" />
     <Content Include="ViewWebForm\WF01_01_Init.aspx" />
     <Content Include="html js\JavascriptAvance\FicherBabel.babelrc" />
@@ -254,6 +255,8 @@
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="ViewWebForm\WF01_02_DynamiquePage.aspx" />
+    <Content Include="ViewWebForm\WF01_03_LifeCycle.aspx" />
+    <Content Include="ViewWebForm\WF01_04_Validation.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -319,6 +322,13 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="ViewWebForm\ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewWebForm\ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewWebForm\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -339,6 +349,20 @@
     </Compile>
     <Compile Include="ViewWebForm\WF01_02_DynamiquePage.aspx.designer.cs">
       <DependentUpon>WF01_02_DynamiquePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewWebForm\WF01_03_LifeCycle.aspx.cs">
+      <DependentUpon>WF01_03_LifeCycle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewWebForm\WF01_03_LifeCycle.aspx.designer.cs">
+      <DependentUpon>WF01_03_LifeCycle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewWebForm\WF01_04_Validation.aspx.cs">
+      <DependentUpon>WF01_04_Validation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewWebForm\WF01_04_Validation.aspx.designer.cs">
+      <DependentUpon>WF01_04_Validation.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
