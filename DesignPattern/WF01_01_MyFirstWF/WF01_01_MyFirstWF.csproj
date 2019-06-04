@@ -384,6 +384,10 @@
       <Project>{46a322db-a349-4a85-bb68-18da9b9808e0}</Project>
       <Name>ClassDto</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Data2Connection\Data2Connection.csproj">
+      <Project>{7048D843-8C8E-4E06-8CEA-8AC5584B42E9}</Project>
+      <Name>Data2Connection</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Data\Data.csproj">
       <Project>{757dbbf2-7a93-4024-b848-8a8eaf657395}</Project>
       <Name>Data</Name>

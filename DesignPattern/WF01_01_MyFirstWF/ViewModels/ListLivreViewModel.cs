@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace WF01_01_MyFirstWF.ViewModels
     {
         public List<LivreModel> ListBookVM { get; set; }
         public double TotalPrixVM { get; set; }
-        private RepoData repo = new RepoData();
+        private RepoData2 repo = new RepoData2();
         public ListLivreViewModel()
         {
             ListBookVM = new List<LivreModel>();

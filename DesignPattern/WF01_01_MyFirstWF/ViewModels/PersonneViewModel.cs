@@ -1,5 +1,6 @@
 ﻿using ClassDto.ClassDTO;
 using Data;
+using Data2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace WF01_01_MyFirstWF.ViewModels
 {
     public class PersonneViewModel
     {
-        RepoData repo = new RepoData();
+        RepoData2 repo = new RepoData2();
         public List<PersonneModel> ListPeople { get; set; }
         public PersonneViewModel()
         {

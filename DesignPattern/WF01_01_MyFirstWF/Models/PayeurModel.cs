@@ -1,5 +1,6 @@
 ﻿using ClassDto.ClassDTO;
 using Data;
+using Data2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace WF01_01_MyFirstWF.Models
         public string PasswordM { get; set; }
         public string RoleM { get; set; }
         public PersonneModel PersonneM { get; set; }
-        private RepoData repo = new RepoData();
+        private RepoData2 repo = new RepoData2();
         #region Constructeur par deffault
         public PayeurModel()
         {

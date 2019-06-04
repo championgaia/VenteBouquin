@@ -1,4 +1,5 @@
 ﻿using Data;
+using Data2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace WF01_01_MyFirstWF.Models
         public double PrixM { get; set; }
         public DescriptionModel DescriptionM { get; set; }
         public LivreCategoryModel LaCategoryM { get; set; }
-        RepoData repo = new RepoData();
+        RepoData2 repo = new RepoData2();
         #region Constructeur par deffault
         public LivreModel() { }
         #endregion

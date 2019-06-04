@@ -328,3 +328,6 @@ C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\
 C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.csproj.CopyComplete
 C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.dll
 C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\obj\Debug\WF01_01_MyFirstWF.pdb
+C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\bin\Data2Connection.dll
+C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\bin\Data2Connection.pdb
+C:\PROJET\Doranco\VHN\Projet\ProjetVenteBouquin\DesignPattern\WF01_01_MyFirstWF\bin\Data2Connection.dll.config
