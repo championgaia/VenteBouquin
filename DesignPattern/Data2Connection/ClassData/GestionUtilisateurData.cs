@@ -1,28 +1,53 @@
 ﻿using ClassDto.ClassDTO;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.ClassData
+namespace Data2.ClassData
 {
     class GestionUtilisateurData
     {
-        private VenteBouquinContext context = new VenteBouquinContext();
+        private string CONNECTIONSTRING;
+        public GestionUtilisateurData()
+        {
+            CONNECTIONSTRING = ConfigurationManager.ConnectionStrings["VenteBouquinDb"].ToString();
+        }
         #region GetAllPeople
         public List<PersonneDTO> GetAllPeople()
         {
             List<PersonneDTO> maListPeople = new List<PersonneDTO>();
-            foreach (var personne in context.Personnes)
+            using (SqlConnection connection = new SqlConnection())
             {
-                maListPeople.Add(new PersonneDTO
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetPersonne", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    NomDto = personne.Nom,
-                    PrenomDto = personne.Prenom,
-                    DateNaissanceDto = personne.DateNaissance.ToShortDateString()
-                });
+                    maListPeople.Add(new PersonneDTO
+                    {
+                        CodePersonneDto = int.Parse(reader[0].ToString()),
+                        NomDto = reader[1].ToString(),
+                        PrenomDto = reader[2].ToString(),
+                        DateNaissanceDto = reader[3].ToString(),
+                        AdresseDto = new AdresseDTO
+                        {
+                            CodeAdresseDto = int.Parse(reader[3].ToString()),
+                            NumeroRueDto = int.Parse(reader[4].ToString()),
+                            NomRueDto = reader[5].ToString(),
+                            NomVilleDto = reader[6].ToString(),
+                            CodePostaleDto = reader[7].ToString(),
+                            NomPaysDto = reader[8].ToString(),
+                            AdresseComplementaireDto = reader[9].ToString()
+                        }
+                    });
+                }
             }
             return maListPeople;
         }
@@ -30,104 +55,104 @@ namespace Data.ClassData
         #region CreatePersonne
         public void CreatePersonne(PersonneDTO personneDto)
         {
-            context.Personnes.AddOrUpdate(new Personne
-            {
-                Nom = personneDto.NomDto,
-                Prenom = personneDto.PrenomDto,
-                DateNaissance = Convert.ToDateTime(personneDto.DateNaissanceDto),
-                FkAdresse = 2
-            });
-            context.SaveChanges();
         }
         #endregion
         #region GetPayeurDTO par codePayeur     GestionUtilisateurData
         public PayeurDTO GetPayeurDTO(int codePayeur)
         {
-            var payeur = context.Utilisateurs
-                .FirstOrDefault(c => c.IdUtilisateur == codePayeur);
-            if (payeur.CodeUtilisateur != null)
+            List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
+            using (SqlConnection connection = new SqlConnection())
             {
-                PayeurDTO payeurDto = new PayeurDTO
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetPayeur", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idPayeur", codePayeur);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    CodePayeurDto = payeur.IdUtilisateur,
-                    CodeUtilisateurDto = payeur.CodeUtilisateur,
-                    LoginDto = payeur.Login,
-                    PasswordDto = payeur.Password,
-                    RoleDto = payeur.Role,
-                    PersonneDto = new PersonneDTO
+                    monListePayeurDto.Add(new PayeurDTO
                     {
-                        CodePersonneDto = payeur.Personne.IdPersonne,
-                        NomDto = payeur.Personne.Nom,
-                        PrenomDto = payeur.Personne.Prenom,
-                        DateNaissanceDto = payeur.Personne.DateNaissance.ToShortDateString()
-                    }
-                };
-                //manque liste d'adresse
-                return payeurDto;
+                        CodePayeurDto = int.Parse(reader[0].ToString()),
+                        CodeUtilisateurDto = reader[0].ToString(),
+                        PersonneDto = new PersonneDTO
+                        {
+                            CodePersonneDto = int.Parse(reader[0].ToString()),
+                            NomDto = reader[1].ToString(),
+                            PrenomDto = reader[2].ToString(),
+                            DateNaissanceDto = reader[3].ToString()
+                        }
+                    });
+                }
             }
-            return null;
+            return monListePayeurDto.FirstOrDefault();
         }
         #endregion
         #region GetPayeurDTO par codeUtilisateur     GestionUtilisateurData
         public PayeurDTO GetPayeurDTO(string codeUtilisateur)
         {
-            var payeur = context.Utilisateurs
-                .FirstOrDefault(c => c.CodeUtilisateur == codeUtilisateur);
-            if (payeur.CodeUtilisateur != null)
+            List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
+            using (SqlConnection connection = new SqlConnection())
             {
-                PayeurDTO payeurDto = new PayeurDTO
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetPayeur", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@codeUtilisateur", codeUtilisateur);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    CodePayeurDto = payeur.IdUtilisateur,
-                    CodeUtilisateurDto = payeur.CodeUtilisateur,
-                    LoginDto = payeur.Login,
-                    PasswordDto = payeur.Password,
-                    RoleDto = payeur.Role,
-                    PersonneDto = new PersonneDTO
+                    monListePayeurDto.Add(new PayeurDTO
                     {
-                        CodePersonneDto = payeur.Personne.IdPersonne,
-                        NomDto = payeur.Personne.Nom,
-                        PrenomDto = payeur.Personne.Prenom,
-                        DateNaissanceDto = payeur.Personne.DateNaissance.ToShortDateString()
-                    }
-                };
-                //manque liste d'adresse
-                return payeurDto;
+                        CodePayeurDto = int.Parse(reader[0].ToString()),
+                        CodeUtilisateurDto = reader[0].ToString(),
+                        PersonneDto = new PersonneDTO
+                        {
+                            CodePersonneDto = int.Parse(reader[0].ToString()),
+                            NomDto = reader[1].ToString(),
+                            PrenomDto = reader[2].ToString(),
+                            DateNaissanceDto = reader[3].ToString()
+                        }
+                    });
+                }
             }
-            return null;
+            return monListePayeurDto.FirstOrDefault();
         }
         #endregion
         #region GetAllPayeurDTO     GestionUtilisateurData
         public List<PayeurDTO> GetAllPayeurDTO()
         {
             List<PayeurDTO> monListePayeurDto = new List<PayeurDTO>();
-            foreach (var item in context.Utilisateurs.ToList())
+            using (SqlConnection connection = new SqlConnection())
             {
-                monListePayeurDto.Add(GetPayeurDTO(item.IdUtilisateur));
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetPayeur", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    monListePayeurDto.Add(new PayeurDTO
+                    {
+                        CodePayeurDto = int.Parse(reader[0].ToString()),
+                        CodeUtilisateurDto = reader[0].ToString(),
+                        PersonneDto = new PersonneDTO
+                        {
+                            CodePersonneDto = int.Parse(reader[0].ToString()),
+                            NomDto = reader[1].ToString(),
+                            PrenomDto = reader[2].ToString(),
+                            DateNaissanceDto = reader[3].ToString()
+                        }
+                    });
+                }
             }
-            //manque liste d'adresse
             return monListePayeurDto;
         }
         #endregion
         #region CreatePayeur    GestionUtilisateurData
         public void CreatePayeur(PayeurDTO payeurDto)
         {
-            var payeur = new Utilisateur()
-            {
-                IdUtilisateur = payeurDto.CodePayeurDto,
-                CodeUtilisateur = payeurDto.CodeUtilisateurDto,
-                Login = payeurDto.LoginDto,
-                Password = payeurDto.PasswordDto,
-                Role = payeurDto.RoleDto,
-                Personne = new Personne()
-                {
-                    IdPersonne = payeurDto.PersonneDto.CodePersonneDto,
-                    Nom = payeurDto.PersonneDto.NomDto,
-                    Prenom = payeurDto.PersonneDto.PrenomDto,
-                    DateNaissance = Convert.ToDateTime(payeurDto.PersonneDto.DateNaissanceDto)
-                }
-            };
-            context.Utilisateurs.AddOrUpdate(payeur);
-            context.SaveChanges();
+
         }
         #endregion
     }

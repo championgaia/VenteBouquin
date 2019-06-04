@@ -294,8 +294,68 @@ AS
 	inner join Description d on d.IdDescription = l.FkDescription
 	WHERE l.CodeISBN = @codeISBN or (IdCategory = @idCategory and @codeISBN = 0)  or @idCategory = 0
 GO
-
-
-
+-------------------------------------------------------------------------------
+--------------------------PS GetCommande---------------------------------------
+-------------------------------------------------------------------------------
+IF (OBJECT_ID('GetCommande') IS NOT NULL) 
+DROP PROC GetCommande 
+GO
+CREATE PROC GetCommande(@idCommande int = 0, @idPayeur nvarchar(50)=0)
+AS
+	SELECT c.IdCommande, c.PrixTotal, u.CodeUtilisateur, u.IdUtilisateur,
+			p.IdPersonne, p.Nom, p.Prenom, p.DateNaissance
+	FROM Commande c
+	inner join Utilisateur u on u.IdUtilisateur = c.FkUtilisateur
+	inner join Personne p on u.FkPersonne = p.IdPersonne
+	WHERE c.IdCommande = @idCommande or (@idCommande = 0 and u.IdUtilisateur = @idPayeur)
+		or (@idCommande =0 and @idPayeur = 0)
+GO
+-------------------------------------------------------------------------------
+--------------------------PS GetLigneCommande---------------------------------------
+-------------------------------------------------------------------------------
+IF (OBJECT_ID('GetLigneCommande') IS NOT NULL) 
+DROP PROC GetLigneCommande 
+GO
+CREATE PROC GetLigneCommande(@idCommande int = 0, @idLigneDeCommande int = 0)
+AS
+	SELECT c.IdCommande, c.PrixTotal, lc.IdLigneDeCommande, lc.Quantite,
+			l.CodeISBN, l.Prix, l.IdLivre, p.IdPromotion, p.PourcentagePromo
+	FROM Commande c
+	inner join LigneDeCommande lc on lc.FkCommande = c.IdCommande
+	inner join Livre l on l.IdLivre = lc.FkCommande
+	inner join Promotion p on p.IdPromotion = lc.FkPromotion
+	WHERE lc.IdLigneDeCommande = @idLigneDeCommande or 
+	(c.IdCommande = @idCommande and @idLigneDeCommande = 0)
+GO
+-------------------------------------------------------------------------------
+--------------------------PS GetPersonne---------------------------------------
+-------------------------------------------------------------------------------
+IF (OBJECT_ID('GetPersonne') IS NOT NULL) 
+DROP PROC GetPersonne 
+GO
+CREATE PROC GetPersonne(@idPersonne int = 0)
+AS
+	SELECT p.IdPersonne, p.Nom, p.Prenom, p.DateNaissance, p.FkAdresse,
+			a.NumeroRue, a.NomRue, a.NomVille, a.CodePostal,  a.NomPays, a.AdresseComplementaire
+	FROM  Personne p
+	inner join Adresse a on a.IdAdresse = p.FkAdresse 
+	WHERE p.IdPersonne = @idPersonne or @idPersonne = 0
+GO
+-------------------------------------------------------------------------------
+--------------------------PS GetPayeur---------------------------------------
+-------------------------------------------------------------------------------
+IF (OBJECT_ID('GetPayeur') IS NOT NULL) 
+DROP PROC GetPayeur 
+GO
+CREATE PROC GetPayeur(@idPayeur int = 0, @codeUtilisateur int ='0')
+AS
+	SELECT p.IdPersonne, p.Nom, p.Prenom, p.DateNaissance, p.FkAdresse,
+			u.IdUtilisateur, u.CodeUtilisateur
+	FROM  Personne p
+	inner join Utilisateur u on u.FkPersonne = p.IdPersonne
+	WHERE (u.IdUtilisateur = @idPayeur and @codeUtilisateur ='0') or
+		(u.CodeUtilisateur = @codeUtilisateur and @idPayeur =0) or
+		(@idPayeur = 0 and @codeUtilisateur ='0')
+GO
 
      

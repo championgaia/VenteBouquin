@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.ClassData
+namespace Data2.ClassData
 {
     class GestionCatalogueData
     {
@@ -106,11 +106,39 @@ namespace Data.ClassData
         public List<LivreDTO> GetLivreParCategoryDTO(int codeCategory)
         {
             var listeLivreDTO = new List<LivreDTO>();
-            foreach (var item in context.Livres
-                .Where(c => c.FkLivreCategory == codeCategory)
-                .ToList())
+            using (SqlConnection connection = new SqlConnection())
             {
-                listeLivreDTO.Add(GetLivreParCodeISBNDTO(item.CodeISBN));
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetLivre", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idCategory", codeCategory);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    listeLivreDTO.Add(new LivreDTO
+                    {
+                        AuteurDto = reader[2].ToString(),
+                        CodeISBNDto = reader[3].ToString(),
+
+                        CoverImageDto = reader[4].ToString(),
+                        EditeurDto = reader[5].ToString(),
+                        CodeLivreDto = int.Parse(reader[6].ToString()),
+                        NomLivreDto = reader[7].ToString(),
+                        PrixDto = double.Parse(reader[8].ToString()),
+                        DescriptionDto = new DescriptionDTO
+                        {
+                            CodeDescriptionDto = int.Parse(reader[9].ToString()),
+                            DetailDto = reader[10].ToString(),
+                            CodeISBNDto = reader[3].ToString()
+                        },
+                        LaCategoryDto = new LivreCategoryDTO
+                        {
+                            CodeCategoryDto = int.Parse(reader[0].ToString()),
+                            NomCategoryDto = reader[1].ToString()
+                        }
+                    });
+                }
             }
             return listeLivreDTO;
         }
@@ -118,25 +146,42 @@ namespace Data.ClassData
         #region GetLivreParCodeISBNDTO  GestionCatalogueData
         public LivreDTO GetLivreParCodeISBNDTO(string codeISBN)
         {
-            var livre = context.Livres
-                .FirstOrDefault(c => c.CodeISBN == codeISBN);
-            var livreDTO = new LivreDTO
+            var listeLivreDTO = new List<LivreDTO>();
+            using (SqlConnection connection = new SqlConnection())
             {
-                CodeLivreDto = livre.IdLivre,
-                CodeISBNDto = livre.CodeISBN,
-                NomLivreDto = livre.NomLivre,
-                AuteurDto = livre.Auteur,
-                EditeurDto = livre.Editeur,
-                PrixDto = (double)livre.Prix,
-                DescriptionDto = new DescriptionDTO
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetLivre", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@codeISBN", codeISBN);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    CodeDescriptionDto = livre.Description.IdDescription,
-                    CodeISBNDto = livre.Description.CodeISBN,
-                    DetailDto = livre.Description.Detail
-                },
-                LaCategoryDto = GetLivreCategory(livre.FkLivreCategory)
-            };
-            return livreDTO;
+                    listeLivreDTO.Add(new LivreDTO
+                    {
+                        AuteurDto = reader[2].ToString(),
+                        CodeISBNDto = reader[3].ToString(),
+
+                        CoverImageDto = reader[4].ToString(),
+                        EditeurDto = reader[5].ToString(),
+                        CodeLivreDto = int.Parse(reader[6].ToString()),
+                        NomLivreDto = reader[7].ToString(),
+                        PrixDto = double.Parse(reader[8].ToString()),
+                        DescriptionDto = new DescriptionDTO
+                        {
+                            CodeDescriptionDto = int.Parse(reader[9].ToString()),
+                            DetailDto = reader[10].ToString(),
+                            CodeISBNDto = reader[3].ToString()
+                        },
+                        LaCategoryDto = new LivreCategoryDTO
+                        {
+                            CodeCategoryDto = int.Parse(reader[0].ToString()),
+                            NomCategoryDto = reader[1].ToString()
+                        }
+                    });
+                }
+            }
+            return listeLivreDTO.FirstOrDefault();
         }
         #endregion
     }

@@ -1,73 +1,89 @@
 ﻿using ClassDto.ClassDTO;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Data.ClassData
+namespace Data2.ClassData
 {
     internal class GestionCommandeData
     {
-        private VenteBouquinContext context = new VenteBouquinContext();
+        private string CONNECTIONSTRING;
+        public GestionCommandeData()
+        {
+            CONNECTIONSTRING = ConfigurationManager.ConnectionStrings["VenteBouquinDb"].ToString();
+        }
         #region GetCommandeDTO par codeCommande     GestionCommandeData
         public CommandeDTO GetCommandeDTO(int codeCommande)
         {
-            var commande = context.Commandes
-                                .FirstOrDefault(c => c.IdCommande == codeCommande);
-            CommandeDTO commandeDto = new CommandeDTO
+            List<CommandeDTO> maListe = new List<CommandeDTO>();
+            using (SqlConnection connection = new SqlConnection())
             {
-                CodeCommandeDto = commande.IdCommande,
-                PrixTotalDto = (double)commande.PrixTotal,
-                LePayeurDto = new PayeurDTO
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetCommande", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idCommande", codeCommande);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    CodePayeurDto = commande.Utilisateur.IdUtilisateur,
-                    CodeUtilisateurDto = commande.Utilisateur.CodeUtilisateur,
-                    PersonneDto = new PersonneDTO
+                    maListe.Add(new CommandeDTO
                     {
-                        CodePersonneDto = commande.Utilisateur.Personne.IdPersonne,
-                        NomDto = commande.Utilisateur.Personne.Nom,
-                        PrenomDto = commande.Utilisateur.Personne.Prenom,
-                        DateNaissanceDto = commande.Utilisateur.Personne.DateNaissance.ToShortDateString()
-                    }
-                }
-            };
-            foreach (var ligneCommande in commande.LigneDeCommandes)
-            {
-                commandeDto.LesLignesDto.Add(new LigneDeCommandeDTO
-                {
-                    CodeLigneCommandeDto = ligneCommande.IdLigneDeCommande,
-                    QuantiteDto = ligneCommande.Quantite,
-                    LeLivreDto = new LivreDTO
-                    {
-                        CodeLivreDto = ligneCommande.Livre.IdLivre,
-                        CodeISBNDto = ligneCommande.Livre.CodeISBN,
-                        NomLivreDto = ligneCommande.Livre.NomLivre,
-                        AuteurDto = ligneCommande.Livre.Auteur,
-                        EditeurDto = ligneCommande.Livre.Editeur,
-                        PrixDto = (double)ligneCommande.Livre.Prix,
-                        DescriptionDto = new DescriptionDTO
+                        CodeCommandeDto = int.Parse(reader[0].ToString()),
+                        PrixTotalDto = double.Parse(reader[1].ToString()),
+                        LePayeurDto = new PayeurDTO
                         {
-                            CodeDescriptionDto = ligneCommande.Livre.Description.IdDescription,
-                            CodeISBNDto = ligneCommande.Livre.Description.CodeISBN,
-                            DetailDto = ligneCommande.Livre.Description.Detail
+                            CodePayeurDto = int.Parse(reader[3].ToString()),
+                            CodeUtilisateurDto = reader[2].ToString(),
+                            PersonneDto = new PersonneDTO
+                            {
+                                CodePersonneDto = int.Parse(reader[4].ToString()),
+                                NomDto = reader[5].ToString(),
+                                PrenomDto = reader[6].ToString(),
+                                DateNaissanceDto = reader[7].ToString()
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
-            return commandeDto;
+            return maListe.FirstOrDefault();
         }
         #endregion
         #region GetListCommandeDTO par codePayeur
         public List<CommandeDTO> GetListCommandeDTO(int codePayeur)
         {
             List<CommandeDTO> maListe = new List<CommandeDTO>();
-            foreach (var commande in context.Commandes
-                                .Where(c => c.FkUtilisateur == codePayeur)
-                                .ToList())
+            using (SqlConnection connection = new SqlConnection())
             {
-                maListe.Add(GetCommandeDTO(commande.IdCommande));
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetCommande", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idPayeur", codePayeur);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    maListe.Add(new CommandeDTO
+                    {
+                        CodeCommandeDto = int.Parse(reader[0].ToString()),
+                        PrixTotalDto = double.Parse(reader[1].ToString()),
+                        LePayeurDto = new PayeurDTO
+                        {
+                            CodePayeurDto = int.Parse(reader[3].ToString()),
+                            CodeUtilisateurDto = reader[2].ToString(),
+                            PersonneDto = new PersonneDTO
+                            {
+                                CodePersonneDto = int.Parse(reader[4].ToString()),
+                                NomDto = reader[5].ToString(),
+                                PrenomDto = reader[6].ToString(),
+                                DateNaissanceDto = reader[7].ToString()
+                            }
+                        }
+                    });
+                }
             }
             return maListe;
         }
@@ -76,9 +92,72 @@ namespace Data.ClassData
         public List<CommandeDTO> GetAllCommandeDTO()
         {
             List<CommandeDTO> maListe = new List<CommandeDTO>();
-            foreach (var commande in context.Commandes.ToList())
+            using (SqlConnection connection = new SqlConnection())
             {
-                maListe.Add(GetCommandeDTO(commande.IdCommande));
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetCommande", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    maListe.Add(new CommandeDTO
+                    {
+                        CodeCommandeDto = int.Parse(reader[0].ToString()),
+                        PrixTotalDto = double.Parse(reader[1].ToString()),
+                        LePayeurDto = new PayeurDTO
+                        {
+                            CodePayeurDto = int.Parse(reader[3].ToString()),
+                            CodeUtilisateurDto = reader[2].ToString(),
+                            PersonneDto = new PersonneDTO
+                            {
+                                CodePersonneDto = int.Parse(reader[4].ToString()),
+                                NomDto = reader[5].ToString(),
+                                PrenomDto = reader[6].ToString(),
+                                DateNaissanceDto = reader[7].ToString()
+                            }
+                        }
+                    });
+                }
+            }
+            return maListe;
+        }
+        #endregion
+        #region GetAllLigneDeCommandeDTO       GestionLigneDeCommandeData
+        public List<LigneDeCommandeDTO> GetAllLigneDeCommandeDTO(int codeCommande)
+        {
+            List<LigneDeCommandeDTO> maListe = new List<LigneDeCommandeDTO>();
+            using (SqlConnection connection = new SqlConnection())
+            {
+                connection.ConnectionString = CONNECTIONSTRING;
+                connection.Open();
+                SqlCommand command = new SqlCommand("GetLigneDeCommande", connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@idCommande", codeCommande);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    maListe.Add(new LigneDeCommandeDTO
+                    {
+                        CodeLigneCommandeDto = int.Parse(reader[2].ToString()),
+                        QuantiteDto = int.Parse(reader[3].ToString()),
+                        LeLivreDto = new LivreDTO
+                         {
+                             CodeISBNDto = reader[4].ToString(),
+                             CodeLivreDto = int.Parse(reader[6].ToString()),
+                             PrixDto = int.Parse(reader[5].ToString())
+                         },
+                         LaPromoDto = new PromotionDTO
+                         {
+                              CodePromotionDto = int.Parse(reader[7].ToString()),
+                               PourcentagePromo = double.Parse(reader[8].ToString())
+                         },
+                         LaCommandeDto = new CommandeDTO
+                         {
+                             CodeCommandeDto = int.Parse(reader[0].ToString())
+                         }
+                    });
+                }
             }
             return maListe;
         }
@@ -86,37 +165,7 @@ namespace Data.ClassData
         #region CreateCommande     GestionCommandeData
         public void CreateCommande(CommandeDTO commandeDto)
         {
-            Commande commande = new Commande
-            {
-                IdCommande = commandeDto.CodeCommandeDto,
-                PrixTotal = (decimal)commandeDto.PrixTotalDto,
-                Utilisateur = new Utilisateur
-                {
-                    IdUtilisateur = commandeDto.LePayeurDto.CodePayeurDto,
-                    CodeUtilisateur = commandeDto.LePayeurDto.CodeUtilisateurDto,
-                    Personne = new Personne
-                    {
-                        IdPersonne = commandeDto.LePayeurDto.PersonneDto.CodePersonneDto,
-                        Nom = commandeDto.LePayeurDto.PersonneDto.NomDto,
-                        Prenom = commandeDto.LePayeurDto.PersonneDto.PrenomDto,
-                        DateNaissance = Convert.ToDateTime(commandeDto.LePayeurDto.PersonneDto.DateNaissanceDto)
-                    }
-                }
-            };
-            foreach (var ligneCommande in commandeDto.LesLignesDto)
-            {
-                commande.LigneDeCommandes.Add(new LigneDeCommande
-                {
-                    Quantite = ligneCommande.QuantiteDto,
-                    Livre = new Livre
-                    {
-                        IdLivre = ligneCommande.LeLivreDto.CodeLivreDto,
-                        CodeISBN = ligneCommande.LeLivreDto.CodeISBNDto
-                    }
-                });
-            }
-            context.Commandes.AddOrUpdate(commande);
-            context.SaveChanges();
+            
         }
         #endregion
     }
