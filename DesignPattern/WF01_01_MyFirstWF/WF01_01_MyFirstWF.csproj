@@ -179,6 +179,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="html js\HtmlPage1.html" />
     <Content Include="html js\JavascriptAvance\HtmlPage1.html" />
     <Content Include="html js\JavascriptAvance\JavaScript.js" />
     <Content Include="html js\JavaScript\bases.html" />
@@ -257,6 +258,7 @@
     <Content Include="ViewWebForm\WF01_02_DynamiquePage.aspx" />
     <Content Include="ViewWebForm\WF01_03_LifeCycle.aspx" />
     <Content Include="ViewWebForm\WF01_04_Validation.aspx" />
+    <Content Include="ViewWebForm\WF01_05_GridViewControl_DataBinding.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Site.Mobile.Master" />
@@ -363,6 +365,13 @@
     </Compile>
     <Compile Include="ViewWebForm\WF01_04_Validation.aspx.designer.cs">
       <DependentUpon>WF01_04_Validation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewWebForm\WF01_05_GridViewControl_DataBinding.aspx.cs">
+      <DependentUpon>WF01_05_GridViewControl_DataBinding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewWebForm\WF01_05_GridViewControl_DataBinding.aspx.designer.cs">
+      <DependentUpon>WF01_05_GridViewControl_DataBinding.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
