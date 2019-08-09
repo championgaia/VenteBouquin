@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VenteBouquin_BOL.Class_BOL;
+using VenteBouquin_DATA;
 using VenteBouquin_DATA.Class_Control_BOL;
 using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_BOL
 {
-    public class RepoBOL
+    public class RepoBOL : IRepositoryBol
     {
-        private GestionCatalogueBol gestionCatalogue = new GestionCatalogueBol();
-        private GestionCommandeBol gestionCommande = new GestionCommandeBol();
-        private GestionUtilisateurBol gestionUtilisateur = new GestionUtilisateurBol();
+        private GestionCatalogueBol gestionCatalogue = new GestionCatalogueBol(new RepoData());
+        private GestionCommandeBol gestionCommande = new GestionCommandeBol(new RepoData());
+        private GestionUtilisateurBol gestionUtilisateur = new GestionUtilisateurBol(new RepoData());
         #region GetLivreCategoryDTOs
         public List<LivreCategoryDTO> GetLivreCategoryDTOsRepoBol()
         {

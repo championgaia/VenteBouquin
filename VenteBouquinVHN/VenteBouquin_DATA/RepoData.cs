@@ -9,7 +9,7 @@ using VenteBouquin_DTO.class_dto;
 
 namespace VenteBouquin_DATA
 {
-    public class RepoData
+    public class RepoData : IRepositoryData
     {
         private GestionCatalogueData gestionCatalogue = new GestionCatalogueData();
         private GestionCommandeData gestionCommande = new GestionCommandeData();

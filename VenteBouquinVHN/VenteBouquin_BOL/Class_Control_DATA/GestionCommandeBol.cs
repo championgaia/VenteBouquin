@@ -9,7 +9,11 @@ namespace VenteBouquin_DATA.Class_Control_BOL
 {
     internal class GestionCommandeBol: IGestionCommande
     {
-        private RepoData repo = new RepoData();
+        private IRepositoryData repo;
+        public GestionCommandeBol(IRepositoryData repoData)
+        {
+            repo = repoData;
+        }
         #region GetCommandeDTO par codeCommande     GestionCommandeData
         public CommandeDTO GetCommandeDTO(int codeCommande)
         {

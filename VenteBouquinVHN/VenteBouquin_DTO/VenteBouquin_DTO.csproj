@@ -53,6 +53,8 @@
     <Compile Include="class dto\PayeurDTO.cs" />
     <Compile Include="class dto\PersonneDTO.cs" />
     <Compile Include="class dto\PromotionDTO.cs" />
+    <Compile Include="Contacts\IRepositoryBol.cs" />
+    <Compile Include="Contacts\IRepositoryData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

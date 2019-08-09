@@ -9,7 +9,11 @@ namespace VenteBouquin_DATA.Class_Control_BOL
 {
     internal class GestionCatalogueBol: IGestionCatalogue
     {
-        private RepoData repo = new RepoData();
+        private IRepositoryData repo;
+        public GestionCatalogueBol(IRepositoryData repoData)
+        {
+            repo = repoData;
+        }
         #region GetAllLivreCategory    GestionCatalogueData
         public List<LivreCategoryDTO> GetAllLivreCategory()
         {

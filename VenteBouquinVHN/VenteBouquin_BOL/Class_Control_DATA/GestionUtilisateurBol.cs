@@ -9,7 +9,11 @@ namespace VenteBouquin_DATA.Class_Control_BOL
 {
     internal class GestionUtilisateurBol: IGestionUtilisateur
     {
-        private RepoData repo = new RepoData();
+        private IRepositoryData repo;
+        public GestionUtilisateurBol(IRepositoryData repoData)
+        {
+            repo = repoData;
+        }
         #region GetPayeurDTO par codePayeur     GestionUtilisateurData
         public PayeurDTO GetPayeurDTO(int codePayeur)
         {
