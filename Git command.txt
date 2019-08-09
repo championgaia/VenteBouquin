@@ -7,3 +7,5 @@ git pull origin master
 rm -rf .git
 git config --global --unset-all user.name
 git config --global --remove-section user
+
+https://github.com/championgaia/angularAPI.git
